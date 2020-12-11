@@ -2,7 +2,7 @@ package Soldado;
 
 import java.util.Random;
 
-public abstract class Soldado {
+public class Soldado {
 
 	// Datos de clase
 	private static int cantidad = 0;
@@ -144,9 +144,9 @@ public abstract class Soldado {
 
 	// Metodos Opcionales ----------------------------------------------
 
-	public abstract void atacar();
-
-	public abstract void defender();
+//	public abstract void atacar();
+//
+//	public abstract void defender();
 
 	public void avanzar(int valor) { // podemos ponder un parametro
 		velocidad += valor;

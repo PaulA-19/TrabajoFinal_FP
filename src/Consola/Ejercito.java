@@ -1,6 +1,6 @@
 package Consola;
 
-import Soldado.*;
+import Soldado.Soldado;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,12 +27,19 @@ public class Ejercito implements Mapeable {
 	private int columna;
 	private boolean vive = true;
 	private String nameReino;
-	private String tipo; // tipo de soldado
+	private String tipo;
 	private char simbolo;
+
+	// Constructores
+	public Ejercito() {
+	}
+
+	public void add(Object object) {
+		soldados.add(object);
+	}
 
 	public Ejercito(String nameEjercito) {
 		name = "Ejercito_" + nameEjercito + Integer.toString(cantidad);
-
 		cantidad++;
 	}
 
@@ -42,20 +49,25 @@ public class Ejercito implements Mapeable {
 
 	@Override
 	public ArrayList<Object> getUnidades() {
-		// TODO Auto-generated method stub
 		return soldados;
 	}
 
 	@Override
 	public String toString() {
-		String text = "Ejercito name: " + nameEjercito + "\n";
-		// TODO Auto-generated method stub
-		for (Object soldado : soldados) {
-			Soldado sol = (Soldado) soldado;
+		String text = "Ejercito name: " + name + "\n";
+		for (Object object : soldados) {
+			Soldado sol = (Soldado) object; // casting a soldado
 			text += sol.toString();
 		}
-
 		return text;
+	}
+
+	public ArrayList<Object> getSoldados() {
+		return soldados;
+	}
+
+	public void setSoldados(ArrayList<Object> soldados) {
+		this.soldados = soldados;
 	}
 
 }
