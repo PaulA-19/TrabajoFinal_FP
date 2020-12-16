@@ -1,8 +1,16 @@
 package Soldado;
 
+import java.awt.Color;
 import java.util.Random;
 
-public class Soldado {
+import Consola.UnidadesDeMapa;
+
+public class Soldado extends UnidadesDeMapa {
+
+	// Actitudes
+	private final static char ATAQUE = 'a';
+	private final static char NEUTRO = 'n';
+	private final static char DEFENZA = 'd';
 
 	// Datos de clase
 	private static int cantidad = 0;
@@ -15,38 +23,33 @@ public class Soldado {
 	private int nivelAtaque;
 	private int nivelDefensa;
 	private int nivelVida;
-	protected int nivelActual;
+	private int nivelVidaActual;
+	private char actitud = Soldado.NEUTRO;
 
 	// Datos generales
 	private int id;
-	private int fila;
-	private int columna;
-	private boolean vive = true;
 	private String nameReino;
 	private String nameEjercito;
 	private String tipo; // tipo de soldado
-	private char simbolo; // Inicial del tipo de soldado
-
-	// Opcionales
-	private int velocidad;
-	private char actitud = 'D'; // Tres posibles casos , puede ser char (D,O,H)
-	private boolean atacar;
-	private char simboloEjercito; // Inicial del ejercito
+	private char simbolo; // del reino y ejercito
 
 	// Constructores---------------------
-	public Soldado() {
+	public Soldado(String nameReino, String nameEjercito, Color c) {
+		this(nameReino, nameEjercito, c, Soldado.NEUTRO);
 	}
 
-	public Soldado(String tipo, String nameReino, String nameEjercito, int cantidad) {
-		Random rd = new Random();
-		this.name = tipo + "_" + Integer.toString(cantidad);
+	public Soldado(String nameReino, String nameEjercito, Color c, char actitud) {
+		this(nameReino, nameEjercito, c, actitud, "", 0);
+	}
+
+	public Soldado(String nameReino, String nameEjercito, Color c, char actitud, String tipo, int cantidadTipo) {
+		this.name = tipo + "_" + Integer.toString(cantidadTipo);
 		this.tipo = tipo;
-		this.id = Soldado.cantidad;
 		this.nameReino = nameReino;
 		this.nameEjercito = nameEjercito;
-//		this.simboloEjercito = reino.toUpperCase().charAt(0);
-		this.simbolo = tipo.toUpperCase().charAt(0);
-		Soldado.cantidad++;
+		this.actitud = actitud;
+		this.simbolo = nameEjercito.toUpperCase().charAt(0);
+		cantidad++;
 	}
 
 	// Batalla---------------- Aun no echo
@@ -134,7 +137,15 @@ public class Soldado {
 
 	}
 
-	// --------------------------------------
+	// Metodos propios de Clase-----------------------
+	public void beneficiado() {
+		setNivelVidaActual(getNivelVidaActual() + 1);
+	}
+
+	public void morir() {
+		setVive(false);
+	}
+
 	@Override
 	public String toString() {
 		return "Nombre: " + name + "\tNivel de vida: " + getNivelVida() + "\tNive de ataque: " + nivelAtaque
@@ -142,44 +153,28 @@ public class Soldado {
 				+ (getColumna() + 1) + ")";
 	}
 
-	// Metodos Opcionales ----------------------------------------------
+	// UnidadesDeMapa --------------------
 
-//	public abstract void atacar();
-//
-//	public abstract void defender();
-
-	public void avanzar(int valor) { // podemos ponder un parametro
-		velocidad += valor;
+	@Override
+	public int sumaVida() {
+		return getNivelVida();
 	}
 
-	public void retroceder() {
-		if (velocidad > 0) {
-			setVelocidad(0);
-			setActitud('d');
-		} else {
-			velocidad--; // retrocede con -1
-		}
+	@Override
+	public int sumaAtaque() {
+		return getNivelAtaque();
 	}
 
-	public void aumentarVida1() {
-		nivelVida++;
+	@Override
+	public int sumaDefensa() {
+		return getNivelDefensa();
 	}
 
-	public void hiur() {
-		avanzar(2);
+	@Override
+	public int sumaVidaActual() {
+		return getNivelVidaActual();
 	}
 
-	public void morir() {
-		vive = false;
-	}
-
-	public boolean isVive() {
-		return vive;
-	}
-
-	public boolean isAtacar() {
-		return atacar;
-	}
 	// ---------------- get and set --------------------------
 
 	public String getName() {
@@ -198,20 +193,16 @@ public class Soldado {
 		return nivelVida;
 	}
 
-	public int getNivelActual() {
-		return nivelActual;
+	public int getNivelVidaActual() {
+		return nivelVidaActual;
+	}
+
+	public char getActitud() {
+		return actitud;
 	}
 
 	public int getId() {
 		return id;
-	}
-
-	public int getFila() {
-		return fila;
-	}
-
-	public int getColumna() {
-		return columna;
 	}
 
 	public String getNameReino() {
@@ -230,18 +221,6 @@ public class Soldado {
 		return simbolo;
 	}
 
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	public char getActitud() {
-		return actitud;
-	}
-
-	public char getSimboloEjercito() {
-		return simboloEjercito;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -258,24 +237,16 @@ public class Soldado {
 		this.nivelVida = nivelVida;
 	}
 
-	public void setNivelActual(int nivelActual) {
-		this.nivelActual = nivelActual;
+	public void setNivelVidaActual(int nivelVidaActual) {
+		this.nivelVidaActual = nivelVidaActual;
+	}
+
+	public void setActitud(char actitud) {
+		this.actitud = actitud;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public void setFila(int fila) {
-		this.fila = fila;
-	}
-
-	public void setColumna(int columna) {
-		this.columna = columna;
-	}
-
-	public void setVive(boolean vive) {
-		this.vive = vive;
 	}
 
 	public void setNameReino(String nameReino) {
@@ -292,22 +263,6 @@ public class Soldado {
 
 	public void setSimbolo(char simbolo) {
 		this.simbolo = simbolo;
-	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
-	}
-
-	public void setActitud(char actitud) {
-		this.actitud = actitud;
-	}
-
-	public void setAtacar(boolean atacar) {
-		this.atacar = atacar;
-	}
-
-	public void setSimboloEjercito(char simboloEjercito) {
-		this.simboloEjercito = simboloEjercito;
 	}
 
 }
