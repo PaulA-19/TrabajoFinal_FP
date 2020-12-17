@@ -1,55 +1,57 @@
 package Soldado;
 
+import java.awt.Color;
 import java.util.Random;
 
+// falta implementar los ataques, de soldados
+
 public class Lancero extends Soldado {
+	// Vida, ataque,defenza
 	public static int cantidad = 0;
-	private static int ataque = 5;
-	private static int defensa = 10;
+
+	private static int ataque = 10;
+	private static int defensa = 5;
 	private static int vidaMin = 5;
 	private static int vidaMax = 8;
 
+	// Para ramdon
+	private Random rd = new Random();
+
 	private int longitudLanza;
 
-	public Lancero(String nameReino) {
-		super("Lancero", nameReino, cantidad);
-		Random rd = new Random();
-		this.longitudLanza = rd.nextInt(5) + 1;
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
+	public Lancero(String nameReino, String nameEjercito, Color c) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, "Lancero", cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
 
 		cantidad++;
+
+	}
+
+	// Para superLancero
+	public Lancero(String nameReino, String nameEjercito, Color c, String tipo, int cantidad, int vidaMax, int vidaMin,
+			int defensa, int ataque) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, tipo, cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+
+		Lancero.cantidad++;
 
 	}
 
 	public void schiltrom() {
 		System.out.println("schiltrom activado");
 		setNivelDefensa(getNivelDefensa() + 1);
-		setActitud('D');
+		setActitud(Soldado.DEFENZA);
 
 	}
 
 	public String toString() {
-		return super.toString() + "\tLongitud Lanza: " + longitudLanza;
-	}
-
-	@Override
-	public void atacar() {
-		// Aun no esta definido como atacaria lancero
-		setActitud('o');
-		avanzar(1);
-		setAtacar(true);
-
-	}
-
-	@Override
-	public void defender() {
-		schiltrom();
-		setActitud('d');
-		setVelocidad(0);
-		setAtacar(false);
-
+		return super.toString() + "\nLongitud Lanza:\t" + longitudLanza;
 	}
 
 }

@@ -1,29 +1,26 @@
 package Soldado;
 
+import java.awt.Color;
+
 public class SuperEspadachin extends Espadachin implements SuperSoldado {
 
 	private static int cantidad = 0;
 
-	public SuperEspadachin(String nameReino) {
-		super(nameReino, cantidad);
-		if (nameReino.equalsIgnoreCase("Inglaterra")) {
-			setNivelVida(12);
-			setSimbolo("ER");
-		} else if (nameReino.equalsIgnoreCase("Sacro Imperio Romano Germanico")) {
-			setNivelVida(13);
-			setSimbolo("ET");
-		} else if (nameReino.equalsIgnoreCase("Aragon-castilla")) { // OJO (aragon-castilla) o (aragon o castilla)
-			setNivelVida(14);
-			setSimbolo("EC");
-		}
-		cantidad++;
+	// datos personales
+	private static int ataque = 15;
+	private static int defensa = 10;
+	private static int vidaMax = 15;
+	private static int vidaMin = 10;
 
+	public SuperEspadachin(String nameReino, String nameEjercito, Color c) {
+		super(nameReino, nameEjercito, c, "SuperEspadachin", cantidad, vidaMax, vidaMin, defensa, ataque);
+		cantidad++;
 	}
 
-	@Override
-	public void atacar() {
-		super.atacar();
-		lanzar();
+	public SuperEspadachin(String nameReino, String nameEjercito, Color c, String name) {
+		super(nameReino, nameEjercito, c, "SuperEspadachin", cantidad, vidaMax, vidaMin, defensa, ataque);
+		setName(name);
+		cantidad++;
 	}
 
 	@Override

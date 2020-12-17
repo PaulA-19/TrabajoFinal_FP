@@ -1,6 +1,9 @@
 package Soldado;
 
+import java.awt.Color;
 import java.util.Random;
+
+// POdemos añadir otr INTERFACE
 
 public class Espadachin extends Soldado {
 	public static int cantidad = 0;
@@ -13,53 +16,42 @@ public class Espadachin extends Soldado {
 	private int longitudEspada;
 	private boolean muro = false;
 
-	public Espadachin(String nameReino) {
-		super("Espadachin", nameReino, cantidad);
-		Random rd = new Random();
-		this.longitudEspada = rd.nextInt(5) + 1;
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
+	// Para ramdon
+	private Random rd = new Random();
+
+	public Espadachin(String nameReino, String nameEjercito, Color c) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, "Espadachin", cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+
 		cantidad++;
 
 	}
 
-	public Espadachin(String nameReino, int cantidad) {
-		super("Super Espadachin", nameReino, cantidad);
-		Random rd = new Random();
-		this.longitudEspada = rd.nextInt(5) + 1;
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
-		cantidad++;
+	// Para superEspadachin
+	public Espadachin(String nameReino, String nameEjercito, Color c, String tipo, int cantidad, int vidaMax,
+			int vidaMin, int defensa, int ataque) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, tipo, cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+
+		Espadachin.cantidad++;
 
 	}
 
 	public void crearMuroEscudo() {
 		muro = true;
 		System.out.println("Muro de escudo creado");
-		defender();
 
 	}
 
 	@Override
 	public String toString() {
-		return super.toString() + "\tLongitud Espada: " + longitudEspada;
-	}
-
-	@Override
-	public void atacar() {
-		// Aun no esta definido como atacar
-		setActitud('o');
-		avanzar(1);
-		setAtacar(true);
-
-	}
-
-	@Override
-	public void defender() {
-		crearMuroEscudo();
-
+		return super.toString() + "\nLongitud Espada:\t" + longitudEspada;
 	}
 
 }

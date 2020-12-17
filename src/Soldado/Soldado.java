@@ -3,14 +3,16 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import Consola.Batalla;
 import Consola.UnidadesDeMapa;
+//falta implementar los ataques, de soldados
 
-public class Soldado extends UnidadesDeMapa {
+public abstract class Soldado extends UnidadesDeMapa implements Batalla {
 
 	// Actitudes
-	private final static char ATAQUE = 'a';
-	private final static char NEUTRO = 'n';
-	private final static char DEFENZA = 'd';
+	public final static char ATAQUE = 'a';
+	public final static char NEUTRO = 'n';
+	public final static char DEFENZA = 'd';
 
 	// Datos de clase
 	private static int cantidad = 0;
@@ -33,6 +35,10 @@ public class Soldado extends UnidadesDeMapa {
 	private String tipo; // tipo de soldado
 	private char simbolo; // del reino y ejercito
 
+	private boolean atacar = false;
+	private boolean defender = false;
+	private Object cant;
+
 	// Constructores---------------------
 	public Soldado(String nameReino, String nameEjercito, Color c) {
 		this(nameReino, nameEjercito, c, Soldado.NEUTRO);
@@ -49,16 +55,59 @@ public class Soldado extends UnidadesDeMapa {
 		this.nameEjercito = nameEjercito;
 		this.actitud = actitud;
 		this.simbolo = nameEjercito.toUpperCase().charAt(0);
+		setColor(c);
 		cantidad++;
 	}
 
 	// Batalla---------------- Aun no echo
 
+	public static UnidadesDeMapa[] batalla(UnidadesDeMapa unidad1, UnidadesDeMapa unidad2) {
+
+		Soldado ganador, perdedor;
+		Soldado s1 = (Soldado) unidad1;
+		Soldado s2 = (Soldado) unidad2;
+
+		while (s1.isVive() && s2.isVive()) {
+			pelear(s1, s2);
+		}
+
+		if (s1.isVive()) {
+			ganador = s1;
+			perdedor = s2;
+		} else {
+			ganador = s2;
+			perdedor = s1;
+		}
+
+		ganador.actitudNormal();
+		perdedor.actitudNormal();
+
+		Soldado[] resultado = { ganador, perdedor };
+		return resultado;
+
+	}
+
+	public static void pelear(Soldado s1, Soldado s2) {
+
+		// IMplementar una metrtic PARA BATALLA
+		s2.morir();
+
+		System.out.println("Quitar 4");
+		s1.quitarVidaDefensa(4);
+
+		System.out.println(s1);
+	}
+
+	private static void mostrarGanador(Soldado sol) {
+		System.out.println("Ganador ejercito: " + sol.getNameReino() + "\tNombre Soldado: " + sol.getName());
+
+	}
+
+	// Completar
 	private static int[] beneficiadoBatalla(Soldado s1, Soldado s2) {
-		int[] vidas = { s1.getNivelVida(), s2.getNivelVida() };
+		int[] vidas = { s1.getNivelVidaActual(), s2.getNivelVidaActual() };
 
 		if ((s1 instanceof Caballero && s2 instanceof Arquero) || (s1 instanceof Arquero && s2 instanceof Caballero)) {
-			System.out.println("Beneficiado Caballero");
 			if (s1 instanceof Caballero) {
 				vidas[0]++;
 				if (s1 instanceof SuperCaballero) {
@@ -142,15 +191,61 @@ public class Soldado extends UnidadesDeMapa {
 		setNivelVidaActual(getNivelVidaActual() + 1);
 	}
 
+	public void quitarVidaDefensa(int cant) {
+		int nuevo = getNivelDefensa() - cant;
+		setNivelDefensa(nuevo);
+
+	}
+
+	public void quitarVida(int cant) {
+		int nuevo = getNivelVidaActual() - cant;
+		setNivelVidaActual(nuevo);
+
+	}
+
 	public void morir() {
 		setVive(false);
+		setNivelVidaActual(0);
+		setNivelDefensa(0);
 	}
 
 	@Override
 	public String toString() {
-		return "Nombre: " + name + "\tNivel de vida: " + getNivelVida() + "\tNive de ataque: " + nivelAtaque
-				+ "\tNive de defensa: " + nivelDefensa + "\tPosicion: " + "(" + (getFila() + 1) + ", "
-				+ (getColumna() + 1) + ")";
+		return "Nombre: " + name + "\nNivel de vida actual:\t" + getNivelVidaActual() + "\nNive de ataque:\t"
+				+ getNivelAtaque() + "\nNive de defensa:\t" + getNivelDefensa();
+	}
+
+	// Batalla
+
+	@Override
+	public void actitudAtacar() {
+		setNivelAtaque(getNivelAtaque() + 1);
+		setNivelDefensa(getNivelDefensa() - 1);
+		setAtacar(true);
+	}
+
+	@Override
+	public void actitudDefender() {
+		setNivelAtaque(getNivelAtaque() - 1);
+		setNivelDefensa(getNivelDefensa() + 1);
+		setDefender(true);
+	}
+
+	@Override
+	public void actitudNormal() {
+
+		if (atacar) {
+			setNivelAtaque(getNivelAtaque() - 1);
+			setNivelDefensa(getNivelDefensa() + 1);
+			setAtacar(false);
+		}
+
+		if (defender) {
+			setNivelAtaque(getNivelAtaque() + 1);
+			setNivelDefensa(getNivelDefensa() - 1);
+			setAtacar(false);
+		}
+
 	}
 
 	// UnidadesDeMapa --------------------
@@ -226,11 +321,20 @@ public class Soldado extends UnidadesDeMapa {
 	}
 
 	public void setNivelAtaque(int nivelAtaque) {
-		this.nivelAtaque = nivelAtaque;
+		if (nivelAtaque > 0) {
+			this.nivelAtaque = nivelAtaque;
+		}
+
 	}
 
 	public void setNivelDefensa(int nivelDefensa) {
-		this.nivelDefensa = nivelDefensa;
+		if (nivelDefensa > 0) {
+			this.nivelDefensa = nivelDefensa;
+		} else {
+			quitarVida(Math.abs(nivelDefensa));
+			this.nivelDefensa = 0;
+		}
+
 	}
 
 	public void setNivelVida(int nivelVida) {
@@ -238,7 +342,13 @@ public class Soldado extends UnidadesDeMapa {
 	}
 
 	public void setNivelVidaActual(int nivelVidaActual) {
-		this.nivelVidaActual = nivelVidaActual;
+		if (nivelVidaActual <= 0) {
+			setVive(false);
+			this.nivelVidaActual = 0;
+
+		} else {
+			this.nivelVidaActual = nivelVidaActual;
+		}
 	}
 
 	public void setActitud(char actitud) {
@@ -263,6 +373,22 @@ public class Soldado extends UnidadesDeMapa {
 
 	public void setSimbolo(char simbolo) {
 		this.simbolo = simbolo;
+	}
+
+	public boolean isAtacar() {
+		return atacar;
+	}
+
+	public boolean isDefender() {
+		return defender;
+	}
+
+	public void setAtacar(boolean atacar) {
+		this.atacar = atacar;
+	}
+
+	public void setDefender(boolean defender) {
+		this.defender = defender;
 	}
 
 }

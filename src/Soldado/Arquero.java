@@ -1,5 +1,6 @@
 package Soldado;
 
+import java.awt.Color;
 import java.util.Random;
 
 public class Arquero extends Soldado {
@@ -10,16 +11,33 @@ public class Arquero extends Soldado {
 
 	public static int cantidad = 0;
 
+	// Para ramdon
+	private Random rd = new Random();
+
 	private int numFlechas = 100;
 
-	public Arquero(String nameReino) {
-		super("Arquero", nameReino, cantidad);
-		Random rd = new Random();
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
-
+	public Arquero(String nameReino, String nameEjercito, Color c) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, "Arquero", cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+		
 		cantidad++;
+
+	}
+
+	// Para superArquero
+	public Arquero(String nameReino, String nameEjercito, Color c, String tipo, int cantidad, int vidaMax, int vidaMin,
+			int defensa, int ataque) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, tipo, cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+		
+		Arquero.cantidad++;
+
 	}
 
 	public void dispararFlecha() {
@@ -34,25 +52,7 @@ public class Arquero extends Soldado {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\tNum. Flechas: " + numFlechas;
-	}
-
-	@Override
-	public void atacar() {
-		dispararFlecha();
-		setActitud('o');
-		avanzar(1);
-		setAtacar(true);
-
-	}
-
-	@Override
-	public void defender() {
-		setActitud('d');
-		setVelocidad(0);
-
-		setAtacar(false);
-
+		return super.toString() + "\nNumero Flechas:\t" + numFlechas;
 	}
 
 }

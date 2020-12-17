@@ -1,12 +1,12 @@
 package Consola;
 
-import Soldado.Soldado;
+import Soldado.*;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Ejercito extends UnidadesDeMapa implements Mapeable {
+public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 
 	// Datos de clase
 	private static int cantidad = 0;
@@ -37,17 +37,48 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable {
 
 	// Metodos propios de la Clase
 
-	// falta mostrar datos
-
-	public void llenarAutomatico() { // falta arreglar
+	public void llenarAutomatico() {
 		int cantidad = rd.nextInt(11); // [0,10]
 		for (int i = 0; i < cantidad; i++) {
-			soldados.add(new Soldado(nameReino, name, getColor()));
-		}
-	}
+			int tipo = rd.nextInt(8); // [0-7]
 
-	public void addNewSoldados() {// Soldado abstracto
-		soldados.add(new Soldado(nameReino, name, getColor()));
+			// aqui con un Switch case determianos entre que soldados elegir
+
+			switch (tipo) {
+			case 0: { // Arquero
+				soldados.add(new Arquero(nameReino, name, getColor()));
+				break;
+			}
+			case 1: {// Lancero
+				soldados.add(new Lancero(nameReino, name, getColor()));
+				break;
+			}
+			case 2: { // Caballero
+				soldados.add(new Caballero(nameReino, name, getColor()));
+				break;
+			}
+			case 3: {// Espadachin
+				soldados.add(new Espadachin(nameReino, name, getColor()));
+				break;
+			}
+			case 4: { // SuperArquero
+				soldados.add(new SuperArquero(nameReino, name, getColor()));
+				break;
+			}
+			case 5: { // SuperLancero
+				soldados.add(new SuperLancero(nameReino, name, getColor()));
+				break;
+			}
+			case 6: { // SuperCaballero
+				soldados.add(new SuperCaballero(nameReino, name, getColor()));
+				break;
+			}
+			case 7: { // SuperEspadachin
+				soldados.add(new SuperEspadachin(nameReino, name, getColor()));
+				break;
+			}
+			}
+		}
 	}
 
 	public int nivelVida() {
@@ -109,7 +140,7 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable {
 	@Override
 	public String toString() {
 		String text = "nombre Ejercito: " + name + "\n";
-		for (Object object : soldados) {
+		for (UnidadesDeMapa object : soldados) {
 			Soldado sol = (Soldado) object; // casting a soldado
 			text += sol.toString();
 		}
@@ -138,8 +169,8 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable {
 	// Mapeable
 	@Override
 	public ArrayList<UnidadesDeMapa> getUnidades() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return soldados;
 	}
 
 	@Override
@@ -206,6 +237,73 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable {
 
 	public void setSimbolo(char simbolo) {
 		this.simbolo = simbolo;
+	}
+
+	// Batalla
+
+	@Override
+	public void actitudAtacar() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void actitudDefender() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void actitudNormal() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public static UnidadesDeMapa[] batalla(UnidadesDeMapa unidad1, UnidadesDeMapa unidad2) {
+		Ejercito ganador, perdedor;
+		Ejercito e1 = (Ejercito) unidad1;
+		Ejercito e2 = (Ejercito) unidad1;
+
+		int vida1 = e1.sumaVidaActual();
+		int vida2 = e2.sumaVidaActual();
+
+		double total = vida1 + vida2;
+		double vida1Decimal = vida1 / total;
+		double vida2Decimal = vida2 / total;
+
+		double elegido = Math.random();
+
+		if (elegido < Math.min(vida1Decimal, vida2Decimal)) {
+			if (Math.min(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
+				mostrarGanador(e1);
+				ganador = e1;
+				perdedor = e2;
+			} else {
+				mostrarGanador(e2);
+				ganador = e2;
+				perdedor = e1;
+			}
+
+		} else {
+			if (Math.max(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
+				mostrarGanador(e1);
+				ganador = e1;
+				perdedor = e2;
+			} else {
+				mostrarGanador(e2);
+				ganador = e2;
+				perdedor = e1;
+			}
+		}
+
+		ganador.beneficiado();
+		Ejercito[] resultado = { ganador, perdedor };
+		return resultado;
+	}
+
+	private static void mostrarGanador(Ejercito ejer) {
+		System.out.println("Ganador ejercito del reino: " + ejer.getNameReino());
+
 	}
 
 }

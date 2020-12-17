@@ -1,5 +1,6 @@
 package Soldado;
 
+import java.awt.Color;
 import java.util.Random;
 
 public class Caballero extends Soldado {
@@ -9,27 +10,34 @@ public class Caballero extends Soldado {
 	private static int vidaMin = 10;
 	private static int vidaMax = 12;
 
+	// Para ramdon
+	private Random rd = new Random();
+
 	private String[] armas = { "espada", "lanza" };
 	private boolean montado = true; // se crea montado de su caballo
 	private String armaActual = armas[1]; // como esta montado, tiene lanza
 
-	public Caballero(String nameReino) {
-		super("caballero", nameReino, cantidad);
-		Random rd = new Random();
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
+	public Caballero(String nameReino, String nameEjercito, Color c) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, "Caballero", cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+		
 		cantidad++;
 
 	}
 
-	public Caballero(String nameReino, int cantidad) {
-		super("Super Caballero", nameReino, cantidad);
-		Random rd = new Random();
-		this.nivelVida = rd.nextInt(vidaMax - vidaMin) + vidaMin;
-		nivelAtaque = ataque;
-		nivelDefensa = defensa;
-		cantidad++;
+	// Para superCaballero
+	public Caballero(String nameReino, String nameEjercito, Color c, String tipo, int cantidad, int vidaMax,
+			int vidaMin, int defensa, int ataque) {
+		super(nameReino, nameEjercito, c, Soldado.NEUTRO, tipo, cantidad);
+		setNivelVida(rd.nextInt(vidaMax - vidaMin) + vidaMin);
+		setNivelAtaque(ataque);
+		setNivelDefensa(defensa);
+		setNivelVidaActual(getNivelVida());
+		
+		Caballero.cantidad++;
 
 	}
 
@@ -45,31 +53,6 @@ public class Caballero extends Soldado {
 	}
 
 	public void envestir() {
-		System.out.println("Envistiendo");
-		atacar();
-
-		if (montado) {
-			atacar();
-			atacar();
-			atacar();
-		} else {
-			atacar();
-			atacar();
-		}
-
-	}
-
-	public void atacar() {
-		System.out.println("Atacando");
-		setAtacar(true);
-		envestir();
-	}
-
-	public void defender() {
-		setActitud('d');
-		setVelocidad(0);
-		desmontar();
-		setAtacar(false);
 
 	}
 
@@ -94,7 +77,7 @@ public class Caballero extends Soldado {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\tArma Actual: " + armaActual;
+		return super.toString() + "\nArma Actual:\t" + armaActual;
 	}
 
 }
