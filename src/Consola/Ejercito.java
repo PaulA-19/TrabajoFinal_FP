@@ -140,10 +140,11 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 	@Override
 	public String toString() {
 		String text = "nombre Ejercito: " + name + "\n";
-		for (UnidadesDeMapa object : soldados) {
-			Soldado sol = (Soldado) object; // casting a soldado
-			text += sol.toString();
-		}
+		text += "Reino: " + getNameReino();
+		// for (UnidadesDeMapa object : soldados) {
+//			Soldado sol = (Soldado) object; // casting a soldado
+//			text += sol.toString();
+//		}
 		return text;
 	}
 
@@ -169,7 +170,7 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 	// Mapeable
 	@Override
 	public ArrayList<UnidadesDeMapa> getUnidades() {
-	
+
 		return soldados;
 	}
 
