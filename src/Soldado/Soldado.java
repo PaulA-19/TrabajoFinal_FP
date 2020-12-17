@@ -211,8 +211,8 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla {
 
 	@Override
 	public String toString() {
-		return "Nombre: " + name + "\nNivel de vida actual:\t" + getNivelVidaActual() + "\nNive de ataque:\t"
-				+ getNivelAtaque() + "\nNive de defensa:\t" + getNivelDefensa();
+		return "Nombre: " + name + "\nReino: " + getNameReino() + "\nNivel de vida actual:\t" + getNivelVidaActual()
+				+ "\nNive de ataque:\t" + getNivelAtaque() + "\nNive de defensa:\t" + getNivelDefensa();
 	}
 
 	// Batalla

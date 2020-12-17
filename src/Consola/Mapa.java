@@ -109,6 +109,37 @@ public class Mapa {
 
 	}
 
+	public void mostrarTabla() { // OJO
+		for (int j = 1; j <= tabla.length; j++) {
+			System.out.print(" " + j + " ");
+
+		}
+		System.out.println();
+
+		for (int j = 0; j < tabla.length; j++) {
+			System.out.print(" _");
+		}
+		System.out.println();
+
+		for (int i = 0; i < tabla.length; i++) {
+
+			for (int j = 0; j < tabla[i].length; j++) {
+
+				System.out.print("|");
+				if (tabla[i][j] == null) {
+					System.out.print("_");
+				} else {
+					UnidadesDeMapa ejer = tabla[i][j];
+					System.out.print(ejer.getNameReino().charAt(0));
+				}
+			}
+
+			System.out.println("| " + (i + 1));
+		}
+		System.out.println("Leyenda\n<#Solados> -<#NivelVidaTotal><InicialReino>\n");
+
+	}
+
 	// Get and Set
 	public UnidadesDeMapa[][] getTabla() {
 		return tabla;

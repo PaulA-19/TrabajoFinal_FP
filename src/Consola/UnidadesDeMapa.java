@@ -17,6 +17,8 @@ public abstract class UnidadesDeMapa {
 
 	public abstract int sumaDefensa();
 
+	public abstract String getNameReino();
+
 	// Get and Set
 
 	public int getFila() {
