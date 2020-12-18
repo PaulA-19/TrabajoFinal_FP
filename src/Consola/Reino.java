@@ -180,7 +180,7 @@ public class Reino implements Mapeable {
 		return name;
 	}
 
-	public Color getC() {
+	public Color getColor() {
 		return c;
 	}
 
@@ -226,6 +226,13 @@ public class Reino implements Mapeable {
 
 	public void setSimbolo(char simbolo) {
 		this.simbolo = simbolo;
+	}
+
+	public String datosPuntuales() {
+		String text = String.format("%02d", getUnidades().size()) + "-"
+		+ (String.format("%02d", promedioNivelVida())+"-"+(String.format("%02d", promedioNivelAtaque());
+	
+		return text;
 	}
 
 }

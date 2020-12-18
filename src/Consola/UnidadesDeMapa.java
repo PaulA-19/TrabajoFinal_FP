@@ -19,6 +19,11 @@ public abstract class UnidadesDeMapa {
 
 	public abstract String getNameReino();
 
+	public abstract String datosPuntuales();
+	
+	public abstract String mostrarDatos();
+	
+	
 	// Get and Set
 
 	public int getFila() {

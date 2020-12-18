@@ -8,19 +8,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Consola.Ejercito;
+import Consola.Mapeable;
 import Consola.Reino;
+import Consola.UnidadesDeMapa;
 
 public class Test extends JFrame {
 
 	Ejercito ejercito1;
 	Ejercito ejercito2;
 
-	public Test(Reino ejercito1, Reino ejercito2) {
+	public Test(Mapeable ejercito1, Mapeable ejercito2) {
 		super("Test");
 		setSize(500, 500);
 		setLayout(new BorderLayout());
 		Tablero p = new Tablero(ejercito1, ejercito2);
-		add(p.getPrincipal(), BorderLayout.CENTER);
+		add(p.getPanel(), BorderLayout.CENTER);
 		p.getMapa().mostrarTabla();
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -31,7 +33,7 @@ public class Test extends JFrame {
 		setSize(500, 500);
 		setLayout(new BorderLayout());
 		Tablero p = new Tablero(ejercito1, ejercito2);
-		add(p.getPrincipal(), BorderLayout.CENTER);
+		add(p.getPanel(), BorderLayout.CENTER);
 		p.getMapa().mostrarTabla();
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

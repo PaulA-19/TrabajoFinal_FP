@@ -2,26 +2,20 @@ package Consola;
 
 import java.awt.Color;
 
-import Grafica.Pelea2Soldados;
-import Grafica.Pelea2Unidades;
-import Grafica.Test;
+import Grafica.*;
 import Soldado.Soldado;
 
 public class Principal {
 	public static void main(String[] args) {
-
-//		Ejercito ejer1 = new Ejercito("TEst1", Color.red);
-//		Ejercito ejer2 = new Ejercito("TEst2", Color.YELLOW);
-
-		Reino r1 = new Reino("Areino1", Color.yellow);
-		Reino r2 = new Reino("Breino2", Color.red);
-
-//		Mapa tabla = new Mapa("Mapa", ejer1, ejer2);
-//		System.out.println("dasf");
-//
-//		Pelea2Soldados pelea = new Pelea2Soldados(ejer1.getUnidades().get(0), ejer2.getUnidades().get(0));
-//		pelea.setVisible(true);
-
-		new Test(r1, r2);
+		
+		Game g1 = new Game();
+		g1.getReino1().setC(Color.red);
+		g1.getReino2().setC(Color.black);
+		
+		System.out.println(g1.getReino1());
+		System.out.println(g1.getReino2());
+		
+		new MostrarTableroEjercitos(g1);
+		
 	}
 }

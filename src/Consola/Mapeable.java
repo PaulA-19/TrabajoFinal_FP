@@ -1,5 +1,6 @@
 package Consola;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public interface Mapeable {
@@ -10,4 +11,8 @@ public interface Mapeable {
 
 	void deleteUnidad(UnidadesDeMapa unidad);
 
+	Color getColor();
+	
+	
+	
 }

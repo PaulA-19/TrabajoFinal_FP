@@ -167,6 +167,22 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 		setVive(false);
 	}
 
+//	@Override
+//	public String datosPuntuales() {
+//		String text = String.format("%02d", Integer.toString(getUnidades().size())) + "-" + String.format("%02d", promedioNivelVida())
+//				+ "-" + String.format("%02d", promedioAtaque());
+//		System.out.println(text);
+//		return text;
+//	}
+
+	@Override
+	public String datosPuntuales() {
+//		String text = Integer.toString(getUnidades().size()) + "-" + promedioNivelVida() + "-" + promedioAtaque();
+		String text = getNameReino();
+		System.out.println(text);
+		return text;
+	}
+
 	// Mapeable
 	@Override
 	public ArrayList<UnidadesDeMapa> getUnidades() {
@@ -304,6 +320,57 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 
 	private static void mostrarGanador(Ejercito ejer) {
 		System.out.println("Ganador ejercito del reino: " + ejer.getNameReino());
+
+	}
+
+	@Override
+	public String mostrarDatos() {
+		String text = "";
+		text += "Ejercito: " + this.getNameReino() + "\n";
+		text += "Cantidad total de soldados: " + numSoldados() + "\n";
+		int[] numTipos = this.cantidadTiposSoldados();
+		text += "Caballero: " + numTipos[1] + "\n";
+		text += "Arquero: " + numTipos[2] + "\n";
+		text += "Lancero: " + numTipos[3] + "\n";
+		text += "Espadachin: " + numTipos[4] + "\n";
+		text += this.imprimirSoldadoEspecial(numTipos);
+		return text;
+	}
+
+	private int[] cantidadTiposSoldados() {
+		int[] tipos = new int[6];
+		for (UnidadesDeMapa soldado : getUnidades()) {
+			if (soldado instanceof SuperCaballero) {
+				tipos[0]++;
+			} else if (soldado instanceof Caballero && !(soldado instanceof SuperCaballero)) {
+				tipos[1]++;
+			} else if (soldado instanceof Arquero) {
+				tipos[2]++;
+			} else if (soldado instanceof Lancero) {
+				tipos[3]++;
+			} else if (soldado instanceof Espadachin && !(soldado instanceof SuperEspadachin)) {
+				tipos[4]++;
+			} else if (soldado instanceof SuperEspadachin) {
+				tipos[5]++;
+			}
+		}
+		return tipos;
+	}
+
+	private String imprimirSoldadoEspecial(int[] numTipos) {
+		String text = "";
+		if (getNameReino().equalsIgnoreCase("Inglaterra")) {
+			text += "Espadachin Real: " + numTipos[5] + "\n";
+		} else if (getNameReino().equalsIgnoreCase("Sacro Imperio Romano Germanico")) {
+			text += "Espadachin Teutonico: " + numTipos[5] + "\n";
+		} else if (getNameReino().equalsIgnoreCase("Aragon-Castilla")) {
+			text += "Espadachin Conquistador: " + numTipos[5] + "\n";
+		} else if (getNameReino().equalsIgnoreCase("Francia")) {
+			text += "Caballero Franco: " + numTipos[0] + "\n";
+		} else if (getNameReino().equalsIgnoreCase("Moros")) {
+			text += "Caballero Moro: " + numTipos[0] + "\n";
+		}
+		return text;
 
 	}
 

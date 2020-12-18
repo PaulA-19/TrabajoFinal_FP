@@ -270,6 +270,14 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla {
 		return getNivelVidaActual();
 	}
 
+	@Override
+	public String datosPuntuales() {
+		String text = String.format("%02d", getNivelVida()) + "-"
+				+ String.format("%02d", getNivelAtaque() + "-" + String.format("%02d", getNivelDefensa()));
+		System.out.println(text);
+		return text;
+	}
+
 	// ---------------- get and set --------------------------
 
 	public String getName() {
