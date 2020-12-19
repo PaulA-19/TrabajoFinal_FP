@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 import javax.swing.*;
 
+import com.sun.source.doctree.TextTree;
+
 import Consola.*;
 
 public class MostrarTableroEjercitos extends MuestraTablero implements Serializable {
@@ -16,9 +18,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private Tablero panelJuego;
 	private JFrame anterior;
 	private MostrarTableroEjercitos ventana;
-
 	private Informe eventoInformar = new Informe();
-
 	private boolean primerEjercito = true; // true, selecciona al primer ejercito, false selecciona al segundo ejercito
 											// (puede ser vacio)
 
@@ -29,12 +29,16 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		setVisible(true);
 	}
 
+	public MostrarTableroEjercitos() {
+		super();
+	}
+
 	private void addComponentes() {
-		Informe eve = new Informe();
+		Informe2 eve = new Informe2();
 
 		getMover().addActionListener(eve);
 
-		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), eve);
+		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
 		actualizarJuegoPanel(panelJuego.getPanel());
 	}
 
@@ -58,22 +62,26 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("DEntro");
 
-			UnidadButton boton = (UnidadButton) e.getSource();
-			System.out.println("DEntro");
-			String text = "No existe soldado";
-
-			try {
-				text = boton.getUnidad().toString();
-//				textUnidadBoton = boton.getUnidad().mostrarDatos();
-
-			} catch (Exception e2) {
-				text = "NO existe nada";
-//				textUnidadBoton = "Vacio";
+			if (e.getActionCommand().equals("Mover")) {
+				JOptionPane.showMessageDialog(ventana, "Moviendo 1");
+			} else if (e.getSource() instanceof UnidadButton) {
+				JOptionPane.showMessageDialog(ventana, "Otro boton evento 1");
 			}
+		}
 
-			JOptionPane.showMessageDialog(null, text);
+	}
+
+	public class Informe2 implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getActionCommand().equals("Mover")) {
+				JOptionPane.showMessageDialog(ventana, "Moviendo 2");
+			} else if (e.getSource() instanceof UnidadButton) {
+				JOptionPane.showMessageDialog(ventana, "Otro boton evento 2");
+			}
 		}
 
 	}

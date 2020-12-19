@@ -2,19 +2,18 @@ package Grafica;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
+import java.awt.TextArea;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 
 import Consola.*;
 import Grafica.MostrarTableroEjercitos.Informe;
 
-public class Tablero extends JPanel implements Serializable{
+public class Tablero extends JPanel implements Serializable {
 
 	private JPanel panel;
 	private Mapa mapa;
@@ -22,31 +21,22 @@ public class Tablero extends JPanel implements Serializable{
 	private ArrayList<UnidadesDeMapa> unidades2;
 	private UnidadButton unidadBoton;
 	private String textUnidadBoton;
-	
-	private MostrarTableroEjercitos.Informe eve;
+	private JFrame antes;
 
-	private ActionListener e;
+	// Protected
+	protected TextArea textActual, textMover;
+	protected TextArea turnoText;
+	protected TextArea[] turnosText;
+	private ActionListener evento;
 
-	public Tablero(Mapeable u1, Mapeable u2, UnidadButton boton) {
+	public Tablero(Mapeable u1, Mapeable u2, JFrame antes, ActionListener eve) {
 
-		this.mapa = new Mapa("TipoMapa", u1, u2);
-		unidades1 = u1.getUnidades();
-		unidades2 = u2.getUnidades();
-		unidadBoton = boton;
-		addComponentes();
-		System.out.println("Evento: " + e);
-		mapa.mostrarTabla(); // consola
-
-	}
-
-	public Tablero(Mapeable u1, Mapeable u2, Informe eve) {
-
+		this.antes = antes;
+		this.evento = eve;
 		this.mapa = new Mapa("TipoMapa", u1, u2);
 		unidades1 = u1.getUnidades();
 		unidades2 = u2.getUnidades();
 		addComponentes();
-		System.out.println("Evento: " + eve);
-		this.eve = eve;
 		mapa.mostrarTabla(); // consola
 
 	}
@@ -60,19 +50,22 @@ public class Tablero extends JPanel implements Serializable{
 	}
 
 	private void addUnidadesTablero() {
+		MostrarTableroEjercitos eve ;
+		if (evento instanceof MostrarTableroEjercitos.Informe2) {
+			evento = (MostrarTableroEjercitos.Informe2)evento;
+		} else if (evento instanceof MostrarTableroEjercitos.Informe) {
+			evento = (MostrarTableroEjercitos.Informe)evento;
+
+		} 
+
+		System.out.println("Creo evento");
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				UnidadesDeMapa u = mapa.getUnidad(i, j); // Si existe un ejercito en con esa coordenada
 
 				unidadBoton = new UnidadButton(u, i, j);
 				
-				
-				
-				unidadBoton.addActionListener(eve);
-				System.out.println("Añade envento");
-//				System.out.println(eve.getClass());
-//				unidadBoton.addActionListener(e);
-//				System.out.println(unidadBoton);
+				unidadBoton.addActionListener(evento);
 
 				if (u == null) {
 					unidadBoton.setText("");
@@ -81,6 +74,7 @@ public class Tablero extends JPanel implements Serializable{
 
 					unidadBoton.setBackground(u.getColor());
 				}
+
 				panel.add(unidadBoton); // Añadimos al panel
 
 			}
@@ -140,26 +134,5 @@ public class Tablero extends JPanel implements Serializable{
 	public void setUnidadBoton(UnidadButton unidadBoton) {
 		this.unidadBoton = unidadBoton;
 	}
-//
-//	private class Informe implements ActionListener {
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			UnidadButton boton = (UnidadButton) e.getSource();
-//			String text = "No existe soldado";
-//
-//			try {
-//				text = boton.getUnidad().toString();
-//				textUnidadBoton = boton.getUnidad().mostrarDatos();
-//
-//			} catch (Exception e2) {
-//				text = "NO existe nada";
-//				textUnidadBoton = "Vacio";
-//			}
-//
-//			JOptionPane.showMessageDialog(panel, text);
-//		}
-//
-//	}
 
 }

@@ -28,6 +28,12 @@ public class Game implements Serializable {
 		reinos.add(new Reino("Reino2", Color.red));
 	}
 
+	public void actualizar() {
+		getReino1().actualizar();
+		getReino2().actualizar();
+
+	}
+
 	public Game(int cantidad) {
 		for (int i = 0; i < cantidad; i++) {
 			reinos.add(new Reino("Reino_" + i));
@@ -42,7 +48,7 @@ public class Game implements Serializable {
 	public static void guardarJuego(String name) {
 		ObjectOutputStream fileOut;
 		try {
-			fileOut = new ObjectOutputStream(new FileOutputStream("./games/"+name));
+			fileOut = new ObjectOutputStream(new FileOutputStream("./games/" + name));
 			System.out.println(Game.getGame());
 			Game g = Game.getGame();
 			fileOut.writeObject(g);

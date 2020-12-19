@@ -22,6 +22,7 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 	private String nameReino;
 	private char simbolo;
 	private char actitud = UnidadesDeMapa.NEUTRO;
+	private Color color;
 
 	// Constructores
 	public Ejercito(String nameReino, Color c) {
@@ -30,14 +31,25 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	public Ejercito(String nameReino, Color c, String name) {
 		this.nameReino = nameReino;
-		setColor(c);
 		this.name = name;
+		color = c;
 		simbolo = name.toUpperCase().charAt(0);
 		llenarAutomatico();
 		cantidad++;
 	}
 
 	// Metodos propios de la Clase
+
+	public void actualizar(String nameReino, Color c, char actitud) {
+		setNameReino(nameReino);
+		setColor(c);
+		setActitud(actitud);
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+
+			sol.actualizar(nameReino, c, actitud, name);
+		}
+	}
 
 	public void llenarAutomatico() {
 		int cantidad = rd.nextInt(11); // [0,10]
@@ -169,13 +181,10 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		setVive(false);
 	}
 
-//	@Override
-//	public String datosPuntuales() {
-//		String text = String.format("%02d", Integer.toString(getUnidades().size())) + "-" + String.format("%02d", promedioNivelVida())
-//				+ "-" + String.format("%02d", promedioAtaque());
-//		System.out.println(text);
-//		return text;
-//	}
+	public Color getColor() {
+		return color;
+
+	}
 
 	@Override
 	public String datosPuntuales() {
@@ -386,6 +395,10 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 			sol.setActitud(actitud);
 		}
 		this.actitud = actitud;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 }

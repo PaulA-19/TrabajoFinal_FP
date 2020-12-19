@@ -8,7 +8,7 @@ import Consola.Batalla;
 import Consola.UnidadesDeMapa;
 //falta implementar los ataques, de soldados
 
-public abstract class Soldado extends UnidadesDeMapa implements Batalla , Serializable{
+public abstract class Soldado extends UnidadesDeMapa implements Batalla, Serializable {
 
 	// Actitudes
 	public final static char ATAQUE = 'a';
@@ -28,6 +28,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla , Serial
 	private int nivelVida;
 	private int nivelVidaActual;
 	private char actitud = Soldado.NEUTRO;
+	private Color color;
 
 	// Datos generales
 	private int id;
@@ -188,6 +189,15 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla , Serial
 	}
 
 	// Metodos propios de Clase-----------------------
+
+	public void actualizar(String nameReino, Color c, char actitud, String nameEjercito) {
+		setNameReino(nameReino);
+		setNameEjercito(nameEjercito);
+		setActitud(actitud);
+		setColor(c);
+
+	}
+
 	public void beneficiado() {
 		setNivelVidaActual(getNivelVidaActual() + 1);
 	}
@@ -280,6 +290,13 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla , Serial
 	}
 
 	// ---------------- get and set --------------------------
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
 
 	public String getName() {
 		return name;

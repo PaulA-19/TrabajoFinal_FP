@@ -8,7 +8,7 @@ public abstract class UnidadesDeMapa implements Serializable {
 	private int fila = -1;
 	private int columna = -1;
 	private boolean vive = true;
-	private Color color;
+//	private Color color;
 
 	public final static char ATAQUE = 'a';
 	public final static char NEUTRO = 'n';
@@ -28,6 +28,8 @@ public abstract class UnidadesDeMapa implements Serializable {
 
 	public abstract String mostrarDatos();
 
+	public abstract Color getColor();
+
 	// Get and Set
 
 	public int getFila() {
@@ -42,10 +44,6 @@ public abstract class UnidadesDeMapa implements Serializable {
 		return vive;
 	}
 
-	public Color getColor() {
-		return color;
-	}
-
 	public void setFila(int fila) {
 		this.fila = fila;
 	}
@@ -56,10 +54,6 @@ public abstract class UnidadesDeMapa implements Serializable {
 
 	public void setVive(boolean vive) {
 		this.vive = vive;
-	}
-
-	public void setColor(Color color) {
-		this.color = color;
 	}
 
 }
