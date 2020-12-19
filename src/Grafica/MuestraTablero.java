@@ -13,11 +13,11 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	private Mapeable u1, u2;
 
 	private JFrame ventana, anterior;
-	private TextArea textActua = new TextArea(20, 22), textMover = new TextArea(20, 22);
-	private TextArea turnoText;
-	private TextArea[] turnosText;
+	protected TextArea textActua = new TextArea(20, 22), textMover = new TextArea(20, 22);
+	protected TextArea turnoText;
+	protected TextArea[] turnosText;
 	private JPanel presentacionTurno, opciones, juego, informe;
-	private JLabel nombreTurno = new JLabel();;
+	protected JLabel nombreTurno = new JLabel();;
 	private JButton mover;
 	protected UnidadButton boton;
 

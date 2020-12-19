@@ -182,6 +182,7 @@ public class Configurar extends JFrame implements Serializable{
 					reino.setActitud(UnidadesDeMapa.NEUTRO);
 				}
 
+				Game.getGame().actualizar();
 				ventana.setVisible(false);
 				PreviaJuego antes = (PreviaJuego)anterior;
 				anterior = new PreviaJuego(antes.getAnterior(), ventana.getTitle());

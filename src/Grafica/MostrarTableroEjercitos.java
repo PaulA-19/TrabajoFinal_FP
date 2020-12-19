@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 import javax.swing.*;
 
+import com.sun.source.doctree.TextTree;
+
 import Consola.*;
 
 public class MostrarTableroEjercitos extends MuestraTablero implements Serializable {
@@ -16,9 +18,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private Tablero panelJuego;
 	private JFrame anterior;
 	private MostrarTableroEjercitos ventana;
-
 	private Informe eventoInformar = new Informe();
-
 	private boolean primerEjercito = true; // true, selecciona al primer ejercito, false selecciona al segundo ejercito
 											// (puede ser vacio)
 
@@ -34,7 +34,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 		getMover().addActionListener(eve);
 
-		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), eve);
+		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), textActua, textMover, turnoText, turnosText);
 		actualizarJuegoPanel(panelJuego.getPanel());
 	}
 

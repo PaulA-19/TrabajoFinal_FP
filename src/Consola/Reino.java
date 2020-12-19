@@ -19,13 +19,13 @@ public class Reino implements Mapeable, Serializable {
 	private ArrayList<UnidadesDeMapa> ejercitos = new ArrayList<UnidadesDeMapa>();
 	private String name;
 	private Color c;
+	private char simbolo;
+	private char actitud = UnidadesDeMapa.NEUTRO;
 
 	// Datos generales
 	private int id; // ojo
 	private boolean vive = true;
 	private String tipo; // OJO
-	private char simbolo;
-	private char actitud = UnidadesDeMapa.NEUTRO;
 
 	// Constructores
 
@@ -48,6 +48,15 @@ public class Reino implements Mapeable, Serializable {
 	}
 
 	// Metodos propios de la Clase
+
+	public void actualizar() {
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+
+			ejer.actualizar(name, c, actitud);
+		}
+	}
+
 	public void addNewEjercito() {
 		ejercitos.add(new Ejercito(name, c));
 	}

@@ -2,19 +2,20 @@ package Grafica;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 
 import Consola.*;
 import Grafica.MostrarTableroEjercitos.Informe;
 
-public class Tablero extends JPanel implements Serializable{
+public class Tablero extends JPanel implements Serializable {
 
 	private JPanel panel;
 	private Mapa mapa;
@@ -22,31 +23,36 @@ public class Tablero extends JPanel implements Serializable{
 	private ArrayList<UnidadesDeMapa> unidades2;
 	private UnidadButton unidadBoton;
 	private String textUnidadBoton;
-	
-	private MostrarTableroEjercitos.Informe eve;
 
-	private ActionListener e;
+	// La otra clase
+	private boolean primerEjercito = true; // true, selecciona al primer ejercito, false selecciona al segundo ejercito
+	private String turno;
+	private String turnoMostrar;
+	private JLabel nombreTurno;
+	private TextArea textEjercito1, textEjercito2;
+	private Ejercito ejercitoSelecionado1;
+	private Ejercito ejercitoSelecionado2;
 
-	public Tablero(Mapeable u1, Mapeable u2, UnidadButton boton) {
+	// Protected
+	protected TextArea textActual, textMover;
+	protected TextArea turnoText;
+	protected TextArea[] turnosText;
+
+	public Tablero(Mapeable u1, Mapeable u2, TextArea textActual, TextArea textMover, TextArea turnoText,
+			TextArea[] turnosText) {
+
+		this.textActual = textActual;
+		this.textMover = textMover;
+		this.turnoText = turnoText;
+		this.turnosText = turnosText;
+
+		System.out.println("Color 1" + u1.getColor());
+		System.out.println("Color 2" + u2.getColor());
 
 		this.mapa = new Mapa("TipoMapa", u1, u2);
 		unidades1 = u1.getUnidades();
 		unidades2 = u2.getUnidades();
-		unidadBoton = boton;
 		addComponentes();
-		System.out.println("Evento: " + e);
-		mapa.mostrarTabla(); // consola
-
-	}
-
-	public Tablero(Mapeable u1, Mapeable u2, Informe eve) {
-
-		this.mapa = new Mapa("TipoMapa", u1, u2);
-		unidades1 = u1.getUnidades();
-		unidades2 = u2.getUnidades();
-		addComponentes();
-		System.out.println("Evento: " + eve);
-		this.eve = eve;
 		mapa.mostrarTabla(); // consola
 
 	}
@@ -65,14 +71,6 @@ public class Tablero extends JPanel implements Serializable{
 				UnidadesDeMapa u = mapa.getUnidad(i, j); // Si existe un ejercito en con esa coordenada
 
 				unidadBoton = new UnidadButton(u, i, j);
-				
-				
-				
-				unidadBoton.addActionListener(eve);
-				System.out.println("Añade envento");
-//				System.out.println(eve.getClass());
-//				unidadBoton.addActionListener(e);
-//				System.out.println(unidadBoton);
 
 				if (u == null) {
 					unidadBoton.setText("");
@@ -81,6 +79,8 @@ public class Tablero extends JPanel implements Serializable{
 
 					unidadBoton.setBackground(u.getColor());
 				}
+
+//				unidadBoton.addActionListener(new Informe());
 				panel.add(unidadBoton); // Añadimos al panel
 
 			}
@@ -140,26 +140,29 @@ public class Tablero extends JPanel implements Serializable{
 	public void setUnidadBoton(UnidadButton unidadBoton) {
 		this.unidadBoton = unidadBoton;
 	}
-//
-//	private class Informe implements ActionListener {
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			UnidadButton boton = (UnidadButton) e.getSource();
-//			String text = "No existe soldado";
-//
-//			try {
-//				text = boton.getUnidad().toString();
-//				textUnidadBoton = boton.getUnidad().mostrarDatos();
-//
-//			} catch (Exception e2) {
-//				text = "NO existe nada";
-//				textUnidadBoton = "Vacio";
-//			}
-//
-//			JOptionPane.showMessageDialog(panel, text);
-//		}
-//
-//	}
+
+	private void cambiarTurno() {
+		if (turno.equalsIgnoreCase(Game.getGame().getReino1().getName())) {
+			turno = Game.getGame().getReino2().getName();
+		} else {
+			turno = Game.getGame().getReino1().getName();
+		}
+	}
+
+	private void cambiarTurnoMostrar() {
+		if (turnoMostrar.equalsIgnoreCase(Game.getGame().getReino1().getName())) {
+			turnoMostrar = Game.getGame().getReino2().getName();
+		} else {
+			turnoMostrar = Game.getGame().getReino1().getName();
+		}
+	}
+
+	private void cambiarAreaText() {
+		if (turnoText == turnosText[0]) {
+			turnoText = textMover;
+		} else {
+			turnoText = textActual;
+		}
+	}
 
 }
