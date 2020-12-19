@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,9 +17,9 @@ import javax.swing.JPanel;
 
 import Consola.Game;
 
-public class Main extends JFrame {
+public class Main extends JFrame implements Serializable {
 
-	private JButton nuevo, cargar, salir, tutorial;
+	private JButton nuevo, cargar, salir, tutorial, guardar;
 	private static Main ventanaInicio;
 	private JPanel principal, opciones;
 
@@ -47,13 +48,14 @@ public class Main extends JFrame {
 
 	private void addBotones() {
 		opciones = new JPanel();
-		opciones.setLayout(new GridLayout(4, 1, 5, 5));
+		opciones.setLayout(new GridLayout(5, 1, 5, 5));
 
 		Navegar accion = new Navegar();
 
 		addBoton("Nuevo", "Nuevo Juego");
 		addBoton("Cargar", "Carga Juego Guardado");
 		addBoton("Tutorial", "Un breve tutorial");
+		addBoton("Guardar", "Guarda la partida");
 		addBoton("Salir", "Salir del Juego");
 
 		principal.add(opciones, BorderLayout.CENTER);
@@ -85,40 +87,45 @@ public class Main extends JFrame {
 
 			JButton boton = (JButton) e.getSource();
 
+			// Nuevo
 			if (boton.getText().equalsIgnoreCase("Nuevo")) {
 				System.out.println("Nuevo");
 				ventanaInicio.setVisible(false);
 				Game.setGame(new Game());
-				new NuevoJuego(ventanaInicio);
+				new PreviaJuego(ventanaInicio, "Nuevo Juego");
 
 			}
 
+			// Cargar
 			if (boton.getText().equalsIgnoreCase("Cargar")) {
 				System.out.println("Nuevo");
 				String nameGame = JOptionPane.showInputDialog(ventanaInicio,
-						"Ingrese el nombre con el que guadó el juego: ");
+						"Ingrese el nombre con el que guadó el juego: ", Game.getUltimoGuardado());
 
+				System.out.println("name: " + nameGame);
 				// Lectura de el objeto game guardado
 
-				ObjectInputStream fileIn;
-				try {
-					fileIn = new ObjectInputStream(new FileInputStream("./games/" + nameGame));
-					Game gameGuardado = (Game) fileIn.readObject();
-					Game.setGame(gameGuardado);
-					fileIn.close();
-					ventanaInicio.setVisible(false);
-					Game.setGame(new Game());
-					new CargarJuego(ventanaInicio);
+				if (nameGame != null) {
 
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(ventanaInicio, "No se encontró el juego guardado");
+					ObjectInputStream fileIn;
+					try {
+						fileIn = new ObjectInputStream(new FileInputStream("./games/" + nameGame));
+						Game gameGuardado = (Game) fileIn.readObject();
+						Game.setGame(gameGuardado);
+						fileIn.close();
+						ventanaInicio.setVisible(false);
+						new PreviaJuego(ventanaInicio, "Juego Cargado");
+
+					} catch (Exception e2) {
+						JOptionPane.showMessageDialog(ventanaInicio, "No se encontró el juego guardado");
 //					e2.getMessage();
+					}
+					// ------------
+					System.out.println(nameGame);
 				}
-				// ------------
-				System.out.println(nameGame);
-
 			}
 
+			// Tutorial
 			if (boton.getText().equalsIgnoreCase("Tutorial")) {
 				JOptionPane.showMessageDialog(principal, "Enlace a la página");
 			}
@@ -128,8 +135,36 @@ public class Main extends JFrame {
 				int value = JOptionPane.showConfirmDialog(principal, "¿Está seguro que desea salir?", "Salir",
 						JOptionPane.YES_NO_OPTION);
 				if (value == 0) {
-					System.exit(0);
+					if (!(Game.isGuardado())) {
+						int value1 = JOptionPane.showConfirmDialog(principal, "No guardo su partida\n¿Desea Salir?",
+								"No Guardó Partida", JOptionPane.YES_NO_OPTION);
+						if (value1 == 0) {
+							System.exit(0);
+						}
+					} else {
+						System.exit(0);
+
+					}
+
 				}
+			}
+
+			// Guardar
+			if (boton.getText().equalsIgnoreCase("Guardar")) {
+				int opcion = JOptionPane.showConfirmDialog(ventanaInicio, "Se guardara, el último juego que creó");
+				if (opcion == 0) {
+					// No existe juego
+					if (Game.getGame() == null) {
+						JOptionPane.showMessageDialog(ventanaInicio, "Debe crear o cargar una Partida");
+					} else {
+						String namegame = JOptionPane.showInputDialog(ventanaInicio,
+								"Ingrese el nombre con el que se guardará");
+						Game.guardarJuego(namegame);
+					}
+				}
+				System.out.println("Guardar");
+				System.out.println(opcion);
+				System.out.println(Game.getGame());
 			}
 		}
 

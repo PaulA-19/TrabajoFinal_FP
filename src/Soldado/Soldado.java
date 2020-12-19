@@ -1,13 +1,14 @@
 package Soldado;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.Random;
 
 import Consola.Batalla;
 import Consola.UnidadesDeMapa;
 //falta implementar los ataques, de soldados
 
-public abstract class Soldado extends UnidadesDeMapa implements Batalla {
+public abstract class Soldado extends UnidadesDeMapa implements Batalla , Serializable{
 
 	// Actitudes
 	public final static char ATAQUE = 'a';

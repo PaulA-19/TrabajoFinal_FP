@@ -1,10 +1,12 @@
 package Grafica;
 
+import java.io.Serializable;
+
 import javax.swing.JButton;
 
 import Consola.UnidadesDeMapa;
 
-public class UnidadButton extends JButton {
+public class UnidadButton extends JButton implements Serializable {
 
 	private UnidadesDeMapa unidad;
 	private int fila, columna;

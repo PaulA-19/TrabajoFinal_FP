@@ -3,10 +3,11 @@ package Consola;
 import Soldado.*;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
+public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Serializable {
 
 	// Datos de clase
 	private static int cantidad = 0;

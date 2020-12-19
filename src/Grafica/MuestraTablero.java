@@ -2,17 +2,17 @@ package Grafica;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.Serializable;
 
 import javax.swing.*;
 
 import Consola.*;
 
-public class MuestraTablero extends JFrame {
+public abstract class MuestraTablero extends JFrame implements Serializable {
 
-	private Game game;
 	private Mapeable u1, u2;
 
-	private JFrame ventana;
+	private JFrame ventana, anterior;
 	private TextArea textActua = new TextArea(20, 22), textMover = new TextArea(20, 22);
 	private TextArea turnoText;
 	private TextArea[] turnosText;
@@ -21,9 +21,9 @@ public class MuestraTablero extends JFrame {
 	private JButton mover;
 	protected UnidadButton boton;
 
-	public MuestraTablero(Game game) {
-		this.game = game;
+	public MuestraTablero(JFrame anterior) {
 		ventana = this;
+		this.anterior = anterior;
 		setSize(1200, 500);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
@@ -62,15 +62,13 @@ public class MuestraTablero extends JFrame {
 		this.add(mover, BorderLayout.SOUTH);
 
 	}
-	
+
 	public void actualizarJuegoPanel(JPanel p) {
-	
+
 		setJuego(p);
-		
+
 		add(juego, BorderLayout.CENTER);
 
-		
-		
 	}
 
 	private void addPresentacion() {
@@ -117,9 +115,6 @@ public class MuestraTablero extends JFrame {
 	}
 
 	// Get and set
-	public Game getGame() {
-		return game;
-	}
 
 	public Mapeable getU1() {
 		return u1;
@@ -171,10 +166,6 @@ public class MuestraTablero extends JFrame {
 
 	public JButton getMover() {
 		return mover;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 
 	public void setU1(Mapeable u1) {

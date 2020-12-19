@@ -3,6 +3,7 @@ package Grafica;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.io.Serializable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,7 +13,7 @@ import Consola.Mapeable;
 import Consola.Reino;
 import Consola.UnidadesDeMapa;
 
-public class Test extends JFrame {
+public class Test extends JFrame implements Serializable {
 
 	Ejercito ejercito1;
 	Ejercito ejercito2;

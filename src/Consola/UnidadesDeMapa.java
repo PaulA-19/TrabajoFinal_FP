@@ -1,8 +1,9 @@
 package Consola;
 
 import java.awt.Color;
+import java.io.Serializable;
 
-public abstract class UnidadesDeMapa {
+public abstract class UnidadesDeMapa implements Serializable {
 
 	private int fila = -1;
 	private int columna = -1;

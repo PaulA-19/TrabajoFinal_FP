@@ -1,12 +1,13 @@
 package Consola;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 import Soldado.Soldado;
 
-public class Reino implements Mapeable {
+public class Reino implements Mapeable, Serializable {
 
 	// Datos de clase
 	private static int cantidad = 0;

@@ -2,6 +2,7 @@ package Grafica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -12,7 +13,7 @@ import javax.swing.JRadioButton;
 import Consola.UnidadesDeMapa;
 import Soldado.Soldado;
 
-public class Pelea2Soldados extends Pelea2Unidades {
+public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
 
 	private Soldado s1, s2;
 

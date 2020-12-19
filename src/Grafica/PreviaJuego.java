@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,20 +17,20 @@ import javax.swing.JTextField;
 import Consola.Game;
 import Consola.Reino;
 
-public class CargarJuego extends JFrame {
+public class PreviaJuego extends JFrame implements Serializable{
 
 	private static final int width = 700;
 	private static final int high = 300;
 
 	private JPanel principal, centro;
 	private JFrame anterior;
-	private CargarJuego ventana;
+	private PreviaJuego ventana;
 	private JButton configurar1, configurar2, jugar, listo1, listo2, cancelar;
 
 	private JTextField numDato;
 
-	public CargarJuego(JFrame anterior) {
-		super("Nuevo Juego");
+	public PreviaJuego(JFrame anterior, String title) {
+		super(title);
 		this.anterior = anterior;
 		ventana = this;
 		setSize(width, high);
@@ -82,17 +83,17 @@ public class CargarJuego extends JFrame {
 
 	private void llenarPanel(JPanel p, Reino r, int numReino) {
 
-		p.add(new JLabel(r.getName()));
+		p.add(new JLabel("Num. Ejercitos: "));
 		numDato = new JTextField(Integer.toString(r.getNumEjercitos()));
 		numDato.setEditable(false);
 		p.add(numDato);
 
-		p.add(new JLabel("Num. Soldados"));
+		p.add(new JLabel("Num. Soldados: "));
 		numDato = new JTextField(Integer.toString(r.getNumSoldados()));
 		numDato.setEditable(false);
 		p.add(numDato);
 
-		p.add(new JLabel("Promedio Vida"));
+		p.add(new JLabel("Promedio Vida: "));
 		numDato = new JTextField(Double.toString(r.promedioNivelVida()));
 		numDato.setEditable(false);
 		p.add(numDato);
@@ -133,10 +134,13 @@ public class CargarJuego extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			JButton botonPresionado = (JButton) e.getSource();
 
+			// Cancelar
 			if (botonPresionado.getText().contentEquals("Cancelar")) {
 				Main.getVentanaInicio().setVisible(true);
 				ventana.setVisible(false);
 			}
+			
+			// Listo
 			if ((e.getActionCommand().equalsIgnoreCase("Jugar")) && e.getSource() != jugar) {
 				botonPresionado.setEnabled(false);
 				if (botonPresionado == listo1) {
@@ -148,6 +152,7 @@ public class CargarJuego extends JFrame {
 
 			}
 
+			// Jugar
 			if (e.getSource() == jugar) {
 				System.out.println(listo1.isEnabled());
 				System.out.println(listo2.isEnabled());
@@ -155,8 +160,10 @@ public class CargarJuego extends JFrame {
 				if (listo1.isEnabled() || listo2.isEnabled()) {
 					JOptionPane.showMessageDialog(ventana, "Todos deben de estar listos");
 				} else {
-					// Aqui Juagr
-					System.out.println("Jugando");
+					// Aqui juego
+					ventana.setVisible(false);
+					new MostrarTableroEjercitos(ventana);
+					
 				}
 			}
 

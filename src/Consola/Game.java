@@ -1,16 +1,27 @@
 package Consola;
 
 import java.awt.Color;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Game {
+import javax.swing.JOptionPane;
 
+public class Game implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Reino> reinos = new ArrayList<Reino>();
 	private Mapa tabla = new Mapa();
 	private static String[] colores = { "rojo", "verde", "azul", "amarillo" };
 
 	private static Game game = null;
+	private static boolean guardado = false;
+	private static String ultimoGuardado = "";
 
 	public Game() {
 		reinos.add(new Reino("Reino1", Color.blue));
@@ -26,6 +37,25 @@ public class Game {
 
 	public ArrayList<Reino> getReinos() {
 		return reinos;
+	}
+
+	public static void guardarJuego(String name) {
+		ObjectOutputStream fileOut;
+		try {
+			fileOut = new ObjectOutputStream(new FileOutputStream("./games/"+name));
+			System.out.println(Game.getGame());
+			Game g = Game.getGame();
+			fileOut.writeObject(g);
+			System.out.println("Todo bien");
+			fileOut.close();
+			JOptionPane.showMessageDialog(null, "Guardado exitosamente");
+			guardado = true;
+			ultimoGuardado = name;
+
+		} catch (Exception e) {
+			e.getMessage();
+			JOptionPane.showMessageDialog(null, "Ocurrio un error, vuelve a intentarlo:" + e.getMessage());
+		}
 	}
 
 	public void setReinos(ArrayList<Reino> reinos) {
@@ -69,6 +99,24 @@ public class Game {
 		return colores;
 	}
 
-	
+	public static boolean isGuardado() {
+		return guardado;
+	}
+
+	public static String getUltimoGuardado() {
+		return ultimoGuardado;
+	}
+
+	public static void setColores(String[] colores) {
+		Game.colores = colores;
+	}
+
+	public static void setGuardado(boolean guardado) {
+		Game.guardado = guardado;
+	}
+
+	public static void setUltimoGuardado(String ultimoGuardado) {
+		Game.ultimoGuardado = ultimoGuardado;
+	}
 
 }

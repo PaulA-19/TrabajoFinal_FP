@@ -1,9 +1,10 @@
 package Consola;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla {
+public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla, Serializable {
 	private ArrayList<UnidadesDeMapa> conjunto = new ArrayList<UnidadesDeMapa>();
 
 	public void setConjunto(ArrayList<UnidadesDeMapa> conjunto) {

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.TextArea;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,7 +14,7 @@ import javax.swing.JPanel;
 import Consola.UnidadesDeMapa;
 import Soldado.Soldado;
 
-public class Pelea2Unidades extends JFrame {
+public class Pelea2Unidades extends JFrame implements Serializable {
 
 	private static final int WIDTH = 500;
 	private static final int HIGH = 500;

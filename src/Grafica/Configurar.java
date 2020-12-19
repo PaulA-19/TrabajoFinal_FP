@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,7 +22,7 @@ import Consola.Game;
 import Consola.Reino;
 import Consola.UnidadesDeMapa;
 
-public class Configurar extends JFrame {
+public class Configurar extends JFrame implements Serializable{
 
 	private static final int width = 200;
 	private static final int high = 550;
@@ -182,8 +183,8 @@ public class Configurar extends JFrame {
 				}
 
 				ventana.setVisible(false);
-				NuevoJuego antes = (NuevoJuego) anterior;
-				antes = new NuevoJuego(antes.getAnterior());
+				PreviaJuego antes = (PreviaJuego)anterior;
+				anterior = new PreviaJuego(antes.getAnterior(), ventana.getTitle());
 
 			}
 

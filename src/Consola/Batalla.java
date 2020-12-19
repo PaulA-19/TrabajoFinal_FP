@@ -1,6 +1,6 @@
 package Consola;
 
-public interface Batalla {
+public interface Batalla  {
 
 	void actitudAtacar();
 

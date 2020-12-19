@@ -1,10 +1,12 @@
 package Consola;
 
+
+import java.io.Serializable;
 import java.util.*;
 
 import Soldado.Soldado;
 
-public class Mapa {
+public class Mapa implements Serializable{
 
 	// Para el random
 	private static Random rd = new Random();
