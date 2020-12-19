@@ -41,7 +41,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla {
 
 	// Constructores---------------------
 	public Soldado(String nameReino, String nameEjercito, Color c) {
-		this(nameReino, nameEjercito, c, Soldado.NEUTRO);
+		this(nameReino, nameEjercito, c, UnidadesDeMapa.NEUTRO);
 	}
 
 	public Soldado(String nameReino, String nameEjercito, Color c, char actitud) {

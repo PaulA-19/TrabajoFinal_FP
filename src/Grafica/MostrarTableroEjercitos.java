@@ -14,6 +14,8 @@ public class MostrarTableroEjercitos extends MuestraTablero {
 	private String turnoMostrar;
 	private Tablero panelJuego;
 	private Reino reino1, reino2;
+	
+	private Informe eventoInformar = new Informe();
 
 	private boolean primerEjercito = true; // true, selecciona al primer ejercito, false selecciona al segundo ejercito
 											// (puede ser vacio)
@@ -32,7 +34,11 @@ public class MostrarTableroEjercitos extends MuestraTablero {
 	}
 
 	private void addComponentes() {
-		panelJuego = new Tablero(reino1, reino2, new AccionBoton());
+		Informe eve = new Informe();
+	
+		getMover().addActionListener(eve);
+		
+		panelJuego = new Tablero(reino1, reino2, eve);
 		actualizarJuegoPanel(panelJuego.getPanel());
 	}
 
@@ -52,6 +58,32 @@ public class MostrarTableroEjercitos extends MuestraTablero {
 		}
 	}
 
+	
+	public class Informe implements ActionListener {
+		
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("DEntro");
+
+			UnidadButton boton = (UnidadButton) e.getSource();
+			System.out.println("DEntro");
+			String text = "No existe soldado";
+
+			try {
+				text = boton.getUnidad().toString();
+//				textUnidadBoton = boton.getUnidad().mostrarDatos();
+
+			} catch (Exception e2) {
+				text = "NO existe nada";
+//				textUnidadBoton = "Vacio";
+			}
+
+			JOptionPane.showMessageDialog(null, text);
+		}
+
+	}
+	
 	private class AccionBoton implements ActionListener {
 
 		@Override
@@ -195,6 +227,14 @@ public class MostrarTableroEjercitos extends MuestraTablero {
 				System.exit(0);
 			}
 		}
+	}
+
+	public Informe getEventoInformar() {
+		return eventoInformar;
+	}
+
+	public void setEventoInformar(Informe eventoInformar) {
+		this.eventoInformar = eventoInformar;
 	};
 
 	

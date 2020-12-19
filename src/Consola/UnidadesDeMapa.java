@@ -9,6 +9,10 @@ public abstract class UnidadesDeMapa {
 	private boolean vive = true;
 	private Color color;
 
+	public final static char ATAQUE = 'a';
+	public final static char NEUTRO = 'n';
+	public final static char DEFENZA = 'd';
+
 	public abstract int sumaVida();
 
 	public abstract int sumaVidaActual();
@@ -20,10 +24,9 @@ public abstract class UnidadesDeMapa {
 	public abstract String getNameReino();
 
 	public abstract String datosPuntuales();
-	
+
 	public abstract String mostrarDatos();
-	
-	
+
 	// Get and Set
 
 	public int getFila() {

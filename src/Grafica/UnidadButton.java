@@ -9,6 +9,10 @@ public class UnidadButton extends JButton {
 	private UnidadesDeMapa unidad;
 	private int fila, columna;
 
+	public UnidadButton() {
+		super();
+	}
+
 	public UnidadButton(UnidadesDeMapa unidad, int fila, int columna) {
 		super();
 		this.unidad = unidad;

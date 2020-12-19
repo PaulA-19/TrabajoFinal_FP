@@ -19,6 +19,7 @@ public class MuestraTablero extends JFrame {
 	private JPanel presentacionTurno, opciones, juego, informe;
 	private JLabel nombreTurno = new JLabel();;
 	private JButton mover;
+	protected UnidadButton boton;
 
 	public MuestraTablero(Game game) {
 		this.game = game;

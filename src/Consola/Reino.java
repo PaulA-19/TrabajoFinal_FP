@@ -24,6 +24,7 @@ public class Reino implements Mapeable {
 	private boolean vive = true;
 	private String tipo; // OJO
 	private char simbolo;
+	private char actitud = UnidadesDeMapa.NEUTRO;
 
 	// Constructores
 
@@ -230,9 +231,22 @@ public class Reino implements Mapeable {
 
 	public String datosPuntuales() {
 		String text = String.format("%02d", getUnidades().size()) + "-"
-		+ (String.format("%02d", promedioNivelVida())+"-"+(String.format("%02d", promedioNivelAtaque());
-	
+				+ (String.format("%02d", promedioNivelVida()) + "-" + (String.format("%02d", promedioNivelAtaque())));
+
 		return text;
+	}
+
+	public char getActitud() {
+		return actitud;
+	}
+
+	public void setActitud(char actitud) {
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+			ejer.setActitud(actitud);
+		}
+
+		this.actitud = actitud;
 	}
 
 }

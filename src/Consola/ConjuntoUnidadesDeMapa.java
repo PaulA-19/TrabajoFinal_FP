@@ -1,5 +1,6 @@
 package Consola;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla {
@@ -51,6 +52,12 @@ public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla {
 	@Override
 	public void actitudNormal() {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Color getColor() {
+		return getColor();
 
 	}
 

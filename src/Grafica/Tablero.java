@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+
 import Consola.*;
+import Grafica.MostrarTableroEjercitos.Informe;
 
 public class Tablero extends JPanel {
 
@@ -18,17 +21,31 @@ public class Tablero extends JPanel {
 	private ArrayList<UnidadesDeMapa> unidades2;
 	private UnidadButton unidadBoton;
 	private String textUnidadBoton;
+	
+	private MostrarTableroEjercitos.Informe eve;
 
 	private ActionListener e;
 
-	public Tablero(Mapeable u1, Mapeable u2, ActionListener e) {
+	public Tablero(Mapeable u1, Mapeable u2, UnidadButton boton) {
+
+		this.mapa = new Mapa("TipoMapa", u1, u2);
+		unidades1 = u1.getUnidades();
+		unidades2 = u2.getUnidades();
+		unidadBoton = boton;
+		addComponentes();
+		System.out.println("Evento: " + e);
+		mapa.mostrarTabla(); // consola
+
+	}
+
+	public Tablero(Mapeable u1, Mapeable u2, Informe eve) {
 
 		this.mapa = new Mapa("TipoMapa", u1, u2);
 		unidades1 = u1.getUnidades();
 		unidades2 = u2.getUnidades();
 		addComponentes();
-		this.e = e;
-		System.out.println("Evento: "+e);
+		System.out.println("Evento: " + eve);
+		this.eve = eve;
 		mapa.mostrarTabla(); // consola
 
 	}
@@ -45,10 +62,15 @@ public class Tablero extends JPanel {
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				UnidadesDeMapa u = mapa.getUnidad(i, j); // Si existe un ejercito en con esa coordenada
-				unidadBoton = new UnidadButton(u, i, j);
 
-//				unidadBoton.addActionListener(new Informe());
-				unidadBoton.addActionListener(e);
+				unidadBoton = new UnidadButton(u, i, j);
+				
+				
+				
+				unidadBoton.addActionListener(eve);
+				System.out.println("Añade envento");
+//				System.out.println(eve.getClass());
+//				unidadBoton.addActionListener(e);
 //				System.out.println(unidadBoton);
 
 				if (u == null) {
@@ -117,26 +139,26 @@ public class Tablero extends JPanel {
 	public void setUnidadBoton(UnidadButton unidadBoton) {
 		this.unidadBoton = unidadBoton;
 	}
-
-	private class Informe implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			UnidadButton boton = (UnidadButton) e.getSource();
-			String text = "No existe soldado";
-
-			try {
-				text = boton.getUnidad().toString();
-				textUnidadBoton = boton.getUnidad().mostrarDatos();
-
-			} catch (Exception e2) {
-				text = "NO existe nada";
-				textUnidadBoton = "Vacio";
-			}
-
-			JOptionPane.showMessageDialog(panel, text);
-		}
-
-	}
+//
+//	private class Informe implements ActionListener {
+//
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			UnidadButton boton = (UnidadButton) e.getSource();
+//			String text = "No existe soldado";
+//
+//			try {
+//				text = boton.getUnidad().toString();
+//				textUnidadBoton = boton.getUnidad().mostrarDatos();
+//
+//			} catch (Exception e2) {
+//				text = "NO existe nada";
+//				textUnidadBoton = "Vacio";
+//			}
+//
+//			JOptionPane.showMessageDialog(panel, text);
+//		}
+//
+//	}
 
 }

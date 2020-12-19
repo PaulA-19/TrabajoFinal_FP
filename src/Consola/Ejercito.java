@@ -20,6 +20,7 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 	private int id;
 	private String nameReino;
 	private char simbolo;
+	private char actitud = UnidadesDeMapa.NEUTRO;
 
 	// Constructores
 	public Ejercito(String nameReino, Color c) {
@@ -372,6 +373,18 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla {
 		}
 		return text;
 
+	}
+
+	public char getActitud() {
+		return actitud;
+	}
+
+	public void setActitud(char actitud) {
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.setActitud(actitud);
+		}
+		this.actitud = actitud;
 	}
 
 }

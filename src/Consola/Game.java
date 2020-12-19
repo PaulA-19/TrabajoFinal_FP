@@ -8,6 +8,9 @@ public class Game {
 
 	private ArrayList<Reino> reinos = new ArrayList<Reino>();
 	private Mapa tabla = new Mapa();
+	private static String[] colores = { "rojo", "verde", "azul", "amarillo" };
+
+	private static Game game = null;
 
 	public Game() {
 		reinos.add(new Reino("Reino1", Color.blue));
@@ -53,5 +56,19 @@ public class Game {
 	public void setTabla(Mapa tabla) {
 		this.tabla = tabla;
 	}
+
+	public static Game getGame() {
+		return game;
+	}
+
+	public static void setGame(Game game) {
+		Game.game = game;
+	}
+
+	public static String[] getColores() {
+		return colores;
+	}
+
+	
 
 }
