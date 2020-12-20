@@ -22,6 +22,12 @@ public class UnidadButton extends JButton implements Serializable {
 		this.columna = columna;
 	}
 
+	public UnidadButton(int fila, int columna) {
+		super();
+		this.fila = fila;
+		this.columna = columna;
+	}
+
 	public UnidadesDeMapa getUnidad() {
 		return unidad;
 	}

@@ -21,6 +21,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private ActionListener eve;
 	private boolean listoActual = false, listoMover = false;
 	private Ejercito ejer1, ejer2;
+	private Color turnoColor;
 
 	public MostrarTableroEjercitos(JFrame anterior) {
 		super(anterior);
@@ -44,6 +45,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		getInicio().addActionListener(eve);
 		getAtras().addActionListener(eve);
 		turno = Game.getGame().getReino1().getName();
+		turnoColor = Game.getGame().getReino1().getColor();
 		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
 		actualizarJuegoPanel(panelJuego.getPanel());
 	}
@@ -62,16 +64,10 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private void cambiarTurno() {
 		if (turno.equalsIgnoreCase(Game.getGame().getReino1().getName())) {
 			turno = Game.getGame().getReino2().getName();
+			turnoColor = Game.getGame().getReino2().getColor();
 		} else {
 			turno = Game.getGame().getReino1().getName();
-		}
-	}
-
-	private void cambiarTurnoMostrar() {
-		if (turnoMostrar.equalsIgnoreCase(Game.getGame().getReino1().getName())) {
-			turnoMostrar = Game.getGame().getReino2().getName();
-		} else {
-			turnoMostrar = Game.getGame().getReino1().getName();
+			turnoColor = Game.getGame().getReino1().getColor();
 		}
 	}
 
@@ -104,11 +100,13 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 					// datos reiniciados
 					ejer1 = null;
 					ejer2 = null;
+					listoActual = false;
+					listoMover = false;
 					textActua.setText("");
 					textMover.setText("");
 					actualTexArea.setSelected(true);
 					cambiarTurno();
-					actualizarLabelTurno(turno);
+					actualizarLabelTurno(turno, turnoColor);
 
 				} else if (listoActual) {
 					JOptionPane.showMessageDialog(ventana, "Debe selecionar donde desea mover su ejercito");
