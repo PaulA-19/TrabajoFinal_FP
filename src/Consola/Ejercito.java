@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Serializable {
 
 	// Datos de clase
@@ -175,10 +177,22 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 			Soldado sol = (Soldado) soldado;
 			sol.beneficiado();
 		}
+
 	}
 
 	public int numSoldados() {
 		return soldados.size();
+	}
+
+	public int numSoldadosVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			if (sol.isVive()) {
+				cantidad++;
+			}
+		}
+		return cantidad;
 	}
 
 	public void limpiarEjercito() {
@@ -224,26 +238,94 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 	// UnidadesDeMapa
 	@Override
 	public int sumaVida() {
-		// TODO Auto-generated method stub
-		return 0;
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			cantidad += sol.getNivelVida();
+		}
+		return cantidad;
 	}
 
 	@Override
 	public int sumaVidaActual() {
-		// TODO Auto-generated method stub
-		return 0;
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			cantidad += sol.getNivelVidaActual();
+		}
+		return cantidad;
 	}
 
 	@Override
 	public int sumaAtaque() {
-		// TODO Auto-generated method stub
-		return 0;
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			cantidad += sol.getNivelAtaque();
+		}
+		return cantidad;
+
 	}
 
 	@Override
 	public int sumaDefensa() {
-		// TODO Auto-generated method stub
-		return 0;
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			cantidad += sol.getNivelDefensa();
+		}
+		return cantidad;
+
+	}
+
+	@Override
+	public int sumaVidaVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			if (sol.isVive()) {
+				cantidad += sol.getNivelVida();
+			}
+		}
+		return cantidad;
+
+	}
+
+	@Override
+	public int sumaVidaActualVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			if (sol.isVive()) {
+				cantidad += sol.getNivelVidaActual();
+			}
+		}
+		return cantidad;
+
+	}
+
+	@Override
+	public int sumaAtaqueVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			if (sol.isVive()) {
+				cantidad += sol.getNivelAtaque();
+			}
+		}
+		return cantidad;
+	}
+
+	@Override
+	public int sumaDefensaVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			if (sol.isVive()) {
+				cantidad += sol.getNivelDefensa();
+			}
+		}
+		return cantidad;
 	}
 
 	// Get and Set
@@ -279,20 +361,26 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	@Override
 	public void actitudAtacar() {
-		// TODO Auto-generated method stub
-
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.actitudAtacar();
+		}
 	}
 
 	@Override
 	public void actitudDefender() {
-		// TODO Auto-generated method stub
-
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.actitudDefender();
+		}
 	}
 
 	@Override
 	public void actitudNormal() {
-		// TODO Auto-generated method stub
-
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.actitudNormal();
+		}
 	}
 
 	public static UnidadesDeMapa[] batalla(UnidadesDeMapa unidad1, UnidadesDeMapa unidad2) {
@@ -300,41 +388,25 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		Ejercito e1 = (Ejercito) unidad1;
 		Ejercito e2 = (Ejercito) unidad2;
 
-		ganador = e1;
-		perdedor = e2;
+		if (e1.puntajeParaParaBatalla() >= e2.puntajeParaParaBatalla()) {
+			ganador = e1;
+			perdedor = e2;
+		} else {
+			ganador = e2;
+			perdedor = e1;
 
-//		int vida1 = e1.sumaVidaActual();
-//		int vida2 = e2.sumaVidaActual();
-//
-//		double total = vida1 + vida2;
-//		double vida1Decimal = vida1 / total;
-//		double vida2Decimal = vida2 / total;
-//
-//		double elegido = Math.random();
-//
-//		if (elegido < Math.min(vida1Decimal, vida2Decimal)) {
-//			if (Math.min(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
-//				ganador = e1;
-//				perdedor = e2;
-//			} else {
-//				ganador = e2;
-//				perdedor = e1;
-//			}
-//
-//		} else {
-//			if (Math.max(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
-//				ganador = e1;
-//				perdedor = e2;
-//			} else {
-//				ganador = e2;
-//				perdedor = e1;
-//			}
-//		}
+		}
 
 		Ejercito[] resultado = { ganador, perdedor };
 		resultado[1].morir();
-		resultado[0].beneficiado();
 		return resultado;
+	}
+
+	public double puntajeParaParaBatalla() {
+		double punt = 0;
+		punt = (sumaAtaqueVivos() * sumaVidaActualVivos()) / (Math.pow(numSoldadosVivos(), 2));
+		punt += sumaDefensaVivos();
+		return punt;
 	}
 
 	private static void mostrarGanador(Ejercito ejer) {

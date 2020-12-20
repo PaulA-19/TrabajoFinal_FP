@@ -22,6 +22,14 @@ public abstract class UnidadesDeMapa implements Serializable {
 
 	public abstract int sumaDefensa();
 
+	public abstract int sumaVidaVivos();
+
+	public abstract int sumaVidaActualVivos();
+
+	public abstract int sumaAtaqueVivos();
+
+	public abstract int sumaDefensaVivos();
+
 	public abstract String getNameReino();
 
 	public abstract String datosPuntuales();

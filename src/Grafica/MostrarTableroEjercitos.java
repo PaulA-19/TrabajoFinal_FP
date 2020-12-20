@@ -80,7 +80,8 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 			if (e.getSource() == getAtras()) {
 				System.out.println("Atras");
 				ventana.setVisible(false);
-				anterior.setVisible(true);
+				PreviaJuego ant = (PreviaJuego) anterior;
+				anterior = new PreviaJuego(ant.getAnterior(), "Informe de juego Actual");
 			}
 
 			// Inicio

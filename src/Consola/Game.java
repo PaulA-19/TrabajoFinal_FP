@@ -19,8 +19,8 @@ public class Game implements Serializable {
 	private ArrayList<Reino> reinos = new ArrayList<Reino>();
 	private Mapa tabla = new Mapa();
 	private static String[] colores = { "rojo", "verde", "azul", "amarillo" };
-	private static ArrayList<String> reinosPosibles = new ArrayList<String>();
-	private static ArrayList<Color> coloresPosibles = new ArrayList<Color>();
+	private ArrayList<String> reinosPosibles = new ArrayList<String>();
+	private ArrayList<Color> coloresPosibles = new ArrayList<Color>();
 	private static Game game = null;
 	private static boolean guardado = false;
 	private static String ultimoGuardado = "";
@@ -39,7 +39,7 @@ public class Game implements Serializable {
 
 	}
 
-	private static void llenarPosibleReinos() {
+	private void llenarPosibleReinos() {
 		reinosPosibles.add("Inglaterra");
 		reinosPosibles.add("Francia");
 		reinosPosibles.add("Sacro Imperio Romano Germanico");
@@ -48,7 +48,7 @@ public class Game implements Serializable {
 
 	}
 
-	private static void llenarPosibleColores() {
+	private void llenarPosibleColores() {
 
 		coloresPosibles.add(Color.red);
 		coloresPosibles.add(Color.green);

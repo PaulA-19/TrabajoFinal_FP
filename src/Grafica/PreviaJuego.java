@@ -84,17 +84,17 @@ public class PreviaJuego extends JFrame implements Serializable {
 	private void llenarPanel(JPanel p, Reino r, int numReino) {
 
 		p.add(new JLabel("Num. Ejercitos: "));
-		numDato = new JTextField(Integer.toString(r.getNumEjercitos()));
+		numDato = new JTextField(Integer.toString(r.getNumEjercitosVivos()));
 		numDato.setEditable(false);
 		p.add(numDato);
 
 		p.add(new JLabel("Num. Soldados: "));
-		numDato = new JTextField(Integer.toString(r.getNumSoldados()));
+		numDato = new JTextField(Integer.toString(r.getNumSoldadosVivos()));
 		numDato.setEditable(false);
 		p.add(numDato);
 
 		p.add(new JLabel("Promedio Vida: "));
-		numDato = new JTextField(Double.toString(r.promedioNivelVida()));
+		numDato = new JTextField(Double.toString(r.promedioNivelVidaVivos()));
 		numDato.setEditable(false);
 		p.add(numDato);
 

@@ -54,4 +54,10 @@ public class Lancero extends Soldado {
 		return super.toString() + "\nLongitud Lanza:\t" + longitudLanza;
 	}
 
+	@Override
+	public String mostrarDatos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

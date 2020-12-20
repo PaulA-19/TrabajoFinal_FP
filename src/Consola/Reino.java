@@ -3,6 +3,7 @@ package Consola;
 import java.awt.Color;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import Soldado.Soldado;
@@ -89,6 +90,17 @@ public class Reino implements Mapeable, Serializable {
 		return total;
 	}
 
+	public int nivelVidaVivos() {
+		int total = 0;
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+			if (ejer.isVive()) {
+				total += ejer.nivelVida();
+			}
+		}
+		return total;
+	}
+
 	public int nivelVidaActual() {
 		int total = 0;
 		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
@@ -121,6 +133,11 @@ public class Reino implements Mapeable, Serializable {
 		return ((double) total / getUnidades().size());
 	}
 
+	public double promedioNivelVidaVivos() {
+		int total = nivelVidaVivos();
+		return ((double) total / getNumEjercitosVivos());
+	}
+
 	public double promedioNivelVidaActual() {
 		int total = nivelVidaActual();
 		return ((double) total / getUnidades().size());
@@ -140,11 +157,31 @@ public class Reino implements Mapeable, Serializable {
 		return ejercitos.size();
 	}
 
+	public int getNumEjercitosVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+			if (ejer.isVive()) {
+				cantidad++;
+			}
+		}
+		return cantidad;
+	}
+
 	public int getNumSoldados() {
 		int total = 0;
 		for (UnidadesDeMapa unidad : ejercitos) {
 			Ejercito ejercito = (Ejercito) unidad;
 			total += ejercito.numSoldados();
+		}
+		return total;
+	}
+
+	public int getNumSoldadosVivos() {
+		int total = 0;
+		for (UnidadesDeMapa unidad : ejercitos) {
+			Ejercito ejercito = (Ejercito) unidad;
+			total += ejercito.numSoldadosVivos();
 		}
 		return total;
 	}

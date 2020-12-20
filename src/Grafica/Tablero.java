@@ -61,18 +61,15 @@ public class Tablero extends JPanel implements Serializable {
 			for (int j = 0; j < 10; j++) {
 				UnidadesDeMapa u = mapa.getUnidad(i, j); // Si existe un ejercito en con esa coordenada
 
-				unidadBoton = new UnidadButton(i, j);
+				unidadBoton = new UnidadButton(u, i, j);
 
 				unidadBoton.addActionListener(evento);
 
-				if (u == null || !(u.isVive())) {
+				if (u == null) {
 					unidadBoton.setText("");
 				} else {
 
-					unidadBoton.setUnidad(u);
-
 					unidadBoton.setText(u.datosPuntuales());
-
 					unidadBoton.setBackground(u.getColor());
 				}
 

@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.Serializable;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import Consola.Batalla;
 import Consola.UnidadesDeMapa;
 //falta implementar los ataques, de soldados
@@ -279,6 +281,34 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	@Override
 	public int sumaVidaActual() {
 		return getNivelVidaActual();
+	}
+
+	@Override
+	public int sumaVidaVivos() {
+		int cantidad = 0;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.getNivelVidaVivos();
+		}
+		return 0;
+	}
+
+	@Override
+	public int sumaVidaActualVivos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumaAtaqueVivos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int sumaDefensaVivos() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override

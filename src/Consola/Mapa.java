@@ -1,12 +1,11 @@
 package Consola;
 
-
 import java.io.Serializable;
 import java.util.*;
 
 import Soldado.Soldado;
 
-public class Mapa implements Serializable{
+public class Mapa implements Serializable {
 
 	// Para el random
 	private static Random rd = new Random();
@@ -40,11 +39,16 @@ public class Mapa implements Serializable{
 	public Mapa(String tipo, Mapeable unidades1, Mapeable unidades2) {
 		this.tipo = tipo;
 		for (UnidadesDeMapa unidad : unidades1.getUnidades()) {
-			addUnidad(unidad);
+			if (unidad.isVive()) {
+				addUnidad(unidad);
+			}
+
 		}
 
 		for (UnidadesDeMapa unidad : unidades2.getUnidades()) {
-			addUnidad(unidad);
+			if (unidad.isVive()) {
+				addUnidad(unidad);
+			}
 		}
 		cantidad++;
 	}
