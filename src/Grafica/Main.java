@@ -72,6 +72,7 @@ public class Main extends JFrame implements Serializable {
 
 	}
 
+	// get and set
 	public JPanel getPrincipal() {
 		return principal;
 	}
@@ -89,7 +90,6 @@ public class Main extends JFrame implements Serializable {
 
 			// Nuevo
 			if (boton.getText().equalsIgnoreCase("Nuevo")) {
-				System.out.println("Nuevo");
 				ventanaInicio.setVisible(false);
 				Game.setGame(new Game());
 				new PreviaJuego(ventanaInicio, "Nuevo Juego");

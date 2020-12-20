@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import Consola.Game;
 import Consola.Reino;
 
-public class PreviaJuego extends JFrame implements Serializable{
+public class PreviaJuego extends JFrame implements Serializable {
 
 	private static final int width = 700;
 	private static final int high = 300;
@@ -53,7 +53,7 @@ public class PreviaJuego extends JFrame implements Serializable{
 		jugar = new JButton("JUGAR");
 		jugar.addActionListener(new Accion());
 
-		cancelar = new JButton("CANCELAR");
+		cancelar = new JButton("ATRAS");
 		cancelar.addActionListener(new Accion());
 
 		JPanel p = new JPanel();
@@ -135,11 +135,11 @@ public class PreviaJuego extends JFrame implements Serializable{
 			JButton botonPresionado = (JButton) e.getSource();
 
 			// Cancelar
-			if (botonPresionado.getText().contentEquals("Cancelar")) {
+			if (botonPresionado.getText().contentEquals("ATRAS")) {
 				Main.getVentanaInicio().setVisible(true);
 				ventana.setVisible(false);
 			}
-			
+
 			// Listo
 			if ((e.getActionCommand().equalsIgnoreCase("Jugar")) && e.getSource() != jugar) {
 				botonPresionado.setEnabled(false);
@@ -154,8 +154,6 @@ public class PreviaJuego extends JFrame implements Serializable{
 
 			// Jugar
 			if (e.getSource() == jugar) {
-				System.out.println(listo1.isEnabled());
-				System.out.println(listo2.isEnabled());
 
 				if (listo1.isEnabled() || listo2.isEnabled()) {
 					JOptionPane.showMessageDialog(ventana, "Todos deben de estar listos");
@@ -163,7 +161,7 @@ public class PreviaJuego extends JFrame implements Serializable{
 					// Aqui juego
 					ventana.setVisible(false);
 					new MostrarTableroEjercitos(ventana);
-					
+
 				}
 			}
 

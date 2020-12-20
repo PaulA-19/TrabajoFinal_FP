@@ -18,8 +18,9 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	protected TextArea[] turnosText;
 	private JPanel presentacionTurno, opciones, juego, informe;
 	protected JLabel nombreTurno = new JLabel();;
-	private JButton mover;
-	protected UnidadButton boton;
+	private JButton mover, inicio, atras;
+	protected UnidadButton boton, oponente;
+	protected JRadioButton actualTexArea, moverTextArea;
 
 	public MuestraTablero(JFrame anterior) {
 		ventana = this;
@@ -34,7 +35,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
-	
+
 	public MuestraTablero() {
 
 	}
@@ -47,7 +48,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 		// Norte
 		presentacionTurno = new JPanel();
 //		presentacion.setBackground(Color.red);
-		presentacionTurno.setLayout(new GridLayout(1, 2));
+//		presentacionTurno.setLayout(new GridLayout(1, 2));
 		addPresentacion();
 		this.add(presentacionTurno, BorderLayout.NORTH);
 
@@ -63,7 +64,13 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 		// Sur
 		mover = new JButton("Mover");
-		this.add(mover, BorderLayout.SOUTH);
+		inicio = new JButton("Inicio");
+		atras = new JButton("Atras");
+		JPanel op = new JPanel();
+		op.add(atras);
+		op.add(mover);
+		op.add(inicio);
+		this.add(op, BorderLayout.SOUTH);
 
 	}
 
@@ -76,10 +83,13 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	}
 
 	private void addPresentacion() {
-		// Aqui añadimos componentes a la presentacion, parte norte
-		presentacionTurno.add(new JLabel("Turno de: "));
 		presentacionTurno.add(nombreTurno);
+		actualizarLabelTurno(Game.getGame().getReino1().getName());
 
+	}
+
+	public void actualizarLabelTurno(String turno) {
+		nombreTurno.setText("Turno de Reino: " + turno);
 	}
 
 	private void addInforme() {
@@ -91,17 +101,33 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 		turnosText[0] = textActua;
 		turnosText[1] = textMover;
 
+		actualTexArea = new JRadioButton("Selecionar unidad");
+		moverTextArea = new JRadioButton("Selecionar Donde Mover");
+
+		ButtonGroup actualMoverGrupo = new ButtonGroup();
+		actualMoverGrupo.add(actualTexArea);
+		actualMoverGrupo.add(moverTextArea);
+
+		actualTexArea.setSelected(true);
+
 		JPanel pa = new JPanel();
+		JPanel arriba = new JPanel();
+		arriba.setLayout(new GridLayout(2, 1));
+		arriba.add(actualTexArea);
+		arriba.add(new JLabel("Actual"));
 		pa.setLayout(new BorderLayout());
 		// Nombre del ejercito 1
-		pa.add(new JLabel("Actual"), BorderLayout.NORTH);
+		pa.add(arriba, BorderLayout.NORTH);
 		pa.add(textActua, BorderLayout.CENTER);
 		informe.add(pa);
 
 		pa = new JPanel();
 		pa.setLayout(new BorderLayout());
-		// Nombre del ejercito 2
-		pa.add(new JLabel("Mover a "), BorderLayout.NORTH);
+		JPanel arriba2 = new JPanel();
+		arriba2.setLayout(new GridLayout(2, 1));
+		arriba2.add(moverTextArea);
+		arriba2.add(new JLabel("Mover"));
+		pa.add(arriba2, BorderLayout.NORTH);
 		pa.add(textMover, BorderLayout.CENTER);
 		informe.add(pa);
 
@@ -222,6 +248,22 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 	public void setMover(JButton mover) {
 		this.mover = mover;
+	}
+
+	public JButton getInicio() {
+		return inicio;
+	}
+
+	public JButton getAtras() {
+		return atras;
+	}
+
+	public void setInicio(JButton inicio) {
+		this.inicio = inicio;
+	}
+
+	public void setAtras(JButton atras) {
+		this.atras = atras;
 	}
 
 }
