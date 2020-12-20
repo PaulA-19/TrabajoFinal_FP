@@ -298,42 +298,42 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 	public static UnidadesDeMapa[] batalla(UnidadesDeMapa unidad1, UnidadesDeMapa unidad2) {
 		Ejercito ganador, perdedor;
 		Ejercito e1 = (Ejercito) unidad1;
-		Ejercito e2 = (Ejercito) unidad1;
+		Ejercito e2 = (Ejercito) unidad2;
 
-		int vida1 = e1.sumaVidaActual();
-		int vida2 = e2.sumaVidaActual();
+		ganador = e1;
+		perdedor = e2;
 
-		double total = vida1 + vida2;
-		double vida1Decimal = vida1 / total;
-		double vida2Decimal = vida2 / total;
+//		int vida1 = e1.sumaVidaActual();
+//		int vida2 = e2.sumaVidaActual();
+//
+//		double total = vida1 + vida2;
+//		double vida1Decimal = vida1 / total;
+//		double vida2Decimal = vida2 / total;
+//
+//		double elegido = Math.random();
+//
+//		if (elegido < Math.min(vida1Decimal, vida2Decimal)) {
+//			if (Math.min(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
+//				ganador = e1;
+//				perdedor = e2;
+//			} else {
+//				ganador = e2;
+//				perdedor = e1;
+//			}
+//
+//		} else {
+//			if (Math.max(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
+//				ganador = e1;
+//				perdedor = e2;
+//			} else {
+//				ganador = e2;
+//				perdedor = e1;
+//			}
+//		}
 
-		double elegido = Math.random();
-
-		if (elegido < Math.min(vida1Decimal, vida2Decimal)) {
-			if (Math.min(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
-				mostrarGanador(e1);
-				ganador = e1;
-				perdedor = e2;
-			} else {
-				mostrarGanador(e2);
-				ganador = e2;
-				perdedor = e1;
-			}
-
-		} else {
-			if (Math.max(e1.sumaVidaActual(), e2.sumaVidaActual()) == e1.sumaVidaActual()) {
-				mostrarGanador(e1);
-				ganador = e1;
-				perdedor = e2;
-			} else {
-				mostrarGanador(e2);
-				ganador = e2;
-				perdedor = e1;
-			}
-		}
-
-		ganador.beneficiado();
 		Ejercito[] resultado = { ganador, perdedor };
+		resultado[1].morir();
+		resultado[0].beneficiado();
 		return resultado;
 	}
 

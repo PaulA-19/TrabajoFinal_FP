@@ -16,7 +16,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private String turno;
 	private String turnoMostrar;
 //	private Tablero tableroJuego;
-	private JFrame anterior, ventana;
+	private JFrame anterior, ventana, fututo;
 	private Informe evento;
 	private ActionListener eve;
 	private boolean listoActual = false, listoMover = false;
@@ -103,7 +103,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 						ejer1.setFila(oponente.getFila());
 						ejer1.setColumna(oponente.getColumna());
 
-						ven.actualizarJuegoPanelTest(
+						ven.actualizarJuegoPanel(
 								new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
 						// datos reiniciados
 						ejer1 = null;
@@ -119,7 +119,10 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 					} else {
 
 						// pelea
-						JOptionPane.showMessageDialog(ventana, "Pelea");
+						JOptionPane.showMessageDialog(ventana, "Preparando todo para la Batalla");
+
+//						ventana.setVisible(false);
+						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
 
 						// datos reiniciados
 						ejer1 = null;
