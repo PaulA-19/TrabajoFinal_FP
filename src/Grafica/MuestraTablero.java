@@ -21,6 +21,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	private JButton mover, inicio, atras;
 	protected UnidadButton boton, oponente;
 	protected JRadioButton actualTexArea, moverTextArea;
+	protected Tablero tableroJuego;
 
 	public MuestraTablero(JFrame anterior) {
 		ventana = this;
@@ -74,12 +75,40 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 	}
 
-	public void actualizarJuegoPanel(JPanel p) {
+	public void actualizarJuegoPanel(Tablero p) {
 
-		setJuego(p);
+//		this.add(null, BorderLayout.CENTER)
+		juego.removeAll();
+
+		setJuego(p.getPanel());
 
 		add(juego, BorderLayout.CENTER);
 
+	}
+
+	public void actualizarJuegoPanelTest(Tablero p) {
+//		
+//		System.out.println("act - test");
+//		System.out.println("JUEGO: " + juego);
+		JPanel pa = new JPanel();
+		pa.setBackground(Color.red);
+//		pa.setSize(juego.getWidth(), juego.getHeight());
+//
+//		juego.removeAll();
+//		juego = p.getPanel();
+//		tableroJuego = p;
+//		System.out.println("JUEGO: " + juego);
+//
+//		System.out.println("Pa: " + pa);
+////		juego.removeAll();
+////
+////		setJuego(p.getPanel());
+////
+////		add(juego, BorderLayout.CENTER);
+//
+		juego.setVisible(false);
+		ventana.add(p.getPanel(), BorderLayout.CENTER);
+		setJuego(p.getPanel());
 	}
 
 	private void addPresentacion() {

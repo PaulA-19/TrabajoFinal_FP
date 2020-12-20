@@ -15,7 +15,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private Mapa tabla;
 	private String turno;
 	private String turnoMostrar;
-	private Tablero panelJuego;
+//	private Tablero tableroJuego;
 	private JFrame anterior, ventana;
 	private Informe evento;
 	private ActionListener eve;
@@ -46,8 +46,8 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		getAtras().addActionListener(eve);
 		turno = Game.getGame().getReino1().getName();
 		turnoColor = Game.getGame().getReino1().getColor();
-		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
-		actualizarJuegoPanel(panelJuego.getPanel());
+		tableroJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
+		actualizarJuegoPanel(tableroJuego);
 	}
 
 	public void verificarFinalJuego() {
@@ -95,18 +95,43 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 			if (e.getSource() == getMover()) {
 				System.out.println("Mover");
 				if (listoActual && listoMover) {
-					JOptionPane.showMessageDialog(ventana, "Pelea");
 
-					// datos reiniciados
-					ejer1 = null;
-					ejer2 = null;
-					listoActual = false;
-					listoMover = false;
-					textActua.setText("");
-					textMover.setText("");
-					actualTexArea.setSelected(true);
-					cambiarTurno();
-					actualizarLabelTurno(turno, turnoColor);
+					if (ejer2 == null) {
+						JOptionPane.showMessageDialog(ventana, "Moviendo ejercito");
+						MostrarTableroEjercitos ven = (MostrarTableroEjercitos) ventana;
+
+						ejer1.setFila(oponente.getFila());
+						ejer1.setColumna(oponente.getColumna());
+
+						ven.actualizarJuegoPanelTest(
+								new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
+						// datos reiniciados
+						ejer1 = null;
+						ejer2 = null;
+						listoActual = false;
+						listoMover = false;
+						textActua.setText("");
+						textMover.setText("");
+						actualTexArea.setSelected(true);
+						cambiarTurno();
+						actualizarLabelTurno(turno, turnoColor);
+
+					} else {
+
+						// pelea
+						JOptionPane.showMessageDialog(ventana, "Pelea");
+
+						// datos reiniciados
+						ejer1 = null;
+						ejer2 = null;
+						listoActual = false;
+						listoMover = false;
+						textActua.setText("");
+						textMover.setText("");
+						actualTexArea.setSelected(true);
+						cambiarTurno();
+						actualizarLabelTurno(turno, turnoColor);
+					}
 
 				} else if (listoActual) {
 					JOptionPane.showMessageDialog(ventana, "Debe selecionar donde desea mover su ejercito");
@@ -144,6 +169,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 					}
 
 				} else {
+					oponente = botonSeleccionado;
 					if (botonSeleccionado.getUnidad() == null) {
 						JOptionPane.showMessageDialog(ventana, "Vacio");
 						ejer2 = (Ejercito) botonSeleccionado.getUnidad();

@@ -24,7 +24,6 @@ public class Tablero extends JPanel implements Serializable {
 	private ArrayList<UnidadesDeMapa> unidades2;
 	private UnidadButton unidadBoton;
 	private String textUnidadBoton;
-//<<<<<<< HEAD
 	private JFrame anterior, ventana;
 
 	private ActionListener evento;
