@@ -38,7 +38,11 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 		getMover().addActionListener(eve);
 
+<<<<<<< HEAD
 		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
+=======
+		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), textActua, textMover, turnoText, turnosText);
+>>>>>>> 6524991be4416004afda3a470b8cc69af7efe874
 		actualizarJuegoPanel(panelJuego.getPanel());
 	}
 

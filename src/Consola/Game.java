@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -18,20 +19,54 @@ public class Game implements Serializable {
 	private ArrayList<Reino> reinos = new ArrayList<Reino>();
 	private Mapa tabla = new Mapa();
 	private static String[] colores = { "rojo", "verde", "azul", "amarillo" };
-
+	private static ArrayList<String> reinosPosibles = new ArrayList<String>();
+	private static ArrayList<Color> coloresPosibles = new ArrayList<Color>();
 	private static Game game = null;
 	private static boolean guardado = false;
 	private static String ultimoGuardado = "";
 
 	public Game() {
-		reinos.add(new Reino("Reino1", Color.blue));
-		reinos.add(new Reino("Reino2", Color.red));
+		llenarPosibleColores();
+		llenarPosibleReinos();
+		reinos.add(new Reino(elegirTipo(reinosPosibles), elegirColor(coloresPosibles)));
+		reinos.add(new Reino(elegirTipo(reinosPosibles), elegirColor(coloresPosibles)));
+
 	}
 
 	public void actualizar() {
 		getReino1().actualizar();
 		getReino2().actualizar();
 
+	}
+
+	private static void llenarPosibleReinos() {
+		reinosPosibles.add("Inglaterra");
+		reinosPosibles.add("Francia");
+		reinosPosibles.add("Sacro Imperio Romano Germanico");
+		reinosPosibles.add("Aragon-Castilla");
+		reinosPosibles.add("Moros");
+
+	}
+
+	private static void llenarPosibleColores() {
+
+		coloresPosibles.add(Color.red);
+		coloresPosibles.add(Color.green);
+		coloresPosibles.add(Color.blue);
+		coloresPosibles.add(Color.yellow);
+
+	}
+
+	public static String elegirTipo(ArrayList<String> posibles) {
+		Random rd = new Random();
+		int opcion = rd.nextInt(posibles.size());
+		return posibles.remove(opcion);
+	}
+
+	public static Color elegirColor(ArrayList<Color> posibles) {
+		Random rd = new Random();
+		int opcion = rd.nextInt(posibles.size());
+		return posibles.remove(opcion);
 	}
 
 	public Game(int cantidad) {

@@ -194,6 +194,15 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return text;
 	}
 
+	public void morir() {
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.morir();
+		}
+		setVive(false);
+
+	}
+
 	// Mapeable
 	@Override
 	public ArrayList<UnidadesDeMapa> getUnidades() {
@@ -399,6 +408,12 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	@Override
+	public String datosRepresentante() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
