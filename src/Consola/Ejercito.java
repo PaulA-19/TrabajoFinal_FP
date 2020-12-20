@@ -51,6 +51,14 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		}
 	}
 
+	public void morir() {
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.morir();
+		}
+		setVive(false);
+	}
+
 	public void llenarAutomatico() {
 		int cantidad = rd.nextInt(11); // [0,10]
 		for (int i = 0; i < cantidad; i++) {
@@ -192,15 +200,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		String text = getNameReino();
 		System.out.println(text);
 		return text;
-	}
-
-	public void morir() {
-		for (UnidadesDeMapa unidadesDeMapa : soldados) {
-			Soldado sol = (Soldado) unidadesDeMapa;
-			sol.morir();
-		}
-		setVive(false);
-
 	}
 
 	// Mapeable
@@ -408,12 +407,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	public void setColor(Color color) {
 		this.color = color;
-	}
-
-	@Override
-	public String datosRepresentante() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

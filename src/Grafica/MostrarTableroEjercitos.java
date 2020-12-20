@@ -29,6 +29,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		this.anterior = anterior;
 		setVisible(true);
 		this.ventana = this;
+		verificarFinalJuego();
 	}
 
 	public MostrarTableroEjercitos() {
@@ -45,6 +46,17 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		turno = Game.getGame().getReino1().getName();
 		panelJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
 		actualizarJuegoPanel(panelJuego.getPanel());
+	}
+
+	public void verificarFinalJuego() {
+		if (Game.getGame().isFinal()) {
+			JOptionPane.showMessageDialog(ventana,
+					"El ganador es el Reino de " + (Game.getGame().ganadorReino().getName()));
+
+			ventana.setVisible(false);
+			ventana = null;
+			Main.getVentanaInicio().setVisible(true);
+		}
 	}
 
 	private void cambiarTurno() {
@@ -106,6 +118,8 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 					actualTexArea.setSelected(true);
 
 				}
+
+				verificarFinalJuego();
 			}
 
 			// Seleccion de ejercitos

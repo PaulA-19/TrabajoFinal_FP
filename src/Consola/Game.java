@@ -76,6 +76,21 @@ public class Game implements Serializable {
 
 	}
 
+	public boolean isFinal() {
+		boolean reino1Vive = game.getReino1().isVive();
+		boolean reino2Vive = game.getReino2().isVive();
+
+		return (!(reino1Vive && reino2Vive));
+	}
+
+	public Reino ganadorReino() {
+		if (game.getReino1().isVive()) {
+			return game.getReino1();
+		} else {
+			return game.getReino2();
+		}
+	}
+
 	public ArrayList<Reino> getReinos() {
 		return reinos;
 	}

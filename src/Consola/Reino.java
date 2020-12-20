@@ -200,7 +200,18 @@ public class Reino implements Mapeable, Serializable {
 	}
 
 	public boolean isVive() {
-		return vive;
+
+		if (getUnidades().size() == 0) {
+			return false;
+		}
+
+		boolean posibleValor = false;
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+			posibleValor = posibleValor || ejer.isVive();
+		}
+
+		return posibleValor;
 	}
 
 	public String getTipo() {
