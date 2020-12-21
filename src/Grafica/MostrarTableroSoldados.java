@@ -70,7 +70,9 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 			ante.actualizarJuegoPanel(
 					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, ante.getEvento()));
 			ante.verificarFinalJuego();
-			anterior.setVisible(true);
+			if (!ante.isFinalGame()) {
+				anterior.setVisible(true);
+			}
 		}
 	}
 
@@ -180,7 +182,7 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 				} else { // moverTextArea
 					oponente = botonSeleccionado;
 					if (botonSeleccionado.getUnidad() == null) {
-						JOptionPane.showMessageDialog(ventana, "Vacio");
+//						JOptionPane.showMessageDialog(ventana, "Vacio");
 						sol2 = (Soldado) botonSeleccionado.getUnidad();
 						textMover.setText("Vacio");
 						actualTexArea.setSelected(true);
@@ -207,7 +209,7 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 					} else {
 						// otro soldado
 						sol2 = (Soldado) botonSeleccionado.getUnidad();
-						textMover.setText(ejer2.mostrarDatos());
+						textMover.setText(sol2.mostrarDatos());
 						actualTexArea.setSelected(true);
 						listoMover = true;
 						JOptionPane.showMessageDialog(ventana, "Ya puede mover");

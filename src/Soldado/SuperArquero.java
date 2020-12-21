@@ -24,6 +24,15 @@ public class SuperArquero extends Espadachin implements SuperSoldado {
 	}
 
 	@Override
+	public String mostrarDatos() {
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
+	}
+
+	@Override
 	public void evolucionar() {
 		// TODO Auto-generated method stub
 

@@ -1,6 +1,8 @@
 package Consola;
 
-public interface Batalla  {
+public interface Batalla {
+
+	int PORCION_ATAQUE = 3;
 
 	void actitudAtacar();
 
@@ -8,4 +10,7 @@ public interface Batalla  {
 
 	void actitudNormal();
 
+	void atacarOponente(UnidadesDeMapa oponente);
+
+	void quitarVida(UnidadesDeMapa oponenteAtaca);
 }

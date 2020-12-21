@@ -62,4 +62,16 @@ public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla, Serializable {
 
 	}
 
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void quitarVida(UnidadesDeMapa oponenteAtaca) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

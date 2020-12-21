@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 import Consola.Batalla;
+import Consola.Ejercito;
 import Consola.UnidadesDeMapa;
 //falta implementar los ataques, de soldados
 
@@ -41,7 +42,6 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	private boolean atacar = false;
 	private boolean defender = false;
-	private Object cant;
 
 	// Constructores---------------------
 	public Soldado(String nameReino, String nameEjercito, Color c) {
@@ -63,41 +63,86 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		cantidad++;
 	}
 
-	// Batalla---------------- Aun no echo
+	// Batalla----------------
+
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		int ataque = this.getNivelAtaque();
+
+		Soldado oponenteSol = (Soldado) oponente;
+		oponenteSol.quitarVidaDefensa(numAleatorio(ataque - 2, ataque + 2));
+
+	}
+
+	@Override
+	public void quitarVida(UnidadesDeMapa oponenteAtaca) {
+		Soldado solOpo = (Soldado) oponenteAtaca;
+//		int ataquePromedio = ejerOpo.sumaAtaqueVivos() / ejerOpo.numSoldadosVivos();
+
+		this.quitarVidaDefensa(solOpo.getNivelAtaque() / PORCION_ATAQUE);
+
+	}
 
 	public static UnidadesDeMapa[] batalla(UnidadesDeMapa unidad1, UnidadesDeMapa unidad2) {
-
 		Soldado ganador, perdedor;
-		Soldado s1 = (Soldado) unidad1;
-		Soldado s2 = (Soldado) unidad2;
+		Soldado e1 = (Soldado) unidad1;
+		Soldado e2 = (Soldado) unidad2;
 
-		pelear(s1, s2);
+		while (e2.isVive() && e1.isVive()) {
+			e1.atacarOponente(e2);
+			if (e2.isVive()) {
+				e2.atacarOponente(e1);
+			} else {
+				continue;
+			}
 
-		if (s1.isVive()) {
-			ganador = s1;
-			perdedor = s2;
-		} else {
-			ganador = s2;
-			perdedor = s1;
 		}
 
-		ganador.actitudNormal();
-		perdedor.actitudNormal();
+		if (e1.isVive()) {
+			ganador = e1;
+			perdedor = e2;
+		} else {
+			ganador = e2;
+			perdedor = e1;
+
+		}
 
 		Soldado[] resultado = { ganador, perdedor };
 		return resultado;
 
 	}
 
-	public static void pelear(Soldado s1, Soldado s2) {
+	private static void pelear(Soldado s1, Soldado s2) {
 
-		// IMplementar una metrtic PARA BATALLA
-		s2.morir();
+		int ataque1 = s1.getNivelAtaque();
+		int ataque2 = s1.getNivelAtaque();
+
+		// ataca s2
+		s1.quitarVidaDefensa(numAleatorio(ataque2 - 2, ataque2 + 2));
+		if (s1.isVive()) {
+			// ataca s1
+			s2.quitarVidaDefensa(numAleatorio(ataque1 - 2, ataque1 + 2));
+		} else {
+			return;
+		}
 
 	}
 
-	private static void mostrarGanador(Soldado sol) {
-		System.out.println("Ganador ejercito: " + sol.getNameReino() + "\tNombre Soldado: " + sol.getName());
+	private static int numAleatorio(int m, int n) {
+		int num = (rd.nextInt(n - m) + m);
+		return num;
+	}
+
+	private static double elegirNumeroSegunPorcentaje(double num1, double num2) {
+		double ale = rd.nextDouble();
+
+		double minimo = Math.min(num1, num2);
+
+		if (ale < minimo) {
+			return minimo;
+		} else {
+			return Math.max(num2, num1);
+		}
 
 	}
 
@@ -207,7 +252,6 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	public void quitarVida(int cant) {
 		int nuevo = getNivelVidaActual() - cant;
 		setNivelVidaActual(nuevo);
-
 	}
 
 	public void morir() {
@@ -317,7 +361,22 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		return text;
 	}
 
-	// ---------------- get and set --------------------------
+	@Override
+	public String mostrarDatos() {
+
+		String text = "";
+
+		text += "Reino: " + getNameReino() + "\n";
+		text += "Ejercito: " + getNameEjercito() + "\n";
+		text += "Nivel Ataque: " + getNivelAtaque() + "\n";
+		text += "Nivel Defensa: " + getNivelDefensa() + "\n";
+		text += "Nivel Vida: " + getNivelVida() + "\n";
+		text += "Nivel Vida Actual: " + getNivelVidaActual() + "\n";
+
+		return text;
+	}
+
+	// ---------------- get and set ---------------------------------------
 	public Color getColor() {
 		return color;
 	}

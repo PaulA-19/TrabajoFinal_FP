@@ -3,6 +3,8 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import Consola.UnidadesDeMapa;
+
 public class Arquero extends Soldado {
 	private static int ataque = 7;
 	private static int defensa = 3;
@@ -41,11 +43,8 @@ public class Arquero extends Soldado {
 	}
 
 	public void dispararFlecha() {
-		if (numFlechas > 0) {
+		if (numFlechas >= 0) {
 			numFlechas--;
-			System.out.println("Flecha disparada");
-		} else {
-			System.out.println("No tiene mas flechas");
 		}
 
 	}
@@ -57,8 +56,20 @@ public class Arquero extends Soldado {
 
 	@Override
 	public String mostrarDatos() {
-		String test = getName();
-		return test;
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
 	}
 
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		Soldado oponeSol = (Soldado) oponente;
+		if (numFlechas > 0) {
+			oponeSol.quitarVidaDefensa(getNivelAtaque() / PORCION_ATAQUE);
+			dispararFlecha();
+		}
+
+	}
 }

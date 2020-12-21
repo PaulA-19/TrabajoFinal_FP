@@ -56,8 +56,11 @@ public class Espadachin extends Soldado {
 
 	@Override
 	public String mostrarDatos() {
-		String test = getName();// TODO Auto-generated method stub
-		return test;
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
 	}
 
 }

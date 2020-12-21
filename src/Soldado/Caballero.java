@@ -23,7 +23,7 @@ public class Caballero extends Soldado {
 		setNivelAtaque(ataque);
 		setNivelDefensa(defensa);
 		setNivelVidaActual(getNivelVida());
-		
+
 		cantidad++;
 
 	}
@@ -36,7 +36,7 @@ public class Caballero extends Soldado {
 		setNivelAtaque(ataque);
 		setNivelDefensa(defensa);
 		setNivelVidaActual(getNivelVida());
-		
+
 		Caballero.cantidad++;
 
 	}
@@ -82,8 +82,11 @@ public class Caballero extends Soldado {
 
 	@Override
 	public String mostrarDatos() {
-		// TODO Auto-generated method stub
-		return null;
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
 	}
 
 }

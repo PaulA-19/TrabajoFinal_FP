@@ -35,4 +35,13 @@ public class SuperEspadachin extends Espadachin implements SuperSoldado {
 
 	}
 
+	@Override
+	public String mostrarDatos() {
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
+	}
+
 }

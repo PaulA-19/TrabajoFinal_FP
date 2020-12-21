@@ -342,18 +342,8 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	@Override
 	public boolean isVive() {
-		if (getUnidades().size() == 0) {
-			return false;
-		}
-
-		boolean posibleValor = false;
-		for (UnidadesDeMapa unidadesDeMapa : soldados) {
-			Soldado sol = (Soldado) unidadesDeMapa;
-			posibleValor = posibleValor || sol.isVive();
-		}
-
-		setVive(posibleValor);
-		return posibleValor;
+		actualizarViveEjercito();
+		return super.isVive();
 	}
 
 	// Get and Set
@@ -388,6 +378,43 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 	// Batalla
 
 	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+
+		Ejercito oponenteEjer = (Ejercito) oponente;
+		oponenteEjer.quitarVida(this);
+
+	}
+
+	@Override
+	public void quitarVida(UnidadesDeMapa oponenteAtaca) {
+		Ejercito ejerOpo = (Ejercito) oponenteAtaca;
+		int ataquePromedio = ejerOpo.sumaAtaqueVivos() / ejerOpo.numSoldadosVivos();
+
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			sol.quitarVidaDefensa(ataquePromedio);
+		}
+
+		ejerOpo.actualizarViveEjercito();
+	}
+
+	public void actualizarViveEjercito() {
+		if (getUnidades().size() == 0) {
+			setVive(false);
+		}
+
+		boolean posibleValor = false;
+
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			posibleValor = posibleValor || sol.isVive();
+		}
+
+		setVive(posibleValor);
+	}
+
+	@Override
+
 	public void actitudAtacar() {
 		for (UnidadesDeMapa unidadesDeMapa : soldados) {
 			Soldado sol = (Soldado) unidadesDeMapa;
@@ -416,7 +443,18 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		Ejercito e1 = (Ejercito) unidad1;
 		Ejercito e2 = (Ejercito) unidad2;
 
-		if (e1.puntajeParaParaBatalla() >= e2.puntajeParaParaBatalla()) {
+		while (e2.isVive() && e1.isVive()) {
+
+			e1.atacarOponente(e2);
+			if (e2.isVive()) {
+				e2.atacarOponente(e1);
+			} else {
+				continue;
+			}
+
+		}
+
+		if (e1.isVive()) {
 			ganador = e1;
 			perdedor = e2;
 		} else {
@@ -426,7 +464,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		}
 
 		Ejercito[] resultado = { ganador, perdedor };
-		resultado[1].morir();
 		return resultado;
 	}
 

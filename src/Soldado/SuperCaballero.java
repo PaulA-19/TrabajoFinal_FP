@@ -40,6 +40,15 @@ public class SuperCaballero extends Caballero implements SuperSoldado {
 
 	}
 
+	@Override
+	public String mostrarDatos() {
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
+	}
+
 	// get and Set
 	public static int getCantidad() {
 		return cantidad;

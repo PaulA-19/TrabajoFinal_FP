@@ -53,9 +53,9 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 
 	private void addComponentes() {
 
-		textUnidad1.setText(s1.toString());
+		textUnidad1.setText(s1.mostrarDatos());
 		textUnidad1.setEditable(false);
-		textUnidad2.setText(s2.toString());
+		textUnidad2.setText(s2.mostrarDatos());
 		textUnidad2.setEditable(false);
 		listo1 = new JButton("LISTO");
 		listo2 = new JButton("LISTO");
@@ -156,8 +156,8 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 						"El Soldado " + resultado[0].getName() + "\nFue beneficiado por ganar la batalla");
 
 				// Actualizar TextArea
-				textUnidad1.setText(s1.toString());
-				textUnidad2.setText(s2.toString());
+				textUnidad1.setText(s1.mostrarDatos());
+				textUnidad2.setText(s2.mostrarDatos());
 
 				MostrarTableroSoldados ante = (MostrarTableroSoldados) anterior;
 				ante.actualizarJuegoPanel(new Tablero(ante.getEjer1(), ante.getEjer2(), anterior, evento));
@@ -173,8 +173,8 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 			}
 
 			// Actualizar TextArea
-			textUnidad1.setText(s1.toString());
-			textUnidad2.setText(s2.toString());
+			textUnidad1.setText(s1.mostrarDatos());
+			textUnidad2.setText(s2.mostrarDatos());
 
 		}
 

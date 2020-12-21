@@ -44,20 +44,28 @@ public class Lancero extends Soldado {
 	}
 
 	public void schiltrom() {
-		System.out.println("schiltrom activado");
 		setNivelDefensa(getNivelDefensa() + 1);
 		setActitud(Soldado.DEFENZA);
 
 	}
 
-	public String toString() {
-		return super.toString() + "\nLongitud Lanza:\t" + longitudLanza;
+	@Override
+	public String mostrarDatos() {
+
+		String text = "";
+		text += "Nombre: " + getName() + "\n";
+		text += super.mostrarDatos();
+		return text;
 	}
 
 	@Override
-	public String mostrarDatos() {
-		// TODO Auto-generated method stub
-		return null;
+	public void actitudDefender() {
+		schiltrom();
+		super.actitudDefender();
+	}
+
+	public String toString() {
+		return super.toString() + "\nLongitud Lanza:\t" + longitudLanza;
 	}
 
 }

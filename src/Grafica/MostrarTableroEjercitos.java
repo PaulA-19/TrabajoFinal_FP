@@ -22,6 +22,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 	private boolean listoActual = false, listoMover = false;
 	private Ejercito ejer1, ejer2;
 	private Color turnoColor;
+	private boolean finalGame = false;
 
 	public MostrarTableroEjercitos(JFrame anterior) {
 		super(anterior);
@@ -59,6 +60,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 			ventana.setVisible(false);
 			ventana = null;
 			Main.getVentanaInicio().setVisible(true);
+			finalGame = true;
 		}
 	}
 
@@ -245,6 +247,14 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 	public Informe getEvento() {
 		return evento;
+	}
+
+	public boolean isFinalGame() {
+		return finalGame;
+	}
+
+	public void setFinalGame(boolean finalGame) {
+		this.finalGame = finalGame;
 	}
 
 	public void setEvento(Informe evento) {
