@@ -130,7 +130,7 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 						JOptionPane.showMessageDialog(ventana, "Preparando todo para la Batalla");
 
 //						ventana.setVisible(false);
-//						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
+						fututo = new Pelea2Soldados(sol1, sol2, ventana, evento, oponente);
 
 						// datos reiniciados
 						sol1 = null;
@@ -238,6 +238,22 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 			}
 		}
 
+	}
+
+	public Ejercito getEjer1() {
+		return ejer1;
+	}
+
+	public Ejercito getEjer2() {
+		return ejer2;
+	}
+
+	public void setEjer1(Ejercito ejer1) {
+		this.ejer1 = ejer1;
+	}
+
+	public void setEjer2(Ejercito ejer2) {
+		this.ejer2 = ejer2;
 	}
 
 }

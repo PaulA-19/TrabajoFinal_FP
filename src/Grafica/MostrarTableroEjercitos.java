@@ -129,7 +129,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 						new MostrarTableroSoldados(ejer1, ejer2, ventana);
 
 						// Funciona
-//						ventana.setVisible(false);
+						ventana.setVisible(false);
 //						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
 
 						// datos reiniciados

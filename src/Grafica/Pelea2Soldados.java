@@ -7,13 +7,16 @@ import java.io.Serializable;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
+import Consola.Ejercito;
+import Consola.Game;
 import Consola.UnidadesDeMapa;
 import Soldado.Soldado;
 
-public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
+public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 
 	private Soldado s1, s2;
 
@@ -21,14 +24,24 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
 	private JButton listo1, listo2;
 	boolean listoP1 = false, listoP2 = false;
 	private Soldado[] resultado;
+	private JFrame ventana, anterior;
+	private ActionListener evento;
+	private UnidadButton oponente;
 
-	public Pelea2Soldados(UnidadesDeMapa unidadesDeMapa, UnidadesDeMapa unidadesDeMapa2) {
+	public Pelea2Soldados(UnidadesDeMapa unidadesDeMapa, UnidadesDeMapa unidadesDeMapa2, JFrame antertior,
+			ActionListener eve, UnidadButton oponente) {
 		super(unidadesDeMapa, unidadesDeMapa2);
 		setTitle("Pelea Soldados");
 		s1 = (Soldado) unidadesDeMapa;
 		s2 = (Soldado) unidadesDeMapa2;
+		this.anterior = antertior;
+		ventana = this;
+		this.oponente = oponente;
 		addComponentes();
 		addEventos();
+		setLocationRelativeTo(antertior);
+		setVisible(true);
+		evento = eve;
 
 	}
 
@@ -86,8 +99,14 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
 
 				if (actitudA1.isSelected()) {
 					s1.actitudAtacar();
+					JOptionPane.showMessageDialog(ventana, "El soldado " + s1.getName()
+							+ "\n- Aumentaron en 1 su nivel de ataque\n- Disminuyeron en 1 su nivel de defensa");
+
 				} else if (actitudD1.isSelected()) {
 					s1.actitudDefender();
+					JOptionPane.showMessageDialog(ventana, "El soldado " + s1.getName()
+							+ "\n- Aumentaron en 1 su nivel de defensa\n- Disminuyeron en 1 su nivel de ataque");
+
 				}
 
 			}
@@ -99,8 +118,14 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
 				actitudN2.setEnabled(false);
 				if (actitudA2.isSelected()) {
 					s2.actitudAtacar();
+					JOptionPane.showMessageDialog(ventana, "El soldado " + s2.getName()
+							+ "\n- Aumentaron en 1 su nivel de ataque\n- Disminuyeron en 1 su nivel de defensa");
+
 				} else if (actitudD2.isSelected()) {
 					s2.actitudDefender();
+					JOptionPane.showMessageDialog(ventana, "El soldado " + s2.getName()
+							+ "\n- Aumentaron en 1 su nivel de defensa\n- Disminuyeron en 1 su nivel de ataque");
+
 				}
 
 			}
@@ -115,10 +140,52 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable{
 		public void actionPerformed(ActionEvent e) {
 			if (listoP1 && listoP2) {
 				JOptionPane.showMessageDialog(principal, "Luchando");
+// -----------
 
+				System.out.println("Antes");
+//				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
+//						+ "," + ejer1.getColumna() + ")");
+//				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
+//						+ "," + ejer2.getColumna() + ")");
+
+//				System.out.println("Oponente: (" + oponente.getFila() + "," + oponente.getColumna() + ")");
 				// Puede haber un bucle infinito
 				resultado = (Soldado[]) Soldado.batalla(s1, s2);
 				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
+
+//				System.out.println("Ganador: " + resultado[0].getNameReino());
+//				System.out.println("Perdedor: " + resultado[1].getNameReino());
+
+				// actualizamos posicion
+				resultado[0].setFila(oponente.getFila());
+				resultado[0].setColumna(oponente.getColumna());
+
+				// Beneficiado
+				resultado[0].beneficiado();
+				JOptionPane.showMessageDialog(ventana,
+						"El Soldado " + resultado[0].getName() + "\nFue beneficiado por ganar la batalla");
+//
+//				System.out.println("Despues");
+//				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
+//						+ "," + ejer1.getColumna() + ")");
+//				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
+//						+ "," + ejer2.getColumna() + ")");
+
+				// Actualizar TextArea
+				textUnidad1.setText(s1.toString());
+				textUnidad2.setText(s2.toString());
+
+				MostrarTableroSoldados ante = (MostrarTableroSoldados) anterior;
+				ante.actualizarJuegoPanel(new Tablero(ante.getEjer1(), ante.getEjer2(), anterior, evento));
+
+				ventana.setVisible(false);
+//				anterior.setVisible(true);
+				ante.verificarFinalBatalla();
+// --------
+
+//				// Puede haber un bucle infinito
+//				resultado = (Soldado[]) Soldado.batalla(s1, s2);
+//				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
 			} else {
 				JOptionPane.showMessageDialog(principal, "Ambos participantes deben de estar LISTOS");
 

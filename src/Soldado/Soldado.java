@@ -71,9 +71,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		Soldado s1 = (Soldado) unidad1;
 		Soldado s2 = (Soldado) unidad2;
 
-		while (s1.isVive() && s2.isVive()) {
-			pelear(s1, s2);
-		}
+		pelear(s1, s2);
 
 		if (s1.isVive()) {
 			ganador = s1;
@@ -96,10 +94,6 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		// IMplementar una metrtic PARA BATALLA
 		s2.morir();
 
-		System.out.println("Quitar 4");
-		s1.quitarVidaDefensa(4);
-
-		System.out.println(s1);
 	}
 
 	private static void mostrarGanador(Soldado sol) {

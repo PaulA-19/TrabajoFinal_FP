@@ -100,7 +100,7 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 				if (actitudA1.isSelected()) {
 					ejer1.actitudAtacar();
 					JOptionPane.showMessageDialog(ventana, "Todos los soldados de " + ejer1.getName()
-							+ "\n- Aumentaron en uno su nivel de ataque\n- Disminuyeron en 1 su nivel de defensa");
+							+ "\n- Aumentaron en 1 su nivel de ataque\n- Disminuyeron en 1 su nivel de defensa");
 				} else if (actitudD1.isSelected()) {
 					ejer1.actitudDefender();
 					JOptionPane.showMessageDialog(ventana, "Todos los soldados de " + ejer1.getName()

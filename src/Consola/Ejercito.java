@@ -340,6 +340,22 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return cantidad;
 	}
 
+	@Override
+	public boolean isVive() {
+		if (getUnidades().size() == 0) {
+			return false;
+		}
+
+		boolean posibleValor = false;
+		for (UnidadesDeMapa unidadesDeMapa : soldados) {
+			Soldado sol = (Soldado) unidadesDeMapa;
+			posibleValor = posibleValor || sol.isVive();
+		}
+
+		setVive(posibleValor);
+		return posibleValor;
+	}
+
 	// Get and Set
 	public String getName() {
 		return name;
