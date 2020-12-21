@@ -221,9 +221,9 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	public static Ejercito getVivo(Ejercito e1, Ejercito e2) {
 		if (e1.isVive()) {
-			return e2;
-		} else {
 			return e1;
+		} else {
+			return e2;
 		}
 	}
 

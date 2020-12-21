@@ -66,6 +66,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 		// Sur
 		mover = new JButton("Mover");
 		inicio = new JButton("Inicio");
+		inicio.addActionListener(new IrInicio());
 		atras = new JButton("Atras");
 		JPanel op = new JPanel();
 		op.add(atras);
@@ -145,6 +146,16 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 		} else {
 			turnoText = turnosText[0];
 		}
+	}
+
+	private class IrInicio implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Main.getVentanaInicio().setVisible(true);
+			ventana.setVisible(false);
+		}
+
 	}
 
 	// Get and set

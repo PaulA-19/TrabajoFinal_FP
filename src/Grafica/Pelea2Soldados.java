@@ -143,18 +143,8 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 // -----------
 
 				System.out.println("Antes");
-//				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
-//						+ "," + ejer1.getColumna() + ")");
-//				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
-//						+ "," + ejer2.getColumna() + ")");
-
-//				System.out.println("Oponente: (" + oponente.getFila() + "," + oponente.getColumna() + ")");
-				// Puede haber un bucle infinito
 				resultado = (Soldado[]) Soldado.batalla(s1, s2);
 				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
-
-//				System.out.println("Ganador: " + resultado[0].getNameReino());
-//				System.out.println("Perdedor: " + resultado[1].getNameReino());
 
 				// actualizamos posicion
 				resultado[0].setFila(oponente.getFila());
@@ -164,12 +154,6 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 				resultado[0].beneficiado();
 				JOptionPane.showMessageDialog(ventana,
 						"El Soldado " + resultado[0].getName() + "\nFue beneficiado por ganar la batalla");
-//
-//				System.out.println("Despues");
-//				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
-//						+ "," + ejer1.getColumna() + ")");
-//				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
-//						+ "," + ejer2.getColumna() + ")");
 
 				// Actualizar TextArea
 				textUnidad1.setText(s1.toString());
@@ -183,9 +167,6 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 				ante.verificarFinalBatalla();
 // --------
 
-//				// Puede haber un bucle infinito
-//				resultado = (Soldado[]) Soldado.batalla(s1, s2);
-//				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
 			} else {
 				JOptionPane.showMessageDialog(principal, "Ambos participantes deben de estar LISTOS");
 

@@ -42,7 +42,6 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		this.eve = eve;
 		evento = eve;
 		getMover().addActionListener(eve);
-		getInicio().addActionListener(eve);
 		getAtras().addActionListener(eve);
 		turno = Game.getGame().getReino1().getName();
 		turnoColor = Game.getGame().getReino1().getColor();
@@ -70,6 +69,11 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 			turno = Game.getGame().getReino1().getName();
 			turnoColor = Game.getGame().getReino1().getColor();
 		}
+	}
+
+	public void actualizarFilaColumnaGanador(Ejercito ejerGanador) {
+		ejerGanador.setFila(oponente.getFila());
+		ejerGanador.setColumna(oponente.getColumna());
 	}
 
 	public class Informe implements ActionListener {
@@ -236,6 +240,14 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 			}
 		}
 
+	}
+
+	public Informe getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Informe evento) {
+		this.evento = evento;
 	}
 
 }

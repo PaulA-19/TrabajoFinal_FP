@@ -46,7 +46,6 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 		this.eve = eve;
 		evento = eve;
 		getMover().addActionListener(eve);
-		getInicio().addActionListener(eve);
 		getAtras().addActionListener(eve);
 		turno = ejer1.getName();
 		turnoColor = ejer1.getColor();
@@ -57,16 +56,20 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 
 	public void verificarFinalBatalla() {
 		if (!ejer1.isVive() || !ejer2.isVive()) {
+			Ejercito ganador = Ejercito.getVivo(ejer1, ejer2);
 			JOptionPane.showMessageDialog(ventana,
-					"El ganador es el Ejercito " + Ejercito.getVivo(ejer1, ejer2).getName() + "\nDel reino "
-							+ Ejercito.getVivo(ejer1, ejer2).getNameReino());
+					"El ganador es el Ejercito " + ganador.getName() + "\nDel reino " + ganador.getNameReino());
 
 			ventana.setVisible(false);
-			ventana = null;
-			MostrarTableroEjercitos ante = (MostrarTableroEjercitos) anterior;
-			ante.actualizarJuegoPanel(
-					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
+//			ventana = null;
+			System.out.println("Ejercito 1: " + ejer1.isVive());
+			System.out.println("Ejercito 2: " + ejer2.isVive());
 
+			MostrarTableroEjercitos ante = (MostrarTableroEjercitos) anterior;
+			ante.actualizarFilaColumnaGanador(ganador);
+			ante.actualizarJuegoPanel(
+					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, ante.getEvento()));
+			ante.verificarFinalJuego();
 			anterior.setVisible(true);
 		}
 	}
