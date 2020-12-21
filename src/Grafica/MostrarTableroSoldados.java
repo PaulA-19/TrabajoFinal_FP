@@ -70,7 +70,7 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 			ante.actualizarJuegoPanel(
 					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, ante.getEvento()));
 			ante.verificarFinalJuego();
-//			anterior.setVisible(true);
+			anterior.setVisible(true);
 		}
 	}
 
