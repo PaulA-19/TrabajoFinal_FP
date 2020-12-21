@@ -285,10 +285,8 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	@Override
 	public int sumaVidaVivos() {
-		int cantidad = 0;
-		for (UnidadesDeMapa unidadesDeMapa : soldados) {
-			Soldado sol = (Soldado) unidadesDeMapa;
-			sol.getNivelVidaVivos();
+		if (isVive()) {
+			return getNivelVida();
 		}
 		return 0;
 	}
@@ -313,9 +311,15 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	@Override
 	public String datosPuntuales() {
-		String text = String.format("%02d", getNivelVida()) + "-"
-				+ String.format("%02d", getNivelAtaque() + "-" + String.format("%02d", getNivelDefensa()));
-		System.out.println(text);
+		String text = "";
+
+		text += getNameReino().substring(2);
+		text += "-" + getNivelVidaActual();
+
+//		String text = String.format("%02d", getNivelVida()) + "-"
+//				+ String.format("%02d", getNivelAtaque() + "-" + String.format("%02d", getNivelDefensa()));
+//		System.out.println(text);
+
 		return text;
 	}
 

@@ -9,107 +9,113 @@ import javax.swing.*;
 import com.sun.source.doctree.TextTree;
 
 import Consola.*;
+import Soldado.Soldado;
 
-public class MostrarTableroEjercitos extends MuestraTablero implements Serializable {
+public class MostrarTableroSoldados extends MuestraTablero implements Serializable {
 
 	private Mapa tabla;
 	private String turno;
 	private String turnoMostrar;
 //	private Tablero tableroJuego;
 	private JFrame anterior, ventana, fututo;
-	private Informe evento;
+	private InformeSol evento;
 	private ActionListener eve;
 	private boolean listoActual = false, listoMover = false;
 	private Ejercito ejer1, ejer2;
+	private Soldado sol1, sol2;
 	private Color turnoColor;
 
-	public MostrarTableroEjercitos(JFrame anterior) {
+	public MostrarTableroSoldados(Ejercito e1, Ejercito e2, JFrame anterior) {
 		super(anterior);
-		setTitle("Mapa Completo");
+		setTitle("Pelea Ejercitos");
+		ejer1 = e1;
+		ejer2 = e2;
 		addComponentes();
 		this.anterior = anterior;
 		setVisible(true);
 		this.ventana = this;
-		verificarFinalJuego();
+		verificarFinalBatalla();
 	}
 
-	public MostrarTableroEjercitos() {
+	public MostrarTableroSoldados() {
 		super();
 	}
 
 	private void addComponentes() {
-		Informe eve = new Informe();
+		InformeSol eve = new InformeSol();
 		this.eve = eve;
 		evento = eve;
 		getMover().addActionListener(eve);
 		getInicio().addActionListener(eve);
 		getAtras().addActionListener(eve);
-		turno = Game.getGame().getReino1().getName();
-		turnoColor = Game.getGame().getReino1().getColor();
+		turno = ejer1.getName();
+		turnoColor = ejer1.getColor();
 		actualizarLabelTurno(turno, turnoColor);
-		tableroJuego = new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, eve);
+		tableroJuego = new Tablero(ejer1, ejer2, anterior, eve);
 		actualizarJuegoPanel(tableroJuego);
 	}
 
-	public void verificarFinalJuego() {
-		if (Game.getGame().isFinal()) {
+	public void verificarFinalBatalla() {
+		if (!ejer1.isVive() || !ejer2.isVive()) {
 			JOptionPane.showMessageDialog(ventana,
-					"El ganador es el Reino de " + (Game.getGame().ganadorReino().getName()));
+					"El ganador es el Ejercito " + Ejercito.getVivo(ejer1, ejer2).getName() + "\nDel reino "
+							+ Ejercito.getVivo(ejer1, ejer2).getNameReino());
 
 			ventana.setVisible(false);
 			ventana = null;
-			Main.getVentanaInicio().setVisible(true);
+			MostrarTableroEjercitos ante = (MostrarTableroEjercitos) anterior;
+			ante.actualizarJuegoPanel(
+					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
+
+			anterior.setVisible(true);
 		}
 	}
 
 	private void cambiarTurno() {
-		if (turno.equalsIgnoreCase(Game.getGame().getReino1().getName())) {
-			turno = Game.getGame().getReino2().getName();
-			turnoColor = Game.getGame().getReino2().getColor();
+		if (turno.equalsIgnoreCase(ejer1.getName())) {
+			turno = ejer2.getName();
+			turnoColor = ejer2.getColor();
 		} else {
-			turno = Game.getGame().getReino1().getName();
-			turnoColor = Game.getGame().getReino1().getColor();
+			turno = ejer1.getName();
+			turnoColor = ejer1.getColor();
 		}
 	}
 
-	public class Informe implements ActionListener {
+	public class InformeSol implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			// Atras
+			// Atras-------------------------------------
 			if (e.getSource() == getAtras()) {
 				System.out.println("Atras");
 				ventana.setVisible(false);
-				PreviaJuego ant = (PreviaJuego) anterior;
-				anterior = new PreviaJuego(ant.getAnterior(), "Informe de juego Actual");
+				anterior.setVisible(true);
 			}
 
-			// Inicio
+			// Inicio--------------------------------------
 			if (e.getSource() == getInicio()) {
 				System.out.println("Inicio");
 				ventana.setVisible(false);
 				Main.getVentanaInicio().setVisible(true);
 			}
 
-			// Mover
+			// Mover--------------------------------------------
 
 			if (e.getSource() == getMover()) {
-				System.out.println("Mover");
 				if (listoActual && listoMover) {
 
-					if (ejer2 == null) {
+					if (sol2 == null) {
 						JOptionPane.showMessageDialog(ventana, "Moviendo ejercito");
-						MostrarTableroEjercitos ven = (MostrarTableroEjercitos) ventana;
+						MostrarTableroSoldados ventanaAnteCast = (MostrarTableroSoldados) ventana;
 
-						ejer1.setFila(oponente.getFila());
-						ejer1.setColumna(oponente.getColumna());
+						sol1.setFila(oponente.getFila());
+						sol1.setColumna(oponente.getColumna());
 
-						ven.actualizarJuegoPanel(
-								new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
+						ventanaAnteCast.actualizarJuegoPanel(new Tablero(ejer1, ejer2, anterior, evento));
 						// datos reiniciados
-						ejer1 = null;
-						ejer2 = null;
+						sol1 = null;
+						sol2 = null;
 						listoActual = false;
 						listoMover = false;
 						textActua.setText("");
@@ -123,12 +129,6 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 						// pelea
 						JOptionPane.showMessageDialog(ventana, "Preparando todo para la Batalla");
 
-//						String [] opciones = {"Automatico", "Manual"};
-//						String tipo = JOptionPane.showOptionDialog(ventana, "Mensaje", "Tipo batalla", JOptionPane.PLAIN_MESSAGE, 1, 0, opciones, opciones[0]);
-
-						new MostrarTableroSoldados(ejer1, ejer2, ventana);
-
-						// Funciona
 //						ventana.setVisible(false);
 //						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
 
@@ -153,62 +153,64 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 				}
 
-				verificarFinalJuego();
+				verificarFinalBatalla();
 			}
 
-			// Seleccion de ejercitos
+			// Seleccion de
+			// Soldaos------------------------------------------------------------------
 			if (e.getSource() instanceof UnidadButton) {
 
 				UnidadButton botonSeleccionado = (UnidadButton) e.getSource();
-				// actual
+				Soldado solSelecBoton = (Soldado) botonSeleccionado.getUnidad();
+				// actualTextArea
 				if (actualTexArea.isSelected()) {
 
-					if (botonSeleccionado.getUnidad() == null) {
-						JOptionPane.showMessageDialog(ventana, "No existe algun ejercito en esa posición");
+					if (solSelecBoton == null) {
+						JOptionPane.showMessageDialog(ventana, "No existe algun Soldado en esa posición");
 
-					} else if (turno.equalsIgnoreCase(botonSeleccionado.getUnidad().getNameReino())) {
+					} else if (turno.equalsIgnoreCase(solSelecBoton.getNameEjercito())) {
 
 						// correcto
-						ejer1 = (Ejercito) botonSeleccionado.getUnidad();
-						textActua.setText(ejer1.mostrarDatos());
+						sol1 = solSelecBoton;
+						textActua.setText(sol1.mostrarDatos());
 						moverTextArea.setSelected(true);
 						listoActual = true;
 
 						JOptionPane.showMessageDialog(ventana, "Seleccione a donde desea mover");
 					} else {
-						JOptionPane.showMessageDialog(ventana, "No pude seleccionar ejercitos de otros Reinos");
+						JOptionPane.showMessageDialog(ventana, "No pude seleccionar ejercitos de otros Ejercitos");
 					}
 
-				} else {
+				} else { // moverTextArea
 					oponente = botonSeleccionado;
 					if (botonSeleccionado.getUnidad() == null) {
 						JOptionPane.showMessageDialog(ventana, "Vacio");
-						ejer2 = (Ejercito) botonSeleccionado.getUnidad();
+						sol2 = (Soldado) botonSeleccionado.getUnidad();
 						textMover.setText("Vacio");
 						actualTexArea.setSelected(true);
 						listoMover = true;
 						JOptionPane.showMessageDialog(ventana, "Ya puede mover");
 
-					} else if (turno.equalsIgnoreCase(botonSeleccionado.getUnidad().getNameReino())) {
+					} else if (turno.equalsIgnoreCase(((Soldado) botonSeleccionado.getUnidad()).getNameEjercito())) {
 
 						// Misma unidad
 
 						int opcion = JOptionPane.showConfirmDialog(ventana,
-								"Existe un ejercito del mismo reino\nDesea Continuar", "Continuar",
+								"Existe un Soldado del mismo Ejercito\n¿Desea Continuar?", "Continuar",
 								JOptionPane.YES_NO_OPTION);
 
-						System.out.println(opcion);
 						if (opcion == 0) {
-							ejer2 = (Ejercito) botonSeleccionado.getUnidad();
-							textMover.setText(ejer2.mostrarDatos());
+							sol2 = (Soldado) botonSeleccionado.getUnidad();
+							textMover.setText(sol2.mostrarDatos());
 							actualTexArea.setSelected(true);
 							listoMover = true;
-							JOptionPane.showMessageDialog(ventana, "Seleccione a donde desea mover");
+//							JOptionPane.showMessageDialog(ventana, "Seleccione a donde desea mover");
 						} else {
 							return;
 						}
 					} else {
-						ejer2 = (Ejercito) botonSeleccionado.getUnidad();
+						// otro soldado
+						sol2 = (Soldado) botonSeleccionado.getUnidad();
 						textMover.setText(ejer2.mostrarDatos());
 						actualTexArea.setSelected(true);
 						listoMover = true;

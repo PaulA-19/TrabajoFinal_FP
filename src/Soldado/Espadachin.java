@@ -54,4 +54,10 @@ public class Espadachin extends Soldado {
 		return super.toString() + "\nLongitud Espada:\t" + longitudEspada;
 	}
 
+	@Override
+	public String mostrarDatos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

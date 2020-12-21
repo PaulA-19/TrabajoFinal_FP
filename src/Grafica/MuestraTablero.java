@@ -85,7 +85,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 	private void addPresentacion() {
 		presentacionTurno.add(nombreTurno);
-		actualizarLabelTurno(Game.getGame().getReino1().getName(), Game.getGame().getReino1().getColor());
+//		actualizarLabelTurno(Game.getGame().getReino1().getName(), Game.getGame().getReino1().getColor());
 
 	}
 

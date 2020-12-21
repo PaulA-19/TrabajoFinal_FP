@@ -52,9 +52,8 @@ public class Tablero extends JPanel implements Serializable {
 		MostrarTableroEjercitos eve;
 		if (evento instanceof MostrarTableroEjercitos.Informe) {
 			evento = (MostrarTableroEjercitos.Informe) evento;
-		} else if (evento instanceof MostrarTableroEjercitos.Informe) {
-			evento = (MostrarTableroEjercitos.Informe) evento;
-
+		} else if (evento instanceof MostrarTableroSoldados.InformeSol) {
+			evento = (MostrarTableroSoldados.InformeSol) evento;
 		}
 
 		for (int i = 0; i < 10; i++) {

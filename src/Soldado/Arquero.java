@@ -55,4 +55,10 @@ public class Arquero extends Soldado {
 		return super.toString() + "\nNumero Flechas:\t" + numFlechas;
 	}
 
+	@Override
+	public String mostrarDatos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

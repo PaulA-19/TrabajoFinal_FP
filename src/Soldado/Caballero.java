@@ -80,4 +80,10 @@ public class Caballero extends Soldado {
 		return super.toString() + "\nArma Actual:\t" + armaActual;
 	}
 
+	@Override
+	public String mostrarDatos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

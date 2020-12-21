@@ -37,6 +37,9 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		color = c;
 		simbolo = name.toUpperCase().charAt(0);
 		llenarAutomatico();
+		if (getUnidades().size() == 0) {
+			setVive(false);
+		}
 		cantidad++;
 	}
 
@@ -216,8 +219,17 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return text;
 	}
 
+	public static Ejercito getVivo(Ejercito e1, Ejercito e2) {
+		if (e1.isVive()) {
+			return e2;
+		} else {
+			return e1;
+		}
+	}
+
 	// Mapeable
 	@Override
+
 	public ArrayList<UnidadesDeMapa> getUnidades() {
 
 		return soldados;
