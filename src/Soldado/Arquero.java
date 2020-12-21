@@ -22,7 +22,7 @@ public class Arquero extends Soldado {
 		setNivelAtaque(ataque);
 		setNivelDefensa(defensa);
 		setNivelVidaActual(getNivelVida());
-		
+
 		cantidad++;
 
 	}
@@ -35,7 +35,7 @@ public class Arquero extends Soldado {
 		setNivelAtaque(ataque);
 		setNivelDefensa(defensa);
 		setNivelVidaActual(getNivelVida());
-		
+
 		Arquero.cantidad++;
 
 	}
@@ -57,8 +57,8 @@ public class Arquero extends Soldado {
 
 	@Override
 	public String mostrarDatos() {
-		// TODO Auto-generated method stub
-		return null;
+		String test = getName();
+		return test;
 	}
 
 }

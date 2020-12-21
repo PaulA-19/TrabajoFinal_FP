@@ -133,8 +133,8 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 //						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
 
 						// datos reiniciados
-						ejer1 = null;
-						ejer2 = null;
+						sol1 = null;
+						sol2 = null;
 						listoActual = false;
 						listoMover = false;
 						textActua.setText("");
