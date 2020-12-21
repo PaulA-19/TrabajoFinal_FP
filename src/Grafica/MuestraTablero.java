@@ -152,7 +152,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Main.getVentanaInicio().setVisible(true);
+			Main.volverAMostrar(ventana);
 			ventana.setVisible(false);
 		}
 

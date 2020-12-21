@@ -21,6 +21,7 @@ public class Main extends JFrame implements Serializable {
 
 	private JButton nuevo, cargar, salir, tutorial, guardar;
 	private static Main ventanaInicio;
+	private static JFrame anterior;
 	private JPanel principal, opciones;
 
 	public Main() {
@@ -29,10 +30,10 @@ public class Main extends JFrame implements Serializable {
 		ventanaInicio = this;
 		principal.setLayout(new BorderLayout());
 		getContentPane().add(principal);
-		setSize(350, 300);
+		setSize(350, 350);
 		setLocationRelativeTo(null);
 		addComponentes();
-		setResizable(false);
+//		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -48,11 +49,12 @@ public class Main extends JFrame implements Serializable {
 
 	private void addBotones() {
 		opciones = new JPanel();
-		opciones.setLayout(new GridLayout(5, 1, 5, 5));
+		opciones.setLayout(new GridLayout(6, 1, 5, 5));
 
 		Navegar accion = new Navegar();
 
 		addBoton("Nuevo", "Nuevo Juego");
+		addBoton("Continuar", "Continuar Juego");
 		addBoton("Cargar", "Carga Juego Guardado");
 		addBoton("Tutorial", "Un breve tutorial");
 		addBoton("Guardar", "Guarda la partida");
@@ -70,6 +72,11 @@ public class Main extends JFrame implements Serializable {
 		p.add(new JLabel(descripcion));
 		opciones.add(p);
 
+	}
+
+	public static void volverAMostrar(JFrame anterior) {
+		setAnterior(anterior);
+		ventanaInicio.setVisible(true);
 	}
 
 	// get and set
@@ -94,6 +101,17 @@ public class Main extends JFrame implements Serializable {
 				Game.setGame(new Game());
 				new PreviaJuego(ventanaInicio, "Nuevo Juego");
 
+			}
+
+			// Continuar
+			if (boton.getText().equalsIgnoreCase("Continuar")) {
+				if (getAnterior() == null) {
+					JOptionPane.showMessageDialog(ventanaInicio, "Primero debe de crear o cargar un juego");
+				} else {
+
+					ventanaInicio.setVisible(false);
+					getAnterior().setVisible(true);
+				}
 			}
 
 			// Cargar
@@ -181,6 +199,14 @@ public class Main extends JFrame implements Serializable {
 
 	public static void setVentanaInicio(Main ventanaInicio) {
 		Main.ventanaInicio = ventanaInicio;
+	}
+
+	public static JFrame getAnterior() {
+		return anterior;
+	}
+
+	public static void setAnterior(JFrame anterior) {
+		Main.anterior = anterior;
 	}
 
 }
