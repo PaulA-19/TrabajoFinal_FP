@@ -224,19 +224,19 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 
 	}
 
-	public class Informe2 implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getActionCommand().equals("Mover")) {
-				JOptionPane.showMessageDialog(ventana, "Moviendo 2");
-			} else if (e.getSource() instanceof UnidadButton) {
-				JOptionPane.showMessageDialog(ventana, "Otro boton evento 2");
-			}
-		}
-
-	}
+//	public class Informe2 implements ActionListener {
+//
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//
+//			if (e.getActionCommand().equals("Mover")) {
+//				JOptionPane.showMessageDialog(ventana, "Moviendo 2");
+//			} else if (e.getSource() instanceof UnidadButton) {
+//				JOptionPane.showMessageDialog(ventana, "Otro boton evento 2");
+//			}
+//		}
+//
+//	}
 
 	public Ejercito getEjer1() {
 		return ejer1;

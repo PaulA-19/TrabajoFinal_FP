@@ -134,9 +134,9 @@ public class PreviaJuego extends JFrame implements Serializable {
 		public void actionPerformed(ActionEvent e) {
 			JButton botonPresionado = (JButton) e.getSource();
 
-			// Cancelar
+			// Atras
 			if (botonPresionado.getText().contentEquals("ATRAS")) {
-				Main.getVentanaInicio().setVisible(true);
+				Main.volverAMostrar(ventana);
 				ventana.setVisible(false);
 			}
 

@@ -479,11 +479,12 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	}
 
+	// corregir
 	@Override
 	public String mostrarDatos() {
 		String text = "";
 		text += "Ejercito: " + this.getNameReino() + "\n";
-		text += "Cantidad total de soldados: " + numSoldados() + "\n";
+		text += "Cantidad total de soldados: " + numSoldadosVivos() + "\n";
 		int[] numTipos = this.cantidadTiposSoldados();
 		text += "Caballero: " + numTipos[1] + "\n";
 		text += "Arquero: " + numTipos[2] + "\n";
@@ -496,18 +497,21 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 	private int[] cantidadTiposSoldados() {
 		int[] tipos = new int[6];
 		for (UnidadesDeMapa soldado : getUnidades()) {
-			if (soldado instanceof SuperCaballero) {
-				tipos[0]++;
-			} else if (soldado instanceof Caballero && !(soldado instanceof SuperCaballero)) {
-				tipos[1]++;
-			} else if (soldado instanceof Arquero) {
-				tipos[2]++;
-			} else if (soldado instanceof Lancero) {
-				tipos[3]++;
-			} else if (soldado instanceof Espadachin && !(soldado instanceof SuperEspadachin)) {
-				tipos[4]++;
-			} else if (soldado instanceof SuperEspadachin) {
-				tipos[5]++;
+			if (soldado.isVive()) {
+
+				if (soldado instanceof SuperCaballero) {
+					tipos[0]++;
+				} else if (soldado instanceof Caballero && !(soldado instanceof SuperCaballero)) {
+					tipos[1]++;
+				} else if (soldado instanceof Arquero) {
+					tipos[2]++;
+				} else if (soldado instanceof Lancero) {
+					tipos[3]++;
+				} else if (soldado instanceof Espadachin && !(soldado instanceof SuperEspadachin)) {
+					tipos[4]++;
+				} else if (soldado instanceof SuperEspadachin) {
+					tipos[5]++;
+				}
 			}
 		}
 		return tipos;
