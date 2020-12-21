@@ -130,15 +130,21 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 						// pelea
 						JOptionPane.showMessageDialog(ventana, "Preparando todo para la Batalla");
 
-//						String [] opciones = {"Automatico", "Manual"};
-//						String tipo = JOptionPane.showOptionDialog(ventana, "Mensaje", "Tipo batalla", JOptionPane.PLAIN_MESSAGE, 1, 0, opciones, opciones[0]);
+						String[] options = { "Ejercito Entero", "Soldado por Soldado" };
+						int numOpcion = JOptionPane.showOptionDialog(ventana, "Seleccione Opcion de Batalla", "Opcion",
+								1, 1, null, options, options[0]);
+						if (numOpcion == 1) {
 
-						new MostrarTableroSoldados(ejer1, ejer2, ventana);
+// new Mostrarablero Soldado						
+							new MostrarTableroSoldados(ejer1, ejer2, ventana);
 
-						// Funciona
-						ventana.setVisible(false);
-//						fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
+							// Funciona
+							ventana.setVisible(false);
+						} else {
+							fututo = new Pelea2Ejercitos(ejer1, ejer2, ventana, evento, oponente);
 
+						}
+						// -- -------
 						// datos reiniciados
 						ejer1 = null;
 						ejer2 = null;
