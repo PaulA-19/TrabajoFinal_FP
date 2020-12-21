@@ -52,6 +52,7 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 	public void verificarFinalJuego() {
 		if (Game.getGame().isFinal()) {
+			ventana.setVisible(true);
 			JOptionPane.showMessageDialog(ventana,
 					"El ganador es el Reino de " + (Game.getGame().ganadorReino().getName()));
 

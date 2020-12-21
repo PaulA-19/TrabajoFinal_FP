@@ -70,7 +70,7 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 			ante.actualizarJuegoPanel(
 					new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, ante.getEvento()));
 			ante.verificarFinalJuego();
-			anterior.setVisible(true);
+//			anterior.setVisible(true);
 		}
 	}
 
@@ -94,13 +94,6 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 				System.out.println("Atras");
 				ventana.setVisible(false);
 				anterior.setVisible(true);
-			}
-
-			// Inicio--------------------------------------
-			if (e.getSource() == getInicio()) {
-				System.out.println("Inicio");
-				ventana.setVisible(false);
-				Main.getVentanaInicio().setVisible(true);
 			}
 
 			// Mover--------------------------------------------
