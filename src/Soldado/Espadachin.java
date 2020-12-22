@@ -3,6 +3,8 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import Consola.UnidadesDeMapa;
+
 // POdemos añadir otr INTERFACE
 
 public class Espadachin extends Soldado {
@@ -12,8 +14,8 @@ public class Espadachin extends Soldado {
 	private static int defensa = 8;
 	private static int vidaMin = 8;
 	private static int vidaMax = 10;
-
-	private int longitudEspada;
+	private static int aumentarDefensa = 2;
+	private int longitudEspada = 5;
 	private boolean muro = false;
 
 	// Para ramdon
@@ -45,13 +47,26 @@ public class Espadachin extends Soldado {
 
 	public void crearMuroEscudo() {
 		muro = true;
-		System.out.println("Muro de escudo creado");
+		setNivelDefensa(getNivelDefensa() + aumentarDefensa);
+		setActitud(Soldado.DEFENZA);
 
 	}
 
 	@Override
 	public String toString() {
 		return super.toString() + "\nLongitud Espada:\t" + longitudEspada;
+	}
+
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		super.atacarOponente(oponente);
+
+	}
+
+	@Override
+	public void actitudDefender() {
+		crearMuroEscudo();
+		super.actitudDefender();
 	}
 
 	@Override

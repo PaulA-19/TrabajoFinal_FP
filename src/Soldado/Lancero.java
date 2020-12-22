@@ -3,11 +3,14 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import Consola.UnidadesDeMapa;
+
 // falta implementar los ataques, de soldados
 
 public class Lancero extends Soldado {
 	// Vida, ataque,defenza
 	public static int cantidad = 0;
+	private static int aumentarDefensa = 2;
 
 	private static int ataque = 10;
 	private static int defensa = 5;
@@ -17,7 +20,7 @@ public class Lancero extends Soldado {
 	// Para ramdon
 	private Random rd = new Random();
 
-	private int longitudLanza;
+	private int longitudLanza = 5;
 
 	public Lancero(String nameReino, String nameEjercito, Color c) {
 		super(nameReino, nameEjercito, c, Soldado.NEUTRO, "Lancero", cantidad);
@@ -44,7 +47,7 @@ public class Lancero extends Soldado {
 	}
 
 	public void schiltrom() {
-		setNivelDefensa(getNivelDefensa() + 1);
+		setNivelDefensa(getNivelDefensa() + aumentarDefensa);
 		setActitud(Soldado.DEFENZA);
 
 	}
@@ -56,6 +59,11 @@ public class Lancero extends Soldado {
 		text += "Nombre: " + getName() + "\n";
 		text += super.mostrarDatos();
 		return text;
+	}
+
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		super.atacarOponente(oponente);
 	}
 
 	@Override

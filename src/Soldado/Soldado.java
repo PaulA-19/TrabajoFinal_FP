@@ -31,6 +31,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	private int nivelVida;
 	private int nivelVidaActual;
 	private char actitud = Soldado.NEUTRO;
+	private int batallaGanada = 0;
 	private Color color;
 
 	// Datos generales
@@ -105,8 +106,9 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 			perdedor = e1;
 
 		}
-
+		ganador.setBatallaGanada(ganador.getBatallaGanada() + 1);
 		Soldado[] resultado = { ganador, perdedor };
+		ganador.intentaEvolucionar();
 		return resultado;
 
 	}
@@ -127,7 +129,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 //
 //	}
 
-	private static int numAleatorio(int m, int n) {
+	public static int numAleatorio(int m, int n) {
 		int num = (rd.nextInt(n - m) + m);
 		return num;
 	}
@@ -371,6 +373,9 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		return text;
 	}
 
+	public void intentaEvolucionar() {
+	}
+
 	// ---------------- get and set ---------------------------------------
 	public Color getColor() {
 		return color;
@@ -497,6 +502,14 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	public void setDefender(boolean defender) {
 		this.defender = defender;
+	}
+
+	public int getBatallaGanada() {
+		return batallaGanada;
+	}
+
+	public void setBatallaGanada(int batallaGanada) {
+		this.batallaGanada = batallaGanada;
 	}
 
 }

@@ -3,6 +3,8 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import Consola.UnidadesDeMapa;
+
 public class Caballero extends Soldado {
 	public static int cantidad = 0;
 	private static int ataque = 13;
@@ -45,10 +47,6 @@ public class Caballero extends Soldado {
 		if (!montado) {
 			montado = true;
 			cambiarArma();
-			envestir();
-			System.out.println("Caballero montado");
-		} else {
-			System.out.println("No puede montar, ya esta montado");
 		}
 	}
 
@@ -59,11 +57,7 @@ public class Caballero extends Soldado {
 	public void desmontar() {
 		if (montado) {
 			montado = false;
-			System.out.println("Defendiendo");
 			cambiarArma();
-			System.out.println("Caballero desmontado");
-		} else {
-			System.out.println("No puede desmontar, ya esta desmontado");
 		}
 	}
 
@@ -76,17 +70,37 @@ public class Caballero extends Soldado {
 	}
 
 	@Override
-	public String toString() {
-		return super.toString() + "\nArma Actual:\t" + armaActual;
-	}
-
-	@Override
 	public String mostrarDatos() {
 
 		String text = "";
 		text += "Nombre: " + getName() + "\n";
 		text += super.mostrarDatos();
+		text += "Arma actual: " + armaActual + "\n";
 		return text;
+	}
+
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		if (montado) {
+			super.atacarOponente(oponente);
+			super.atacarOponente(oponente);
+
+		} else {
+			super.atacarOponente(oponente);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "\nArma Actual:\t" + armaActual;
+	}
+
+	public boolean isMontado() {
+		return montado;
+	}
+
+	public void setMontado(boolean montado) {
+		this.montado = montado;
 	}
 
 }

@@ -60,16 +60,29 @@ public class Arquero extends Soldado {
 		String text = "";
 		text += "Nombre: " + getName() + "\n";
 		text += super.mostrarDatos();
+		text += "Numero de Flechas: " + numFlechas + "\n";
 		return text;
 	}
 
 	@Override
 	public void atacarOponente(UnidadesDeMapa oponente) {
 		Soldado oponeSol = (Soldado) oponente;
+		int ataque = this.getNivelAtaque();
+
 		if (numFlechas > 0) {
-			oponeSol.quitarVidaDefensa(getNivelAtaque() / PORCION_ATAQUE);
+			Soldado oponenteSol = (Soldado) oponente;
+			oponenteSol.quitarVidaDefensa(numAleatorio(ataque - FALLO_ATAQUE_SOL, ataque + FALLO_ATAQUE_SOL));
 			dispararFlecha();
 		}
 
 	}
+
+	public int getNumFlechas() {
+		return numFlechas;
+	}
+
+	public void setNumFlechas(int numFlechas) {
+		this.numFlechas = numFlechas;
+	}
+
 }

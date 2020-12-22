@@ -73,16 +73,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="Consola.ConjuntoUnidadesDeMapa" project="TrabajoFinal" 
-    file="/TrabajoFinal/src/Consola/ConjuntoUnidadesDeMapa.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1239" y="-201"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="Grafica.MostrarTableroEjercitos" project="TrabajoFinal" 
+  <class id="9" language="java" name="Grafica.MostrarTableroEjercitos" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MostrarTableroEjercitos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2265" y="741"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,7 +82,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="Grafica.MuestraTablero.IrInicio" project="TrabajoFinal" 
+  <class id="10" language="java" name="Grafica.MuestraTablero.IrInicio" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MuestraTablero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1569" y="538"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Grafica.Pelea2Soldados.Listo" project="TrabajoFinal" 
+  <class id="11" language="java" name="Grafica.Pelea2Soldados.Listo" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Soldados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="983" y="316"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Grafica.Configurar" project="TrabajoFinal" 
+  <class id="12" language="java" name="Grafica.Configurar" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Configurar.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1645" y="441"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="Grafica.MostrarTableroSoldados.InformeSol" project="TrabajoFinal" 
+  <class id="13" language="java" name="Grafica.MostrarTableroSoldados.InformeSol" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MostrarTableroSoldados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1775" y="890"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Grafica.MostrarTableroEjercitos.Informe" project="TrabajoFinal" 
+  <class id="14" language="java" name="Grafica.MostrarTableroEjercitos.Informe" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MostrarTableroEjercitos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1764" y="649"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="Grafica.Pelea2Ejercitos.Luchar" project="TrabajoFinal" 
+  <class id="15" language="java" name="Grafica.Pelea2Ejercitos.Luchar" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Ejercitos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="648" y="317"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="Grafica.PreviaJuego.Accion" project="TrabajoFinal" 
+  <class id="16" language="java" name="Grafica.PreviaJuego.Accion" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/PreviaJuego.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2296" y="243"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="Grafica.MostrarTableroSoldados" project="TrabajoFinal" 
+  <class id="17" language="java" name="Grafica.MostrarTableroSoldados" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MostrarTableroSoldados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2027" y="840"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +154,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="Grafica.MuestraTablero" project="TrabajoFinal" 
+  <class id="18" language="java" name="Grafica.MuestraTablero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/MuestraTablero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1318" y="673"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +163,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="Grafica.Pelea2Ejercitos.Listo" project="TrabajoFinal" 
+  <class id="19" language="java" name="Grafica.Pelea2Ejercitos.Listo" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Ejercitos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="843" y="310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +172,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="Grafica.Main" project="TrabajoFinal" file="/TrabajoFinal/src/Grafica/Main.java" 
+  <class id="20" language="java" name="Grafica.Main" project="TrabajoFinal" file="/TrabajoFinal/src/Grafica/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2503" y="217"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +181,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="Grafica.Pelea2Ejercitos" project="TrabajoFinal" 
+  <class id="21" language="java" name="Grafica.Pelea2Ejercitos" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Ejercitos.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="804" y="180"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,7 +190,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="Grafica.Pelea2Unidades" project="TrabajoFinal" 
+  <class id="22" language="java" name="Grafica.Pelea2Unidades" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Unidades.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1004" y="118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -208,7 +199,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="Grafica.Pelea2Soldados" project="TrabajoFinal" 
+  <class id="23" language="java" name="Grafica.Pelea2Soldados" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Soldados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1051" y="228"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -217,7 +208,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="Grafica.Pelea2Soldados.Luchar" project="TrabajoFinal" 
+  <class id="24" language="java" name="Grafica.Pelea2Soldados.Luchar" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Pelea2Soldados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1100" y="327"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -226,7 +217,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="Grafica.Configurar.Accion" project="TrabajoFinal" 
+  <class id="25" language="java" name="Grafica.Configurar.Accion" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Configurar.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1496" y="370"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -235,7 +226,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="Grafica.Main.Navegar" project="TrabajoFinal" 
+  <class id="26" language="java" name="Grafica.Main.Navegar" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2409" y="134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -244,7 +235,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="Grafica.PreviaJuego" project="TrabajoFinal" 
+  <class id="27" language="java" name="Grafica.PreviaJuego" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/PreviaJuego.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2155" y="211"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -253,7 +244,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="Grafica.UnidadButton" project="TrabajoFinal" 
+  <class id="28" language="java" name="Grafica.UnidadButton" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/UnidadButton.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1106" y="917"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -262,7 +253,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="Grafica.Tablero" project="TrabajoFinal" 
+  <class id="29" language="java" name="Grafica.Tablero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Grafica/Tablero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2490" y="508"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -271,7 +262,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="Soldado.Arquero" project="TrabajoFinal" 
+  <class id="30" language="java" name="Soldado.Arquero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/Arquero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2535" y="-103"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -280,7 +271,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="Soldado.SuperEspadachin" project="TrabajoFinal" 
+  <class id="31" language="java" name="Soldado.SuperEspadachin" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/SuperEspadachin.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2066" y="-340"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -289,7 +280,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="33" language="java" name="Soldado.SuperSoldado" project="TrabajoFinal" 
+  <interface id="32" language="java" name="Soldado.SuperSoldado" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/SuperSoldado.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2568" y="-426"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -298,7 +289,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="34" language="java" name="Soldado.Espadachin" project="TrabajoFinal" 
+  <class id="33" language="java" name="Soldado.Espadachin" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/Espadachin.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2156" y="-132"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -307,7 +298,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="35" language="java" name="Soldado.SuperArquero" project="TrabajoFinal" 
+  <class id="34" language="java" name="Soldado.SuperArquero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/SuperArquero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2543" y="-291"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -316,7 +307,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="36" language="java" name="Soldado.SuperCaballero" project="TrabajoFinal" 
+  <class id="35" language="java" name="Soldado.SuperCaballero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/SuperCaballero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2857" y="-242"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -325,7 +316,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="37" language="java" name="Soldado.SuperLancero" project="TrabajoFinal" 
+  <class id="36" language="java" name="Soldado.SuperLancero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/SuperLancero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2357" y="-274"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -334,7 +325,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="38" language="java" name="Soldado.Soldado" project="TrabajoFinal" 
+  <class id="37" language="java" name="Soldado.Soldado" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/Soldado.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2375" y="26"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -343,7 +334,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="39" language="java" name="Soldado.Caballero" project="TrabajoFinal" 
+  <class id="38" language="java" name="Soldado.Caballero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/Caballero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2927" y="-129"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -352,7 +343,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="40" language="java" name="Soldado.Lancero" project="TrabajoFinal" 
+  <class id="39" language="java" name="Soldado.Lancero" project="TrabajoFinal" 
     file="/TrabajoFinal/src/Soldado/Lancero.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2374" y="-123"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -361,382 +352,374 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
   <dependency id="41">    
-    <end type="SOURCE" refId="19"/>    
+    <end type="SOURCE" refId="37"/>    
     <end type="TARGET" refId="30"/>  
   </dependency>  
   <dependency id="42">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="31"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <dependency id="43">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="19"/>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
   </generalization>  
-  <dependency id="45">    
-    <end type="SOURCE" refId="18"/>    
+  <dependency id="44">    
+    <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <realization id="46">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <dependency id="47">    
+  <dependency id="45">    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="38"/>  
+    <end type="TARGET" refId="37"/>  
   </dependency>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
   <generalization id="48">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="23"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="18"/>  
   </generalization>  
   <generalization id="49">    
-    <end type="SOURCE" refId="34"/>    
-    <end type="TARGET" refId="38"/>  
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="33"/>  
   </generalization>  
-  <realization id="50">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="4"/>  
-  </realization>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="34"/>  
-  </generalization>  
-  <dependency id="53">    
-    <end type="SOURCE" refId="26"/>    
+  <dependency id="50">    
+    <end type="SOURCE" refId="25"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="54">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="39"/>  
+  <dependency id="51">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="38"/>  
   </dependency>  
-  <dependency id="55">    
+  <dependency id="52">    
     <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="21"/>  
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <realization id="56">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="33"/>  
+  <realization id="53">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="32"/>  
   </realization>  
-  <association id="57">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="58" name="ventanaInicio"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
+  <association id="54">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="55" name="ventanaInicio"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="60">    
-    <end type="SOURCE" refId="10"/>    
+  <dependency id="57">    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <dependency id="61">    
+  <dependency id="58">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <dependency id="62">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="29"/>  
+  <dependency id="59">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="28"/>  
   </dependency>  
-  <dependency id="63">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="29"/>  
+  <dependency id="60">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="28"/>  
   </dependency>  
-  <dependency id="64">    
+  <dependency id="61">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </dependency>  
-  <dependency id="65">    
-    <end type="SOURCE" refId="19"/>    
+  <dependency id="62">    
+    <end type="SOURCE" refId="18"/>    
     <end type="TARGET" refId="4"/>  
   </dependency>  
-  <association id="66">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="67" name="ventana">        
+  <association id="63">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="64" name="ventana">        
         <position height="0" width="0" x="-1081" y="-911"/>      
       </attribute>      
-      <multiplicity id="68" minimum="0" maximum="1">        
+      <multiplicity id="65" minimum="0" maximum="1">        
         <position height="0" width="0" x="-1081" y="-911"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="69">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="20"/>  
+  <nesting id="66">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="19"/>  
   </nesting>  
-  <generalization id="70">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="40"/>  
+  <generalization id="67">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="39"/>  
   </generalization>  
-  <nesting id="71">    
+  <nesting id="68">    
     <bendpoint x="1595" y="474"/>    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="26"/>  
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="25"/>  
   </nesting>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
   <dependency id="72">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="28"/>  
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <dependency id="73">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="34"/>  
-  </dependency>  
-  <dependency id="74">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="38"/>  
-  </dependency>  
-  <dependency id="75">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="21"/>  
-  </dependency>  
-  <nesting id="76">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="17"/>  
+  <nesting id="73">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="16"/>  
   </nesting>  
-  <dependency id="77">    
-    <end type="SOURCE" refId="18"/>    
+  <dependency id="74">    
+    <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="78">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="28"/>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
   </dependency>  
-  <dependency id="79">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="21"/>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <generalization id="80">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="31"/>  
+  <generalization id="77">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="30"/>  
   </generalization>  
-  <dependency id="81">    
+  <dependency id="78">    
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="82">    
-    <end type="SOURCE" refId="27"/>    
+  <dependency id="79">    
+    <end type="SOURCE" refId="26"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <dependency id="83">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="21"/>  
+  <dependency id="80">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <nesting id="84">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="12"/>  
+  <nesting id="81">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="11"/>  
   </nesting>  
-  <dependency id="85">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="21"/>  
+  <dependency id="82">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="20"/>  
   </dependency>  
-  <dependency id="86">    
-    <end type="SOURCE" refId="29"/>    
+  <dependency id="83">    
+    <end type="SOURCE" refId="28"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="87">    
+  <association id="84">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="88" name="reinos">        
+      <attribute id="85" name="reinos">        
         <position height="0" width="0" x="1233" y="-1288"/>      
       </attribute>      
-      <multiplicity id="89" minimum="0" maximum="2147483647">        
+      <multiplicity id="86" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="1233" y="-1288"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="90">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="40"/>  
+  <dependency id="87">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="39"/>  
   </dependency>  
-  <dependency id="91">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="29"/>  
-  </dependency>  
-  <dependency id="92">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="29"/>  
-  </dependency>  
-  <dependency id="93">    
-    <end type="SOURCE" refId="17"/>    
+  <dependency id="88">    
+    <end type="SOURCE" refId="24"/>    
     <end type="TARGET" refId="28"/>  
   </dependency>  
-  <dependency id="94">    
-    <end type="SOURCE" refId="28"/>    
+  <dependency id="89">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="90">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="91">    
+    <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <realization id="95">    
-    <end type="SOURCE" refId="36"/>    
-    <end type="TARGET" refId="33"/>  
+  <realization id="92">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="32"/>  
   </realization>  
-  <dependency id="96">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="24"/>  
+  <dependency id="93">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="23"/>  
   </dependency>  
-  <dependency id="97">    
-    <end type="SOURCE" refId="10"/>    
+  <dependency id="94">    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="98">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="29"/>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="28"/>  
   </dependency>  
-  <realization id="99">    
+  <realization id="96">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
-  <dependency id="100">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="26"/>  
+  <dependency id="97">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="25"/>  
   </dependency>  
-  <dependency id="101">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="29"/>  
-  </dependency>  
-  <realization id="102">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="33"/>  
-  </realization>  
-  <generalization id="103">    
-    <end type="SOURCE" refId="36"/>    
-    <end type="TARGET" refId="39"/>  
-  </generalization>  
-  <dependency id="104">    
+  <dependency id="98">    
     <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="29"/>  
-  </dependency>  
-  <dependency id="105">    
-    <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="28"/>  
   </dependency>  
-  <dependency id="106">    
-    <end type="SOURCE" refId="23"/>    
+  <realization id="99">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="38"/>  
+  </generalization>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <dependency id="102">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="103">    
+    <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="107">    
+  <association id="104">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="108" name="ejercitos">        
+      <attribute id="105" name="ejercitos">        
         <position height="0" width="0" x="757" y="-1438"/>      
       </attribute>      
-      <multiplicity id="109" minimum="0" maximum="2147483647">        
+      <multiplicity id="106" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="757" y="-1438"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="110">    
-    <end type="SOURCE" refId="24"/>    
+  <dependency id="107">    
+    <end type="SOURCE" refId="23"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <dependency id="111">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="36"/>  
+  <dependency id="108">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="35"/>  
   </dependency>  
-  <nesting id="112">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="11"/>  
+  <nesting id="109">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="10"/>  
   </nesting>  
-  <generalization id="113">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="38"/>  
-  </generalization>  
-  <dependency id="114">    
+  <generalization id="110">    
     <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
+  <dependency id="111">    
+    <end type="SOURCE" refId="29"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <association id="115">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="116" name="reino">        
+  <association id="112">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="113" name="reino">        
         <position height="0" width="0" x="1233" y="-1288"/>      
       </attribute>      
-      <multiplicity id="117" minimum="0" maximum="1">        
+      <multiplicity id="114" minimum="0" maximum="1">        
         <position height="0" width="0" x="1233" y="-1288"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="118">    
-    <end type="SOURCE" refId="10"/>    
+  <nesting id="115">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <nesting id="116">    
+    <end type="SOURCE" refId="21"/>    
     <end type="TARGET" refId="15"/>  
   </nesting>  
-  <nesting id="119">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="16"/>  
+  <nesting id="117">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="24"/>  
   </nesting>  
-  <nesting id="120">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="25"/>  
-  </nesting>  
-  <generalization id="121">    
+  <generalization id="118">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <dependency id="122">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="32"/>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="31"/>  
   </dependency>  
-  <generalization id="123">    
-    <end type="SOURCE" refId="38"/>    
+  <generalization id="120">    
+    <end type="SOURCE" refId="37"/>    
     <end type="TARGET" refId="5"/>  
   </generalization>  
-  <realization id="124">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="33"/>  
+  <realization id="121">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="32"/>  
   </realization>  
-  <realization id="125">    
+  <realization id="122">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
+  <dependency id="123">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="28"/>  
+  </dependency>  
+  <generalization id="124">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="125">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="37"/>  
+  </generalization>  
   <dependency id="126">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="29"/>  
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="28"/>  
   </dependency>  
-  <generalization id="127">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="23"/>  
-  </generalization>  
-  <generalization id="128">    
-    <end type="SOURCE" refId="40"/>    
-    <end type="TARGET" refId="38"/>  
-  </generalization>  
-  <dependency id="129">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="29"/>  
-  </dependency>  
-  <realization id="130">    
+  <realization id="127">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="7"/>  
   </realization>  
-  <nesting id="131">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="27"/>  
+  <nesting id="128">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="26"/>  
   </nesting>  
-  <realization id="132">    
-    <end type="SOURCE" refId="38"/>    
+  <realization id="129">    
+    <end type="SOURCE" refId="37"/>    
     <end type="TARGET" refId="7"/>  
   </realization>  
-  <nesting id="133">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="14"/>  
+  <nesting id="130">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="13"/>  
   </nesting>  
-  <dependency id="134">    
-    <end type="SOURCE" refId="28"/>    
+  <dependency id="131">    
+    <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="8"/>  
   </dependency>  
-  <generalization id="135">    
-    <end type="SOURCE" refId="39"/>    
-    <end type="TARGET" refId="38"/>  
+  <generalization id="132">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="37"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

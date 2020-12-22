@@ -3,6 +3,10 @@ package Soldado;
 import java.awt.Color;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
+import Consola.UnidadesDeMapa;
+
 public class SuperCaballero extends Caballero implements SuperSoldado {
 
 	private static int cantidad = 0;
@@ -29,9 +33,29 @@ public class SuperCaballero extends Caballero implements SuperSoldado {
 
 	// Super Soldado
 	@Override
-	public void evolucionar() {
-		// Aqui deberia de ir el codigo que ovuluciona
+	public void intentaEvolucionar() {
+		if (getBatallaGanada() > 5) {
+			setNivelVida(getNivelVida() + AUMENTAR_VIDA_EVOLUCIONADA);
+			setNivelVidaActual(getNivelVida());
+			setNivelAtaque(getNivelAtaque() + AUMENTAR_ATAQUE_EVOLUCIONADA);
+			setNivelDefensa(getNivelDefensa() + AUMENTAR_DEFENSA_EVOLUCIONADA);
+			JOptionPane.showMessageDialog(null,
+					"El soldado " + getName() + "Supero 5 batallas ganadas\nPor lo tanto evoluciona");
+		}
+	}
 
+	@Override
+	public void atacarOponente(UnidadesDeMapa oponente) {
+		if (isMontado()) {
+			super.atacarOponente(oponente);
+			super.atacarOponente(oponente);
+			super.atacarOponente(oponente);
+
+		} else {
+			super.atacarOponente(oponente);
+			super.atacarOponente(oponente);
+
+		}
 	}
 
 	@Override
@@ -44,8 +68,9 @@ public class SuperCaballero extends Caballero implements SuperSoldado {
 	public String mostrarDatos() {
 
 		String text = "";
-		text += "Nombre: " + getName() + "\n";
 		text += super.mostrarDatos();
+		text += "Numero de Objeto Lanzar: " + getNumObjetoLanzar() + "\n";
+
 		return text;
 	}
 
@@ -88,6 +113,12 @@ public class SuperCaballero extends Caballero implements SuperSoldado {
 
 	public static void setVidaMin(int vidaMin) {
 		SuperCaballero.vidaMin = vidaMin;
+	}
+
+	@Override
+	public int getNumObjetoLanzar() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
