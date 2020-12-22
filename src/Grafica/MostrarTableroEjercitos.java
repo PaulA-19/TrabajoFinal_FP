@@ -74,6 +74,11 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 		}
 	}
 
+	public void actualizarJuegoPanel() {
+		super.actualizarJuegoPanel(
+				new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
+	}
+
 	public void actualizarFilaColumnaGanador(Ejercito ejerGanador) {
 		ejerGanador.setFila(oponente.getFila());
 		ejerGanador.setColumna(oponente.getColumna());

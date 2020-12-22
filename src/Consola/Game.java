@@ -15,9 +15,7 @@ public class Game implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private ArrayList<Reino> reinos = new ArrayList<Reino>();
-	private Mapa tabla = new Mapa();
 	private static String[] colores = { "rojo", "verde", "azul", "amarillo" };
 	private ArrayList<String> reinosPosibles = new ArrayList<String>();
 	private ArrayList<Color> coloresPosibles = new ArrayList<Color>();
@@ -33,11 +31,12 @@ public class Game implements Serializable {
 
 	}
 
-	public void actualizar() {
-		getReino1().actualizar();
-		getReino2().actualizar();
-
-	}
+	// Actualiza valores que se editaron
+//	public void actualizar() {
+//		getReino1().actualizar();
+//		getReino2().actualizar();
+//
+//	}
 
 	private void llenarPosibleReinos() {
 		reinosPosibles.add("Inglaterra");
@@ -69,6 +68,7 @@ public class Game implements Serializable {
 		return posibles.remove(opcion);
 	}
 
+	// No utilizado
 	public Game(int cantidad) {
 		for (int i = 0; i < cantidad; i++) {
 			reinos.add(new Reino("Reino_" + i));
@@ -79,7 +79,6 @@ public class Game implements Serializable {
 	public boolean isFinal() {
 		boolean reino1Vive = game.getReino1().isVive();
 		boolean reino2Vive = game.getReino2().isVive();
-
 		return (!(reino1Vive && reino2Vive));
 	}
 
@@ -91,10 +90,7 @@ public class Game implements Serializable {
 		}
 	}
 
-	public ArrayList<Reino> getReinos() {
-		return reinos;
-	}
-
+	// Guardar partida
 	public static void guardarJuego(String name) {
 		ObjectOutputStream fileOut;
 		try {
@@ -102,7 +98,6 @@ public class Game implements Serializable {
 			System.out.println(Game.getGame());
 			Game g = Game.getGame();
 			fileOut.writeObject(g);
-			System.out.println("Todo bien");
 			fileOut.close();
 			JOptionPane.showMessageDialog(null, "Guardado exitosamente");
 			guardado = true;
@@ -116,6 +111,10 @@ public class Game implements Serializable {
 
 	public void setReinos(ArrayList<Reino> reinos) {
 		this.reinos = reinos;
+	}
+
+	public ArrayList<Reino> getReinos() {
+		return reinos;
 	}
 
 	public Reino getReino1() {
@@ -135,13 +134,7 @@ public class Game implements Serializable {
 		return text;
 	}
 
-	public Mapa getTabla() {
-		return tabla;
-	}
-
-	public void setTabla(Mapa tabla) {
-		this.tabla = tabla;
-	}
+	// get and Set -----------------------------
 
 	public static Game getGame() {
 		return game;
@@ -159,6 +152,7 @@ public class Game implements Serializable {
 		return guardado;
 	}
 
+	// Nombre del ultimo juego guardado
 	public static String getUltimoGuardado() {
 		return ultimoGuardado;
 	}

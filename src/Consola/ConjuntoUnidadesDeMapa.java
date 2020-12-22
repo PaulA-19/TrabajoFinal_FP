@@ -74,4 +74,10 @@ public class ConjuntoUnidadesDeMapa implements Mapeable, Batalla, Serializable {
 		
 	}
 
+	@Override
+	public String mostrarDatos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -140,19 +140,7 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 			if (listoP1 && listoP2) {
 				JOptionPane.showMessageDialog(principal, "Luchando");
 
-				System.out.println("Antes");
-				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
-						+ "," + ejer1.getColumna() + ")");
-				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
-						+ "," + ejer2.getColumna() + ")");
-
-				System.out.println("Oponente: (" + oponente.getFila() + "," + oponente.getColumna() + ")");
-				// Puede haber un bucle infinito
 				resultado = (Ejercito[]) Ejercito.batalla(ejer1, ejer2);
-				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
-
-				System.out.println("Ganador: " + resultado[0].getNameReino());
-				System.out.println("Perdedor: " + resultado[1].getNameReino());
 
 				// actualizamos posicion
 				resultado[0].setFila(oponente.getFila());
@@ -163,12 +151,6 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 				JOptionPane.showMessageDialog(ventana,
 						"El ejercito " + resultado[0].getName() + "\nFue beneficiado por ganar la batalla");
 
-				System.out.println("Despues");
-				System.out.println("Ejercito 1 : " + ejer1.isVive() + "-" + ejer1.getNameReino() + "(" + ejer1.getFila()
-						+ "," + ejer1.getColumna() + ")");
-				System.out.println("Ejercito 2 : " + ejer2.isVive() + "-" + ejer2.getNameReino() + "(" + ejer2.getFila()
-						+ "," + ejer2.getColumna() + ")");
-
 				// Actualizar TextArea
 				textUnidad1.setText(ejer1.toString());
 				textUnidad2.setText(ejer2.toString());
@@ -178,7 +160,6 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 						new Tablero(Game.getGame().getReino1(), Game.getGame().getReino2(), anterior, evento));
 
 				ventana.setVisible(false);
-//				anterior.setVisible(true);
 				ante.verificarFinalJuego();
 
 			} else {

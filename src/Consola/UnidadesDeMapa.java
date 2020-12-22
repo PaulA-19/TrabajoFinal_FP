@@ -38,6 +38,8 @@ public abstract class UnidadesDeMapa implements Serializable {
 
 	public abstract Color getColor();
 
+	public abstract void morir();
+
 	// Get and Set
 
 	public int getFila() {

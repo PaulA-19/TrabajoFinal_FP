@@ -12,7 +12,7 @@ public interface Mapeable {
 	void deleteUnidad(UnidadesDeMapa unidad);
 
 	Color getColor();
-	
-	
-	
+
+	String mostrarDatos();
+
 }

@@ -70,14 +70,13 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 		int ataque = this.getNivelAtaque();
 
 		Soldado oponenteSol = (Soldado) oponente;
-		oponenteSol.quitarVidaDefensa(numAleatorio(ataque - 2, ataque + 2));
+		oponenteSol.quitarVidaDefensa(numAleatorio(ataque - FALLO_ATAQUE_SOL, ataque + FALLO_ATAQUE_SOL));
 
 	}
 
 	@Override
 	public void quitarVida(UnidadesDeMapa oponenteAtaca) {
 		Soldado solOpo = (Soldado) oponenteAtaca;
-//		int ataquePromedio = ejerOpo.sumaAtaqueVivos() / ejerOpo.numSoldadosVivos();
 
 		this.quitarVidaDefensa(solOpo.getNivelAtaque() / PORCION_ATAQUE);
 
@@ -112,39 +111,39 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	}
 
-	private static void pelear(Soldado s1, Soldado s2) {
-
-		int ataque1 = s1.getNivelAtaque();
-		int ataque2 = s1.getNivelAtaque();
-
-		// ataca s2
-		s1.quitarVidaDefensa(numAleatorio(ataque2 - 2, ataque2 + 2));
-		if (s1.isVive()) {
-			// ataca s1
-			s2.quitarVidaDefensa(numAleatorio(ataque1 - 2, ataque1 + 2));
-		} else {
-			return;
-		}
-
-	}
+//	private static void pelear(Soldado s1, Soldado s2) {
+//
+//		int ataque1 = s1.getNivelAtaque();
+//		int ataque2 = s1.getNivelAtaque();
+//
+//		// ataca s2
+//		s1.quitarVidaDefensa(numAleatorio(ataque2 - 2, ataque2 + 2));
+//		if (s1.isVive()) {
+//			// ataca s1
+//			s2.quitarVidaDefensa(numAleatorio(ataque1 - 2, ataque1 + 2));
+//		} else {
+//			return;
+//		}
+//
+//	}
 
 	private static int numAleatorio(int m, int n) {
 		int num = (rd.nextInt(n - m) + m);
 		return num;
 	}
 
-	private static double elegirNumeroSegunPorcentaje(double num1, double num2) {
-		double ale = rd.nextDouble();
-
-		double minimo = Math.min(num1, num2);
-
-		if (ale < minimo) {
-			return minimo;
-		} else {
-			return Math.max(num2, num1);
-		}
-
-	}
+//	private static double elegirNumeroSegunPorcentaje(double num1, double num2) {
+//		double ale = rd.nextDouble();
+//
+//		double minimo = Math.min(num1, num2);
+//
+//		if (ale < minimo) {
+//			return minimo;
+//		} else {
+//			return Math.max(num2, num1);
+//		}
+//
+//	}
 
 	// Completar
 	private static int[] beneficiadoBatalla(Soldado s1, Soldado s2) {
@@ -240,7 +239,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	}
 
 	public void beneficiado() {
-		setNivelVidaActual(getNivelVidaActual() + 1);
+		setNivelVidaActual(getNivelVidaActual() + SUMA_VIDA_BENEFICIO);
 	}
 
 	public void quitarVidaDefensa(int cant) {
@@ -270,15 +269,15 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	@Override
 	public void actitudAtacar() {
-		setNivelAtaque(getNivelAtaque() + 1);
-		setNivelDefensa(getNivelDefensa() - 1);
+		setNivelAtaque(getNivelAtaque() + INTERCAMBIO_VIDA_EN_ATAQUE);
+		setNivelDefensa(getNivelDefensa() - INTERCAMBIO_VIDA_EN_ATAQUE);
 		setAtacar(true);
 	}
 
 	@Override
 	public void actitudDefender() {
-		setNivelAtaque(getNivelAtaque() - 1);
-		setNivelDefensa(getNivelDefensa() + 1);
+		setNivelAtaque(getNivelAtaque() - INTERCAMBIO_ATAQUE_EN_VIDA);
+		setNivelDefensa(getNivelDefensa() + INTERCAMBIO_ATAQUE_EN_VIDA);
 		setDefender(true);
 	}
 
@@ -286,14 +285,14 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	public void actitudNormal() {
 
 		if (atacar) {
-			setNivelAtaque(getNivelAtaque() - 1);
-			setNivelDefensa(getNivelDefensa() + 1);
+			setNivelAtaque(getNivelAtaque() - INTERCAMBIO_VIDA_EN_ATAQUE);
+			setNivelDefensa(getNivelDefensa() + INTERCAMBIO_VIDA_EN_ATAQUE);
 			setAtacar(false);
 		}
 
 		if (defender) {
-			setNivelAtaque(getNivelAtaque() + 1);
-			setNivelDefensa(getNivelDefensa() - 1);
+			setNivelAtaque(getNivelAtaque() + INTERCAMBIO_ATAQUE_EN_VIDA);
+			setNivelDefensa(getNivelDefensa() - INTERCAMBIO_ATAQUE_EN_VIDA);
 			setAtacar(false);
 		}
 
@@ -351,12 +350,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 	public String datosPuntuales() {
 		String text = "";
 
-		text += getNameReino().substring(2);
-		text += "-" + getNivelVidaActual();
-
-//		String text = String.format("%02d", getNivelVida()) + "-"
-//				+ String.format("%02d", getNivelAtaque() + "-" + String.format("%02d", getNivelDefensa()));
-//		System.out.println(text);
+		text += "Vida; " + getNivelVidaActual();
 
 		return text;
 	}
@@ -368,6 +362,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 		text += "Reino: " + getNameReino() + "\n";
 		text += "Ejercito: " + getNameEjercito() + "\n";
+		text += "Tipo: " + getTipo();
 		text += "Nivel Ataque: " + getNivelAtaque() + "\n";
 		text += "Nivel Defensa: " + getNivelDefensa() + "\n";
 		text += "Nivel Vida: " + getNivelVida() + "\n";

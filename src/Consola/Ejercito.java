@@ -202,22 +202,17 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		soldados.clear();
 	}
 
-	public void derrrotado() {
-		setVive(false);
-	}
-
 	public Color getColor() {
 		return color;
 
 	}
 
-	@Override
-	public String datosPuntuales() {
-//		String text = Integer.toString(getUnidades().size()) + "-" + promedioNivelVida() + "-" + promedioAtaque();
-		String text = getNameReino();
-		System.out.println(text);
-		return text;
-	}
+//	public String datosPuntuales() {
+////		String text = Integer.toString(getUnidades().size()) + "-" + promedioNivelVida() + "-" + promedioAtaque();
+//		String text = getNameReino();
+//		System.out.println(text);
+//		return text;
+//	}
 
 	public static Ejercito getVivo(Ejercito e1, Ejercito e2) {
 		if (e1.isVive()) {
@@ -346,35 +341,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return super.isVive();
 	}
 
-	// Get and Set
-	public String getName() {
-		return name;
-	}
-
-	public String getNameReino() {
-		return nameReino;
-	}
-
-	public char getSimbolo() {
-		return simbolo;
-	}
-
-	public void setSoldados(ArrayList<UnidadesDeMapa> soldados) {
-		this.soldados = soldados;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setNameReino(String nameReino) {
-		this.nameReino = nameReino;
-	}
-
-	public void setSimbolo(char simbolo) {
-		this.simbolo = simbolo;
-	}
-
 	// Batalla
 
 	@Override
@@ -467,35 +433,45 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return resultado;
 	}
 
-	public double puntajeParaParaBatalla() {
-		double punt = 0;
-		punt = (sumaAtaqueVivos() * sumaVidaActualVivos()) / (Math.pow(numSoldadosVivos(), 2));
-		punt += sumaDefensaVivos();
-		return punt;
+//	public double puntajeParaParaBatalla() {
+//		double punt = 0;
+//		punt = (sumaAtaqueVivos() * sumaVidaActualVivos()) / (Math.pow(numSoldadosVivos(), 2));
+//		punt += sumaDefensaVivos();
+//		return punt;
+//	}
+
+	@Override
+	public String datosPuntuales() {
+		String text = "Vida: " + nivelVidaActual();
+		return text;
 	}
 
-	private static void mostrarGanador(Ejercito ejer) {
-		System.out.println("Ganador ejercito del reino: " + ejer.getNameReino());
-
-	}
-
-	// corregir
 	@Override
 	public String mostrarDatos() {
 		String text = "";
-		text += "Ejercito: " + this.getNameReino() + "\n";
-		text += "Cantidad total de soldados: " + numSoldadosVivos() + "\n";
+		text += "Nombre: " + getName() + "\n";
+		text += "Reino: " + this.getNameReino() + "\n";
+		text += "Cantidad total de soldados: " + numSoldados() + "\n";
+		text += "Cantidad total de soldados VIVOS: " + numSoldadosVivos() + "\n\n";
+		text += "Nivel ataque: " + nivelAtaque() + "\n";
+		text += "Nivel defensa: " + nivelDefensa() + "\n";
 		int[] numTipos = this.cantidadTiposSoldados();
 		text += "Caballero: " + numTipos[1] + "\n";
-		text += "Arquero: " + numTipos[2] + "\n";
-		text += "Lancero: " + numTipos[3] + "\n";
-		text += "Espadachin: " + numTipos[4] + "\n";
-		text += this.imprimirSoldadoEspecial(numTipos);
+		text += "Arquero: " + numTipos[3] + "\n";
+		text += "Lancero: " + numTipos[5] + "\n";
+		text += "Espadachin: " + numTipos[7] + "\n\n";
+
+		text += "Super - Caballero: " + numTipos[0] + "\n";
+		text += "Super - Arquero: " + numTipos[2] + "\n";
+		text += "Super - Lancero: " + numTipos[4] + "\n";
+		text += "Super - Espadachin: " + numTipos[6] + "\n\n";
+		// text += this.imprimirSoldadoEspecial(numTipos);
 		return text;
 	}
 
 	private int[] cantidadTiposSoldados() {
-		int[] tipos = new int[6];
+		//
+		int[] tipos = new int[8];
 		for (UnidadesDeMapa soldado : getUnidades()) {
 			if (soldado.isVive()) {
 
@@ -503,37 +479,42 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 					tipos[0]++;
 				} else if (soldado instanceof Caballero && !(soldado instanceof SuperCaballero)) {
 					tipos[1]++;
-				} else if (soldado instanceof Arquero) {
+				} else if (soldado instanceof SuperArquero) {
 					tipos[2]++;
-				} else if (soldado instanceof Lancero) {
+				} else if (soldado instanceof Arquero && !(soldado instanceof SuperArquero)) {
 					tipos[3]++;
-				} else if (soldado instanceof Espadachin && !(soldado instanceof SuperEspadachin)) {
+				} else if (soldado instanceof SuperLancero) {
 					tipos[4]++;
-				} else if (soldado instanceof SuperEspadachin) {
+				} else if (soldado instanceof Lancero && !(soldado instanceof SuperLancero)) {
 					tipos[5]++;
+				} else if (soldado instanceof SuperEspadachin) {
+					tipos[6]++;
+				} else if (soldado instanceof Espadachin && !(soldado instanceof SuperEspadachin)) {
+					tipos[7]++;
 				}
 			}
 		}
 		return tipos;
 	}
 
-	private String imprimirSoldadoEspecial(int[] numTipos) {
-		String text = "";
-		if (getNameReino().equalsIgnoreCase("Inglaterra")) {
-			text += "Espadachin Real: " + numTipos[5] + "\n";
-		} else if (getNameReino().equalsIgnoreCase("Sacro Imperio Romano Germanico")) {
-			text += "Espadachin Teutonico: " + numTipos[5] + "\n";
-		} else if (getNameReino().equalsIgnoreCase("Aragon-Castilla")) {
-			text += "Espadachin Conquistador: " + numTipos[5] + "\n";
-		} else if (getNameReino().equalsIgnoreCase("Francia")) {
-			text += "Caballero Franco: " + numTipos[0] + "\n";
-		} else if (getNameReino().equalsIgnoreCase("Moros")) {
-			text += "Caballero Moro: " + numTipos[0] + "\n";
-		}
-		return text;
+//	private String imprimirSoldadoEspecial(int[] numTipos) {
+//		String text = "";
+//		if (getNameReino().equalsIgnoreCase("Inglaterra")) {
+//			text += "Espadachin Real: " + numTipos[5] + "\n";
+//		} else if (getNameReino().equalsIgnoreCase("Sacro Imperio Romano Germanico")) {
+//			text += "Espadachin Teutonico: " + numTipos[5] + "\n";
+//		} else if (getNameReino().equalsIgnoreCase("Aragon-Castilla")) {
+//			text += "Espadachin Conquistador: " + numTipos[5] + "\n";
+//		} else if (getNameReino().equalsIgnoreCase("Francia")) {
+//			text += "Caballero Franco: " + numTipos[0] + "\n";
+//		} else if (getNameReino().equalsIgnoreCase("Moros")) {
+//			text += "Caballero Moro: " + numTipos[0] + "\n";
+//		}
+//		return text;
+//
+//	}
 
-	}
-
+	// Get and Set --------------------
 	public char getActitud() {
 		return actitud;
 	}
@@ -548,6 +529,34 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getNameReino() {
+		return nameReino;
+	}
+
+	public char getSimbolo() {
+		return simbolo;
+	}
+
+	public void setSoldados(ArrayList<UnidadesDeMapa> soldados) {
+		this.soldados = soldados;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setNameReino(String nameReino) {
+		this.nameReino = nameReino;
+	}
+
+	public void setSimbolo(char simbolo) {
+		this.simbolo = simbolo;
 	}
 
 }

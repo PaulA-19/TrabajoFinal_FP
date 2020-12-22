@@ -22,7 +22,7 @@ import Consola.Game;
 import Consola.Reino;
 import Consola.UnidadesDeMapa;
 
-public class Configurar extends JFrame implements Serializable{
+public class Configurar extends JFrame implements Serializable {
 
 	private static final int width = 200;
 	private static final int high = 550;
@@ -149,47 +149,49 @@ public class Configurar extends JFrame implements Serializable{
 			JOptionPane.showMessageDialog(ventana, "Estamos trabajando con mas colores");
 		}
 
-		return null;
+		return reino.getColor();
 	}
 
 	private class Accion implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			// cancelar
 			if (e.getActionCommand().equalsIgnoreCase("Cancelar")) {
 				ventana.setVisible(false);
 				anterior.setVisible(true);
-
 			}
 
+			// guardar
 			if (e.getActionCommand().equalsIgnoreCase("Guardar")) {
 
 				// nombre
-				reino.setName(name.getText());
+				String newName = name.getText();
 
 				// Color
-				Color c = optenerColor((String) opcionesColores.getSelectedItem());
-				if (c != null) {
-					reino.setC(c);
-				}
+				Color newColor = optenerColor((String) opcionesColores.getSelectedItem());
 
 				// Actitud
+				char newActitud;
 				if (ataque.isSelected()) {
-					reino.setActitud(UnidadesDeMapa.ATAQUE);
+					newActitud = UnidadesDeMapa.ATAQUE;
 				} else if (defensa.isSelected()) {
-					reino.setActitud(UnidadesDeMapa.DEFENZA);
+					newActitud = UnidadesDeMapa.DEFENZA;
 				} else {
-					reino.setActitud(UnidadesDeMapa.NEUTRO);
+					newActitud = UnidadesDeMapa.NEUTRO;
 				}
 
-				Game.getGame().actualizar();
+				reino.actualizar(newName, newColor, newActitud);
+
 				ventana.setVisible(false);
-				PreviaJuego antes = (PreviaJuego)anterior;
-				anterior = new PreviaJuego(antes.getAnterior(), ventana.getTitle());
+				PreviaJuego antes = (PreviaJuego) anterior;
+				// para que se actualize los datos al mostrar
+				anterior = new PreviaJuego(antes.getAnterior(), antes.getTitle());
 
 			}
 
 			if (e.getSource() == masOpciones) {
+				// aqui mas opciones
 				JOptionPane.showMessageDialog(ventana,
 						"Lo sentimos :(\nAun no está desarrollado mas opciones\nEstamos trabajando en ello :)");
 			}

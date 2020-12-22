@@ -49,8 +49,18 @@ public class Reino implements Mapeable, Serializable {
 	}
 
 	// Metodos propios de la Clase
+	private void llenarAutomatico() {
+		Random rd = new Random();
+		int cantidad = rd.nextInt(11); // [0,10]
+		for (int i = 0; i < cantidad; i++) {
+			ejercitos.add(new Ejercito(name, c));
+		}
+	}
 
-	public void actualizar() {
+	public void actualizar(String name, Color c, char actitud) {
+		setName(name);
+		setC(c);
+		setActitud(actitud);
 		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
 			Ejercito ejer = (Ejercito) unidadesDeMapa;
 
@@ -60,25 +70,6 @@ public class Reino implements Mapeable, Serializable {
 
 	public void addNewEjercito() {
 		ejercitos.add(new Ejercito(name, c));
-	}
-
-	private void llenarAutomatico() {
-		Random rd = new Random();
-		int cantidad = rd.nextInt(11); // [0,10]
-		for (int i = 0; i < cantidad; i++) {
-			ejercitos.add(new Ejercito(name, c));
-		}
-	}
-
-	public String mostratDatos() {
-		String text = "";
-		text += "Reino: " + name + "\n";
-		text += "Cantidad Total de Ejercitos: " + getNumEjercitos() + "\n";
-		text += "Total Soldados: " + getNumSoldados() + "\n";
-		text += "Total Nivel de Vida: " + nivelVida() + "\n";
-
-		return text;
-
 	}
 
 	public int nivelVida() {
@@ -193,8 +184,6 @@ public class Reino implements Mapeable, Serializable {
 		}
 	}
 
-	// -----------
-
 	@Override
 	public String toString() {
 		String text = "Nombre: " + name + "\n";
@@ -222,14 +211,30 @@ public class Reino implements Mapeable, Serializable {
 		ejercitos.remove(unidad);
 	}
 
-	// Set and Get
+	@Override
+	public String mostrarDatos() {
+		String text = "";
+		text += "Reino: " + name + "\n";
+		text += "Cantidad Total de Ejercitos: " + getNumEjercitos() + "\n";
+		text += "Cantidad Total de Ejercitos VIVOS: " + getNumEjercitosVivos() + "\n";
+		text += "Total Soldados: " + getNumSoldados() + "\n";
+		text += "Total Soldados VIVOS: " + getNumSoldadosVivos() + "\n";
+		text += "Total Nivel de Vida Actual: " + nivelVidaActual() + "\n\n";
 
-	public String getName() {
-		return name;
+		text += "Nivel Ataque: " + nivelAtaque() + "\n";
+		text += "Nivel Defensa: " + nivelDefensa() + "\n";
+		return text;
+
 	}
 
 	public Color getColor() {
 		return c;
+	}
+
+	// Set and Get --------------------------
+
+	public String getName() {
+		return name;
 	}
 
 	public int getId() {

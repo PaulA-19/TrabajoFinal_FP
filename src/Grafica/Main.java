@@ -33,7 +33,7 @@ public class Main extends JFrame implements Serializable {
 		setSize(350, 350);
 		setLocationRelativeTo(null);
 		addComponentes();
-//		setResizable(false);
+		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -50,9 +50,7 @@ public class Main extends JFrame implements Serializable {
 	private void addBotones() {
 		opciones = new JPanel();
 		opciones.setLayout(new GridLayout(6, 1, 5, 5));
-
-		Navegar accion = new Navegar();
-
+//		Navegar accion = new Navegar();
 		addBoton("Nuevo", "Nuevo Juego");
 		addBoton("Continuar", "Continuar Juego");
 		addBoton("Cargar", "Carga Juego Guardado");
@@ -74,20 +72,13 @@ public class Main extends JFrame implements Serializable {
 
 	}
 
+	// para ventanas que preionen Inicio
 	public static void volverAMostrar(JFrame anterior) {
-		setAnterior(anterior);
+		setAnterior(anterior); // para boton continuar
 		ventanaInicio.setVisible(true);
 	}
 
-	// get and set
-	public JPanel getPrincipal() {
-		return principal;
-	}
-
-	public void setPrincipal(JPanel principal) {
-		this.principal = principal;
-	}
-
+	// clase interna
 	private class Navegar implements ActionListener {
 
 		@Override
@@ -108,7 +99,6 @@ public class Main extends JFrame implements Serializable {
 				if (getAnterior() == null) {
 					JOptionPane.showMessageDialog(ventanaInicio, "Primero debe de crear o cargar un juego");
 				} else {
-
 					ventanaInicio.setVisible(false);
 					getAnterior().setVisible(true);
 				}
@@ -116,13 +106,10 @@ public class Main extends JFrame implements Serializable {
 
 			// Cargar
 			if (boton.getText().equalsIgnoreCase("Cargar")) {
-				System.out.println("Nuevo");
 				String nameGame = JOptionPane.showInputDialog(ventanaInicio,
 						"Ingrese el nombre con el que guadó el juego: ", Game.getUltimoGuardado());
 
-				System.out.println("name: " + nameGame);
 				// Lectura de el objeto game guardado
-
 				if (nameGame != null) {
 
 					ObjectInputStream fileIn;
@@ -145,6 +132,7 @@ public class Main extends JFrame implements Serializable {
 
 			// Tutorial
 			if (boton.getText().equalsIgnoreCase("Tutorial")) {
+				// deberia ir a un a pagina
 				JOptionPane.showMessageDialog(principal, "Enlace a la página");
 			}
 
@@ -180,17 +168,18 @@ public class Main extends JFrame implements Serializable {
 						Game.guardarJuego(namegame);
 					}
 				}
-				System.out.println("Guardar");
-				System.out.println(opcion);
-				System.out.println(Game.getGame());
 			}
 		}
 
-		private Object newFileInputStream(String string) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	}
 
+	// get and set --------------------------------------
+	public JPanel getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(JPanel principal) {
+		this.principal = principal;
 	}
 
 	public static Main getVentanaInicio() {

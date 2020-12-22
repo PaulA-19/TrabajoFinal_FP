@@ -2,7 +2,7 @@ package Soldado;
 
 import java.awt.Color;
 
-public class SuperArquero extends Espadachin implements SuperSoldado {
+public class SuperArquero extends Arquero implements SuperSoldado {
 
 	private static int cantidad = 0;
 

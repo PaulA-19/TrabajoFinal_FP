@@ -95,6 +95,8 @@ public class MostrarTableroSoldados extends MuestraTablero implements Serializab
 			if (e.getSource() == getAtras()) {
 				System.out.println("Atras");
 				ventana.setVisible(false);
+				MostrarTableroEjercitos ventanaAnteCast = (MostrarTableroEjercitos) anterior;
+				ventanaAnteCast.actualizarJuegoPanel();
 				anterior.setVisible(true);
 			}
 
