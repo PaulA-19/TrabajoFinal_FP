@@ -113,39 +113,10 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 	}
 
-//	private static void pelear(Soldado s1, Soldado s2) {
-//
-//		int ataque1 = s1.getNivelAtaque();
-//		int ataque2 = s1.getNivelAtaque();
-//
-//		// ataca s2
-//		s1.quitarVidaDefensa(numAleatorio(ataque2 - 2, ataque2 + 2));
-//		if (s1.isVive()) {
-//			// ataca s1
-//			s2.quitarVidaDefensa(numAleatorio(ataque1 - 2, ataque1 + 2));
-//		} else {
-//			return;
-//		}
-//
-//	}
-
 	public static int numAleatorio(int m, int n) {
 		int num = (rd.nextInt(n - m) + m);
 		return num;
 	}
-
-//	private static double elegirNumeroSegunPorcentaje(double num1, double num2) {
-//		double ale = rd.nextDouble();
-//
-//		double minimo = Math.min(num1, num2);
-//
-//		if (ale < minimo) {
-//			return minimo;
-//		} else {
-//			return Math.max(num2, num1);
-//		}
-//
-//	}
 
 	// Completar
 	private static int[] beneficiadoBatalla(Soldado s1, Soldado s2) {

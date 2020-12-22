@@ -20,7 +20,7 @@ import Consola.Reino;
 public class PreviaJuego extends JFrame implements Serializable {
 
 	private static final int width = 700;
-	private static final int high = 300;
+	private static final int high = 400;
 
 	private JPanel principal, centro;
 	private JFrame anterior;
@@ -74,7 +74,7 @@ public class PreviaJuego extends JFrame implements Serializable {
 		p1G.setLayout(new BorderLayout());
 		JPanel p1 = new JPanel();
 		p1.setBackground(Game.getGame().getReino1().getColor());
-		p1.setLayout(new GridLayout(4, 2, 20, 20));
+		p1.setLayout(new GridLayout(6, 2, 20, 20));
 		llenarPanel(p1, Game.getGame().getReino1(), 1);
 		p1G.add(new JLabel(Game.getGame().getReino1().getName()), BorderLayout.NORTH);
 		p1G.add(p1, BorderLayout.CENTER);
@@ -95,6 +95,16 @@ public class PreviaJuego extends JFrame implements Serializable {
 
 		p.add(new JLabel("Promedio Vida: "));
 		numDato = new JTextField(Double.toString(r.promedioNivelVidaVivos()));
+		numDato.setEditable(false);
+		p.add(numDato);
+
+		p.add(new JLabel("Promedio Ataque: "));
+		numDato = new JTextField(Double.toString(r.promedioNivelAtaque()));
+		numDato.setEditable(false);
+		p.add(numDato);
+
+		p.add(new JLabel("Promedio Defensa: "));
+		numDato = new JTextField(Double.toString(r.promedioNivelDefensa()));
 		numDato.setEditable(false);
 		p.add(numDato);
 
@@ -121,7 +131,7 @@ public class PreviaJuego extends JFrame implements Serializable {
 		p2G.setLayout(new BorderLayout());
 		JPanel p2 = new JPanel();
 		p2.setBackground(Game.getGame().getReino2().getColor());
-		p2.setLayout(new GridLayout(4, 2, 20, 20));
+		p2.setLayout(new GridLayout(6, 2, 20, 20));
 		llenarPanel(p2, Game.getGame().getReino2(), 2);
 		p2G.add(new JLabel(Game.getGame().getReino2().getName()), BorderLayout.NORTH);
 		p2G.add(p2, BorderLayout.CENTER);
@@ -165,17 +175,20 @@ public class PreviaJuego extends JFrame implements Serializable {
 				}
 			}
 
+			// configurar 1
 			if (e.getSource() == configurar1) {
 				ventana.setVisible(false);
 				new Configurar(Game.getGame().getReino1(), ventana);
 			}
 
+			// configurar 2
 			if (e.getSource() == configurar2) {
 				System.out.println("Confi 2");
 				ventana.setVisible(false);
 				new Configurar(Game.getGame().getReino2(), ventana);
 			}
 
+			// cancelar
 			if (e.getSource() == cancelar) {
 				ventana.setVisible(false);
 				anterior.setVisible(true);

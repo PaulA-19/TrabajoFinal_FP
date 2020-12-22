@@ -36,7 +36,7 @@ public class Tablero extends JPanel implements Serializable {
 		unidades1 = u1.getUnidades();
 		unidades2 = u2.getUnidades();
 		addComponentes();
-		mapa.mostrarTabla(); // consola
+//		mapa.mostrarTabla(); // consola
 
 	}
 

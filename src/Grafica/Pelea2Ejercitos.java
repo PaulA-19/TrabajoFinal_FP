@@ -53,9 +53,9 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 
 	private void addComponentes() {
 
-		textUnidad1.setText(ejer1.toString());
+		textUnidad1.setText(ejer1.mostrarDatos());
 		textUnidad1.setEditable(false);
-		textUnidad2.setText(ejer2.toString());
+		textUnidad2.setText(ejer2.mostrarDatos());
 		textUnidad2.setEditable(false);
 		listo1 = new JButton("LISTO");
 		listo2 = new JButton("LISTO");
@@ -107,6 +107,7 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 							+ "\n- Aumentaron en 1 su nivel de defensa\n- Disminuyeron en 1 su nivel de Ataque");
 
 				}
+				textUnidad1.setText(ejer1.mostrarDatos());
 
 			}
 
@@ -127,6 +128,8 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 
 				}
 
+				textUnidad2.setText(ejer2.mostrarDatos());
+
 			}
 
 		}
@@ -141,6 +144,8 @@ public class Pelea2Ejercitos extends Pelea2Unidades implements Serializable {
 				JOptionPane.showMessageDialog(principal, "Luchando");
 
 				resultado = (Ejercito[]) Ejercito.batalla(ejer1, ejer2);
+				JOptionPane.showMessageDialog(principal,
+						"Ganador\n" + resultado[0].getName() + "\ndel reino " + resultado[0].getNameReino());
 
 				// actualizamos posicion
 				resultado[0].setFila(oponente.getFila());

@@ -207,12 +207,9 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 
 	}
 
-//	public String datosPuntuales() {
-////		String text = Integer.toString(getUnidades().size()) + "-" + promedioNivelVida() + "-" + promedioAtaque();
-//		String text = getNameReino();
-//		System.out.println(text);
-//		return text;
-//	}
+
+	
+
 
 	public static Ejercito getVivo(Ejercito e1, Ejercito e2) {
 		if (e1.isVive()) {
@@ -433,13 +430,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		return resultado;
 	}
 
-//	public double puntajeParaParaBatalla() {
-//		double punt = 0;
-//		punt = (sumaAtaqueVivos() * sumaVidaActualVivos()) / (Math.pow(numSoldadosVivos(), 2));
-//		punt += sumaDefensaVivos();
-//		return punt;
-//	}
-
 	@Override
 	public String datosPuntuales() {
 		String text = "Vida: " + nivelVidaActual();
@@ -496,23 +486,6 @@ public class Ejercito extends UnidadesDeMapa implements Mapeable, Batalla, Seria
 		}
 		return tipos;
 	}
-
-//	private String imprimirSoldadoEspecial(int[] numTipos) {
-//		String text = "";
-//		if (getNameReino().equalsIgnoreCase("Inglaterra")) {
-//			text += "Espadachin Real: " + numTipos[5] + "\n";
-//		} else if (getNameReino().equalsIgnoreCase("Sacro Imperio Romano Germanico")) {
-//			text += "Espadachin Teutonico: " + numTipos[5] + "\n";
-//		} else if (getNameReino().equalsIgnoreCase("Aragon-Castilla")) {
-//			text += "Espadachin Conquistador: " + numTipos[5] + "\n";
-//		} else if (getNameReino().equalsIgnoreCase("Francia")) {
-//			text += "Caballero Franco: " + numTipos[0] + "\n";
-//		} else if (getNameReino().equalsIgnoreCase("Moros")) {
-//			text += "Caballero Moro: " + numTipos[0] + "\n";
-//		}
-//		return text;
-//
-//	}
 
 	// Get and Set --------------------
 	public char getActitud() {

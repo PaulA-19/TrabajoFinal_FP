@@ -194,8 +194,32 @@ public class Reino implements Mapeable, Serializable {
 		return text;
 	}
 
+	public String[] nombresEjercitos() {
+		String[] nombres = new String[ejercitos.size()];
+		int i = 0;
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+			nombres[i] = ejer.getName();
+			i++;
+		}
+
+		return nombres;
+	}
+
+	public Ejercito obtenerEjer(String name) {
+		for (UnidadesDeMapa unidadesDeMapa : ejercitos) {
+			Ejercito ejer = (Ejercito) unidadesDeMapa;
+
+			if (ejer.getName().equalsIgnoreCase(name)) {
+				return ejer;
+			}
+		}
+		return null;
+	}
+
 	// Interface Mapeable
 	@Override
+
 	public void addUnidad(UnidadesDeMapa unidad) {
 		ejercitos.add(unidad);
 
@@ -208,7 +232,10 @@ public class Reino implements Mapeable, Serializable {
 
 	@Override
 	public void deleteUnidad(UnidadesDeMapa unidad) {
-		ejercitos.remove(unidad);
+		if (unidad != null) {
+			ejercitos.remove(unidad);
+
+		}
 	}
 
 	@Override

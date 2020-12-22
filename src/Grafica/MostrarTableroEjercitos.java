@@ -242,20 +242,6 @@ public class MostrarTableroEjercitos extends MuestraTablero implements Serializa
 
 	}
 
-//	public class Informe2 implements ActionListener {
-//
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//
-//			if (e.getActionCommand().equals("Mover")) {
-//				JOptionPane.showMessageDialog(ventana, "Moviendo 2");
-//			} else if (e.getSource() instanceof UnidadButton) {
-//				JOptionPane.showMessageDialog(ventana, "Otro boton evento 2");
-//			}
-//		}
-//
-//	}
-
 	public Informe getEvento() {
 		return evento;
 	}

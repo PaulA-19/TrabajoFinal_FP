@@ -13,7 +13,7 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	private Mapeable u1, u2;
 
 	private JFrame ventana, anterior;
-	protected TextArea textActua = new TextArea(20, 22), textMover = new TextArea(20, 22);
+	protected TextArea textActua = new TextArea(20, 30), textMover = new TextArea(20, 30);
 	protected TextArea turnoText;
 	protected TextArea[] turnosText;
 	private JPanel presentacionTurno, opciones, juego, informe;
@@ -26,13 +26,10 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 	public MuestraTablero(JFrame anterior) {
 		ventana = this;
 		this.anterior = anterior;
-		setSize(1200, 500);
+		setSize(1400, 500);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
-//		p = new Tablero(u1, u2);
-//		p.getMapa().mostrarTabla(); // Consola
 		addComponentes();
-//		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 	}
@@ -48,14 +45,11 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 		// Norte
 		presentacionTurno = new JPanel();
-//		presentacion.setBackground(Color.red);
-//		presentacionTurno.setLayout(new GridLayout(1, 2));
 		addPresentacion();
 		this.add(presentacionTurno, BorderLayout.NORTH);
 
 		// Este
 		informe = new JPanel();
-//		informe.setBackground(Color.green);
 		informe.setLayout(new GridLayout(2, 1, 5, 5));
 		addInforme();
 		this.add(informe, BorderLayout.EAST);
@@ -86,7 +80,6 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 	private void addPresentacion() {
 		presentacionTurno.add(nombreTurno);
-//		actualizarLabelTurno(Game.getGame().getReino1().getName(), Game.getGame().getReino1().getColor());
 
 	}
 
@@ -140,13 +133,13 @@ public abstract class MuestraTablero extends JFrame implements Serializable {
 
 	}
 
-	private void cambiarAreaText() {
-		if (turnoText == turnosText[0]) {
-			turnoText = turnosText[1];
-		} else {
-			turnoText = turnosText[0];
-		}
-	}
+//	private void cambiarAreaText() {
+//		if (turnoText == turnosText[0]) {
+//			turnoText = turnosText[1];
+//		} else {
+//			turnoText = turnosText[0];
+//		}
+//	}
 
 	private class IrInicio implements ActionListener {
 

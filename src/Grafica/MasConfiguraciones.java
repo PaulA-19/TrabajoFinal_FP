@@ -18,14 +18,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import Consola.Ejercito;
 import Consola.Game;
 import Consola.Reino;
 import Consola.UnidadesDeMapa;
 
-public class Configurar extends JFrame implements Serializable {
+public class MasConfiguraciones extends JFrame implements Serializable {
 
 	private static final int width = 200;
-	private static final int high = 550;
+	private static final int high = 400;
 
 	private JFrame ventana, anterior;
 
@@ -34,13 +35,13 @@ public class Configurar extends JFrame implements Serializable {
 	private JPanel principal, centro;
 	private Color c;
 	private String[] colores = Game.getColores();
-	private JComboBox<String> opcionesColores;
-
+	private JComboBox<String> nombresEjercitos;
+	private JButton añadir, eliminar;
 	private JButton enviarCancelar, masOpciones;
 	private JRadioButton ataque, defensa, neutro;
 	private ButtonGroup grupoActitud;
 
-	public Configurar(Reino r, JFrame ventana2) {
+	public MasConfiguraciones(Reino r, JFrame ventana2) {
 		super("Configurar");
 		this.anterior = ventana2;
 		reino = r;
@@ -83,73 +84,33 @@ public class Configurar extends JFrame implements Serializable {
 	private void addCentro() {
 		JPanel colors = new JPanel();
 		colors.add(new JLabel("Color: "));
-		opcionesColores = new JComboBox<String>(colores);
-		opcionesColores.addItem("mas opciones");
-		colors.add(opcionesColores);
+		nombresEjercitos = new JComboBox<String>(reino.nombresEjercitos());
+		nombresEjercitos.setSelectedIndex(0);
+		colors.add(nombresEjercitos);
 		centro.add(colors);
-
-		JPanel actitudes = new JPanel();
-		llenarActitudes(actitudes);
-		centro.add(actitudes);
 
 		JPanel cambiarNombre = new JPanel();
 		llenarCambiarNombre(cambiarNombre);
 		centro.add(cambiarNombre);
 
+		JPanel nuevo = new JPanel();
+		añadir = new JButton("Añadir Nuevo");
+		añadir.addActionListener(new Accion());
+		nuevo.add(añadir);
+		centro.add(nuevo);
+
 		JPanel p = new JPanel();
-		masOpciones = new JButton("Mas opciones");
-		masOpciones.addActionListener(new Accion());
-		p.add(masOpciones);
+		eliminar = new JButton("Eliminar");
+		eliminar.addActionListener(new Accion());
+		p.add(eliminar);
 		centro.add(p);
 
 	}
 
 	private void llenarCambiarNombre(JPanel p) {
 		p.add(new JLabel("Ingrese nuevo nombre: "));
-		name = new JTextField(reino.getName(), 15);
+		name = new JTextField(15);
 		p.add(name);
-	}
-
-	private void llenarActitudes(JPanel p) {
-		p.setLayout(new BorderLayout());
-		JPanel pas = new JPanel();
-		pas.add(new JLabel("Actitud del reino en general"));
-		p.add(pas, BorderLayout.NORTH);
-		grupoActitud = new ButtonGroup();
-		ataque = new JRadioButton("Ofensivo - Atacar");
-		defensa = new JRadioButton("Defensivo - Defender");
-		neutro = new JRadioButton("Neutro - Normal");
-		grupoActitud.add(ataque);
-		grupoActitud.add(defensa);
-		grupoActitud.add(neutro);
-
-		neutro.setSelected(true);
-		JPanel panelActitudes = new JPanel();
-		panelActitudes.add(ataque);
-		panelActitudes.add(defensa);
-		panelActitudes.add(neutro);
-
-		p.add(panelActitudes, BorderLayout.CENTER);
-
-	}
-
-	private Color optenerColor(String opcion) {
-
-		// deberia de haber una forma mejor
-//		"rojo", "verde", "azul", "celeste" 
-		if (opcion.equalsIgnoreCase("rojo")) {
-			return Color.red;
-		} else if (opcion.equalsIgnoreCase("verde")) {
-			return Color.green;
-		} else if (opcion.equalsIgnoreCase("azul")) {
-			return Color.blue;
-		} else if (opcion.equalsIgnoreCase("amarillo")) {
-			return Color.yellow;
-		} else {
-			JOptionPane.showMessageDialog(ventana, "Aun no está disponible");
-		}
-
-		return reino.getColor();
 	}
 
 	private class Accion implements ActionListener {
@@ -168,35 +129,36 @@ public class Configurar extends JFrame implements Serializable {
 				// nombre
 				String newName = name.getText();
 
-				// Color
-				Color newColor = optenerColor((String) opcionesColores.getSelectedItem());
+				Ejercito selectEjercito = reino.obtenerEjer((String) nombresEjercitos.getSelectedItem());
 
-				// Actitud
-				char newActitud;
-				if (ataque.isSelected()) {
-					newActitud = UnidadesDeMapa.ATAQUE;
-				} else if (defensa.isSelected()) {
-					newActitud = UnidadesDeMapa.DEFENZA;
-				} else {
-					newActitud = UnidadesDeMapa.NEUTRO;
-				}
-
-				reino.actualizar(newName, newColor, newActitud);
+				selectEjercito.setName(newName);
 
 				ventana.setVisible(false);
-				PreviaJuego antes = (PreviaJuego) anterior;
-				// para que se actualize los datos al mostrar
-				anterior = new PreviaJuego(antes.getAnterior(), antes.getTitle());
+				anterior.setVisible(true);
 
 			}
 
-			if (e.getSource() == masOpciones) {
-				// aqui mas opciones
-				new MasConfiguraciones(reino, ventana);
+			if (e.getSource() == añadir) {
+
+				reino.addNewEjercito();
+				JOptionPane.showMessageDialog(ventana, "ejercito nuevo añadido");
+
 				ventana.setVisible(false);
+				anterior.setVisible(true);
+
+			}
+
+			if (e.getSource() == eliminar) {
+
+				Ejercito ejerDelette = reino.obtenerEjer((String) nombresEjercitos.getSelectedItem());
+
+				reino.deleteUnidad(ejerDelette);
+				JOptionPane.showMessageDialog(ventana, "ejercito eliminado");
+				ventana.setVisible(false);
+				anterior.setVisible(true);
+
 			}
 
 		}
-
 	}
 }

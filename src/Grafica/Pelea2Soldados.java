@@ -109,6 +109,8 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 
 				}
 
+				textUnidad1.setText(s1.mostrarDatos());
+
 			}
 
 			if (e.getSource() == listo2) {
@@ -127,6 +129,7 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 							+ "\n- Aumentaron en 1 su nivel de defensa\n- Disminuyeron en 1 su nivel de ataque");
 
 				}
+				textUnidad2.setText(s2.mostrarDatos());
 
 			}
 
@@ -144,7 +147,8 @@ public class Pelea2Soldados extends Pelea2Unidades implements Serializable {
 
 				System.out.println("Antes");
 				resultado = (Soldado[]) Soldado.batalla(s1, s2);
-				JOptionPane.showMessageDialog(principal, "Ganador :\n" + resultado[0].toString());
+				JOptionPane.showMessageDialog(principal,
+						"Ganador\n" + resultado[0].getName() + "\ndel reino " + resultado[0].getNameReino());
 
 				// actualizamos posicion
 				resultado[0].setFila(oponente.getFila());
