@@ -362,7 +362,7 @@ public abstract class Soldado extends UnidadesDeMapa implements Batalla, Seriali
 
 		text += "Reino: " + getNameReino() + "\n";
 		text += "Ejercito: " + getNameEjercito() + "\n";
-		text += "Tipo: " + getTipo();
+		text += "Tipo: " + getTipo() + "\n";
 		text += "Nivel Ataque: " + getNivelAtaque() + "\n";
 		text += "Nivel Defensa: " + getNivelDefensa() + "\n";
 		text += "Nivel Vida: " + getNivelVida() + "\n";
